@@ -79,6 +79,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rollup/plugin-replace@npm:^2.3.4":
+  version: 2.3.4
+  resolution: "@rollup/plugin-replace@npm:2.3.4"
+  dependencies:
+    "@rollup/pluginutils": ^3.1.0
+    magic-string: ^0.25.7
+  peerDependencies:
+    rollup: ^1.20.0 || ^2.0.0
+  checksum: 97ae11600a959b7668105d9e28801319f9158b01a1d9dbf4f910136491463d8798c1bb1d62e47bf04d5ff08c9c5b3f333aa39ccad57a4e5531d8edaa38ffd74e
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-typescript@npm:^6.0.0":
   version: 6.1.0
   resolution: "@rollup/plugin-typescript@npm:6.1.0"
@@ -118,7 +130,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/svelte@npm:^1.0.0":
+"@tsconfig/svelte@npm:^1.0.10":
   version: 1.0.10
   resolution: "@tsconfig/svelte@npm:1.0.10"
   checksum: d38480e0ac7482b488083cbb8aad041862d4a178b879aac86c54ca8ce27b736d6432c79c48a25df9f4f2c03fcbbeb79c81b5e120c199a4b8b9ce38b22961d861
@@ -139,7 +151,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^14.14.10":
   version: 14.14.10
   resolution: "@types/node@npm:14.14.10"
   checksum: b793aa15e8c08df50d0f77dc0fe7a93bc2e09bfa5a424841d4dba045d6ae8503b7ffe89b773ffe197c9b637c898bb22e78442e21ff4b33414d35160d9c3f8a9b
@@ -554,6 +566,13 @@ __metadata:
   version: 6.0.0
   resolution: "detect-indent@npm:6.0.0"
   checksum: ad0619414151942d278c06cd4b6b79feb96c16eebf4979ef1d03433941f1a85c9bba7daba73a73814d629923716169da5416bbc4290c232d53a2dc06f462da5f
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "dotenv@npm:8.2.0"
+  checksum: 16cb89cbd7b98b053899b8aba8c5044c8fb61a2db8a81fe70360b75035fce5fed53bd7a34d772be717d0880c0321122a4c09423f518025e1b52d96791521b1a7
   languageName: node
   linkType: hard
 
@@ -1782,8 +1801,11 @@ resolve@^1.17.0:
   dependencies:
     "@rollup/plugin-commonjs": ^16.0.0
     "@rollup/plugin-node-resolve": ^10.0.0
+    "@rollup/plugin-replace": ^2.3.4
     "@rollup/plugin-typescript": ^6.0.0
-    "@tsconfig/svelte": ^1.0.0
+    "@tsconfig/svelte": ^1.0.10
+    "@types/node": ^14.14.10
+    dotenv: ^8.2.0
     rollup: ^2.3.4
     rollup-plugin-css-only: ^3.0.0
     rollup-plugin-livereload: ^2.0.0
@@ -1793,9 +1815,10 @@ resolve@^1.17.0:
     svelte: ^3.0.0
     svelte-check: ^1.0.0
     svelte-language-server: ^0.10.158
+    svelte-navigator: ^3.1.4
     svelte-preprocess: ^4.0.0
     tslib: ^2.0.0
-    typescript: ^3.9.3
+    typescript: ^4.1.2
   languageName: unknown
   linkType: soft
 
@@ -1843,6 +1866,17 @@ resolve@^1.17.0:
   bin:
     svelteserver: bin/server.js
   checksum: 75d823cb80a3dc0642fe87115fe3a19a619a8f012c5e8f44e119856a3181759e235edd6af9837aa349c4b099811fe2b20f6a276cde9fcd9256c075187f01c03b
+  languageName: node
+  linkType: hard
+
+"svelte-navigator@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "svelte-navigator@npm:3.1.4"
+  dependencies:
+    svelte2tsx: ^0.1.151
+  peerDependencies:
+    svelte: 3.x
+  checksum: ba7ff7c08e973873373557a96545f11fdcea5839408a994c1b104022f944d9e804a3d1b704c5025f583d86e2ef5c003f261a2c556d6c9ad29aea7be8d8eb0586
   languageName: node
   linkType: hard
 
@@ -1903,6 +1937,19 @@ resolve@^1.17.0:
     svelte: ^3.24
     typescript: ^4.1.2
   checksum: e873c071df3b9706c240a8fcb44de45f2f7dce255303b6431d3e1f95f201283272481df0845b09bf32cc7cf81fc302370647e0717c5808f369eebb25a70b1c3d
+  languageName: node
+  linkType: hard
+
+"svelte2tsx@npm:^0.1.151":
+  version: 0.1.151
+  resolution: "svelte2tsx@npm:0.1.151"
+  dependencies:
+    dedent-js: ^1.0.1
+    pascal-case: ^3.1.1
+  peerDependencies:
+    svelte: ^3.24
+    typescript: ^4.1.2
+  checksum: 88a8d5ac2eb2a33463ef74603516c95d4cb668db8903cdf027ee34a93602dce225a0bdeef6d03ae21e6732d796c3a4996d47439abf82062b52a5944bb221eb29
   languageName: node
   linkType: hard
 
@@ -2010,7 +2057,7 @@ resolve@^1.17.0:
   languageName: node
   linkType: hard
 
-typescript@*:
+"typescript@*, typescript@^4.1.2":
   version: 4.1.2
   resolution: "typescript@npm:4.1.2"
   bin:
@@ -2020,33 +2067,13 @@ typescript@*:
   languageName: node
   linkType: hard
 
-typescript@^3.9.3:
-  version: 3.9.7
-  resolution: "typescript@npm:3.9.7"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10848a9c35fd8c70a8792b8bd9485317534bcd58768793d3b7d9c7486e9fd30cf345f83fa2a324e0bf6088bc8a4d8d061d58fda38b18c2ff187cf01fbbff6267
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@*#builtin<compat/typescript>":
+"typescript@patch:typescript@*#builtin<compat/typescript>, typescript@patch:typescript@^4.1.2#builtin<compat/typescript>":
   version: 4.1.2
   resolution: "typescript@patch:typescript@npm%3A4.1.2#builtin<compat/typescript>::version=4.1.2&hash=5bf698"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: acfc7be6a091806432f324ad258c4a7d2a63996106a4c001db1eebb2661608a9fd0d109d0d29249c3e6890e3547a97b8580cbe0833aa64b2fb83f66e4d88a466
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^3.9.3#builtin<compat/typescript>":
-  version: 3.9.7
-  resolution: "typescript@patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=5bf698"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: f0d3d9c987860c7c458229ab6dd7e3d322405db36b70abccba610b5efd9f9451e4e67a3fc7983c0d3741033c1f1a8d7aa859a1510caa8f20fad762fc39648bfa
   languageName: node
   linkType: hard
 
