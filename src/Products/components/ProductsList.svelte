@@ -1,8 +1,7 @@
 <script lang="ts">
   import ProductItem from './ProductItem.svelte'
-  import { getProducts } from '../helpers/ProductsService'
+  import { getProducts } from '../services/ProductsService'
   import type { IProduct } from '../models/Product'
-  import { onMount } from 'svelte'
 
   const loadProducts = async (): Promise<IProduct[]> => {
     const productsResponse = await getProducts()
@@ -23,11 +22,25 @@
         }
       })
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+
     return formatedProducts
   }
 
   const sortedProducts: Promise<IProduct[]> = loadProducts()
 </script>
+
+<h2 class="products-page--page-title">Productos</h2>
+<div>
+  {#await sortedProducts}
+    <p>Cargando...</p>
+  {:then products}
+    {#each products as product}
+      <ProductItem {product} />
+    {/each}
+  {:catch}
+    <p>¡Ups! Hubo un error obteniendo los productos</p>
+  {/await}
+</div>
 
 <style>
   div {
@@ -42,16 +55,3 @@
     font-size: 1.7em;
   }
 </style>
-
-<h2 class="products-page--page-title">Productos</h2>
-<div>
-  {#await sortedProducts}
-    <p>Cargando...</p>
-  {:then products}
-    {#each products as product}
-      <ProductItem {product} />
-    {/each}
-  {:catch}
-    <p>¡Ups! Hubo un error obteniendo los productos</p>
-  {/await}
-</div>

@@ -2,7 +2,7 @@
   export let id: string
 
   import NotFoundProduct from './ProductNotFound.svelte'
-  import { getProduct } from '../helpers/ProductsService'
+  import { getProduct } from '../services/ProductsService'
   import type { IProduct } from '../models/Product'
 
   let productResponse: Promise<IProduct> = getProduct(id)

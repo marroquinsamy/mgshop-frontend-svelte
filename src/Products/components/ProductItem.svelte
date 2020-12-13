@@ -1,12 +1,32 @@
 <script lang="ts">
   import type { IProduct } from '../models/Product'
-  import { API } from '../helpers/ProductsService'
+  import { API } from '../services/ProductsService'
   import { Link, useNavigate } from 'svelte-navigator'
 
   export let product: IProduct
 
   const navigate = useNavigate()
 </script>
+
+<article on:click={() => navigate(product._id)}>
+  <header>
+    <h3>{product.title}</h3>
+    <p class="product-description">{product.description}</p>
+  </header>
+  <div class="image-container">
+    <img src={`${API}/${product.imagePath}`} alt={product.title} />
+  </div>
+  <footer>
+    <div class="price">
+      <i class="bx bxs-coin" />
+      <span><small>Q</small>{product.price}</span>
+    </div>
+    <Link to={product._id} class="product-card--footer--more-details">
+      <i class="bx bx-right-arrow-alt" />
+      <span class="more-details-text">Más detalles</span>
+    </Link>
+  </footer>
+</article>
 
 <style>
   article {
@@ -78,10 +98,10 @@
   }
 
   .price {
-    background: var(--green);
+    border: 2px solid var(--green);
     padding: 7px;
     border-radius: 12px;
-    color: #000;
+    color: var(--green);
     width: fit-content;
     font-weight: 700;
     margin: 0;
@@ -116,25 +136,3 @@
     font-size: 1.3em;
   }
 </style>
-
-<article on:click={() => navigate(`/products/${product._id}`)}>
-  <header>
-    <h3>{product.title}</h3>
-    <p class="product-description">{product.description}</p>
-  </header>
-  <div class="image-container">
-    <img src={`${API}/${product.imagePath}`} alt={product.title} />
-  </div>
-  <footer>
-    <div class="price">
-      <i class="bx bxs-coin" />
-      <span><small>Q</small>{product.price}</span>
-    </div>
-    <Link
-      to="products/{product._id}"
-      class="product-card--footer--more-details">
-      <i class="bx bx-right-arrow-alt" />
-      <span class="more-details-text">Más detalles</span>
-    </Link>
-  </footer>
-</article>

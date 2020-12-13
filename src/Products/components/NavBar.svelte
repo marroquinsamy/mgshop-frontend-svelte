@@ -1,11 +1,36 @@
 <script lang="ts">
-  import { useLocation, Link } from "svelte-navigator"
+  import { useLocation, Link } from 'svelte-navigator'
 
   const location = useLocation()
 
   let pathname: string
   $: pathname = $location.pathname
 </script>
+
+<nav>
+  <div>
+    <Link to="/" title="MGShop">
+      <img src="/images/logowb.png" alt="MGShop" class="navbar--logo" />
+    </Link>
+  </div>
+  <div>
+    <Link class="navbar--link" to="./" title="Productos">
+      {#if pathname === '/products'}
+        <i class="bx bxs-shopping-bag" />
+      {:else}<i class="bx bx-shopping-bag" />{/if}
+    </Link>
+    <Link class="navbar--link" to="about" title="Acerca de nosotros">
+      {#if pathname === '/products/about'}
+        <i class="bx bxs-info-circle" />
+      {:else}<i class="bx bx-info-circle" />{/if}
+    </Link>
+  </div>
+  <div>
+    <button title="Más opciones">
+      <i class="bx bxs-chevron-down-circle" />
+    </button>
+  </div>
+</nav>
 
 <style>
   nav {
@@ -58,28 +83,3 @@
     margin: 10px auto;
   }
 </style>
-
-<nav>
-  <div>
-    <Link to="/" title="MGShop">
-      <img src="/logowb.png" alt="MGShop" class="navbar--logo" />
-    </Link>
-  </div>
-  <div>
-    <Link class="navbar--link" to="./" title="Productos">
-      {#if pathname === '/products'}
-        <i class="bx bxs-shopping-bag" />
-      {:else}<i class="bx bx-shopping-bag" />{/if}
-    </Link>
-    <Link class="navbar--link" to="about" title="Acerca de nosotros">
-      {#if pathname === '/products/about'}
-        <i class="bx bxs-info-circle" />
-      {:else}<i class="bx bx-info-circle" />{/if}
-    </Link>
-  </div>
-  <div>
-    <button title="Más opciones">
-      <i class="bx bxs-chevron-down-circle" />
-    </button>
-  </div>
-</nav>
