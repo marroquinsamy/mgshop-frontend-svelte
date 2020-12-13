@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useLocation, Link } from 'svelte-navigator'
+  import { useLocation, Link } from "svelte-navigator"
 
   const location = useLocation()
 

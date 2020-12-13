@@ -4,6 +4,7 @@
   import Home from './Landing/components/Home.svelte'
   import Products from './Products/Products.svelte'
   import NotFoundPage from 'PageNotFound.svelte'
+  let namu: string = 'Samuel'
 </script>
 
 <Router>
