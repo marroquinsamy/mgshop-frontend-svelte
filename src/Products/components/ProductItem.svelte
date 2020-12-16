@@ -98,7 +98,7 @@
   }
 
   .price {
-    border: 2px solid var(--green);
+    border: 2px dashed var(--green);
     padding: 7px;
     border-radius: 12px;
     color: var(--green);

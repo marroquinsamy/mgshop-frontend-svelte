@@ -2,6 +2,13 @@
   import ProductItem from './ProductItem.svelte'
   import { getProducts } from '../services/ProductsService'
   import type { IProduct } from '../models/Product'
+  import Loader from '../../components/Loader.svelte'
+  import ProductNotFound from './ProductNotFound.svelte'
+  import { useFocus } from 'svelte-navigator'
+
+  const registerFocus = useFocus()
+
+  const errorSeparator: string = '$$$'
 
   const loadProducts = async (): Promise<IProduct[]> => {
     const productsResponse = await getProducts()
@@ -29,18 +36,21 @@
   const sortedProducts: Promise<IProduct[]> = loadProducts()
 </script>
 
-<h2 class="products-page--page-title">Productos</h2>
-<div>
-  {#await sortedProducts}
-    <p>Cargando...</p>
-  {:then products}
+{#await sortedProducts}
+  <Loader text="Cargando productos" />
+{:then products}
+  <h2 class="products-page--page-title" use:registerFocus>Productos</h2>
+  <div>
     {#each products as product}
       <ProductItem {product} />
     {/each}
-  {:catch}
-    <p>¡Ups! Hubo un error obteniendo los productos</p>
-  {/await}
-</div>
+  </div>
+{:catch error}
+  <ProductNotFound
+    code={error.message.split(errorSeparator)[0]}
+    title={error.message.split(errorSeparator)[1]}
+    description={error.message.split(errorSeparator)[2]} />
+{/await}
 
 <style>
   div {

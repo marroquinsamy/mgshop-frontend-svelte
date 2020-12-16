@@ -1,19 +1,24 @@
 <script lang="ts">
+  export let title: string = 'Error'
+  export let description: string = 'Error'
+  export let code: string
+  let imageName: string = 'warning'
+
+  if (code === '404') imageName = 'not-found'
+  else if (code === '204') imageName = 'no-data'
+
   import { useNavigate } from 'svelte-navigator'
   const navigate = useNavigate()
 </script>
 
-<div><img src="/images/no-data.svg" alt="Portapapeles sin datos" /></div>
-<h2 class="products-page--page-title">
-  Parece que alguien no vino a trabajar hoy...
-</h2>
-<p>
-  No hemos encontrado el item que estás buscando. Haz click en el botón para
-  explorar nuestro catálogo de productos.
-</p>
-<div class="button-container">
-  <button on:click={() => navigate('/products')}>¡Ir de compras!</button>
-</div>
+<div><img src="/images/{imageName}.svg" alt="Portapapeles sin datos" /></div>
+<h2 class="products-page--page-title">{title}</h2>
+<p>{description}</p>
+{#if code === '404'}
+  <div class="button-container">
+    <button on:click={() => navigate('/products')}>¡Ir de compras!</button>
+  </div>
+{/if}
 
 <style>
   div {
@@ -41,8 +46,8 @@
   }
 
   button {
+    width: 250px;
     margin: auto;
-
     outline: none;
     border: none;
     cursor: pointer;
@@ -50,7 +55,7 @@
     padding: 15px;
     background: var(--pink);
     color: #fff;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 1.1em;
     transform: scale(1);
     transition: var(--preferred-transition);
