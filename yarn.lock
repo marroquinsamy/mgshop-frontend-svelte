@@ -1817,6 +1817,7 @@ resolve@^1.17.0:
     svelte-language-server: ^0.10.158
     svelte-navigator: ^3.1.4
     svelte-preprocess: ^4.0.0
+    toastify-js: ^1.9.3
     tslib: ^2.0.0
     typescript: ^4.1.2
   languageName: unknown
@@ -2007,6 +2008,13 @@ resolve@^1.17.0:
   dependencies:
     is-number: ^7.0.0
   checksum: 2b6001e314e4998a07137c197e333fac2f86d46d0593da90b678ae64e2daa07274b508f83cca09e6b3504cdf222497dcb5b7daceb6dc13a9a8872f58a27db907
+  languageName: node
+  linkType: hard
+
+"toastify-js@npm:^1.9.3":
+  version: 1.9.3
+  resolution: "toastify-js@npm:1.9.3"
+  checksum: 42322a6e2bd95dfe2fd2a99ce9e37d6a0ac5d7a6b8415b18687e7c86f8a65eebd22bc49fc0b51c2ca49ebd4736bed68af1861505f553afff851363c576aca8d2
   languageName: node
   linkType: hard
 

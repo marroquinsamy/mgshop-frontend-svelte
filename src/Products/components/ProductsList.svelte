@@ -3,7 +3,7 @@
   import { getProducts } from '../services/ProductsService'
   import type { IProduct } from '../models/Product'
   import Loader from '../../components/Loader.svelte'
-  import ProductNotFound from './ProductNotFound.svelte'
+  import ErrorPage from '../../components/ErrorPage.svelte'
   import { useFocus } from 'svelte-navigator'
 
   const registerFocus = useFocus()
@@ -46,18 +46,26 @@
     {/each}
   </div>
 {:catch error}
-  <ProductNotFound
+  <ErrorPage
     code={error.message.split(errorSeparator)[0]}
     title={error.message.split(errorSeparator)[1]}
     description={error.message.split(errorSeparator)[2]} />
 {/await}
 
 <style>
-  div {
+  /*   div {
     display: flex;
     flex-wrap: wrap;
     margin: -15px auto;
+    width: max-content;
+  } */
+
+  div {
+    display: grid;
+    grid-gap: 25px;
     width: 95%;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
 
   :global(.products-page--page-title) {

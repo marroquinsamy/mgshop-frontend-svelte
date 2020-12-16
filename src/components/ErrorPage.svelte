@@ -6,15 +6,18 @@
 
   if (code === '404') imageName = 'not-found'
   else if (code === '204') imageName = 'no-data'
+  else if (code === '001') imageName = 'taken'
+
+  const showButton: boolean = code === '404' || code === '001' ? true : false
 
   import { useNavigate } from 'svelte-navigator'
   const navigate = useNavigate()
 </script>
 
-<div><img src="/images/{imageName}.svg" alt="Portapapeles sin datos" /></div>
+<div><img src="/images/{imageName}.svg" alt="Ilustración de error" /></div>
 <h2 class="products-page--page-title">{title}</h2>
 <p>{description}</p>
-{#if code === '404'}
+{#if showButton}
   <div class="button-container">
     <button on:click={() => navigate('/products')}>¡Ir de compras!</button>
   </div>
@@ -55,7 +58,7 @@
     padding: 15px;
     background: var(--pink);
     color: #fff;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1.1em;
     transform: scale(1);
     transition: var(--preferred-transition);

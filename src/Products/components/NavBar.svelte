@@ -4,7 +4,13 @@
   const location = useLocation()
 
   let pathname: string
-  $: pathname = $location.pathname
+  let atCart: boolean
+  let atProducts: boolean
+  $: {
+    pathname = $location.pathname
+    atCart = pathname.split('/')[2] === 'cart' ? true : false
+    atProducts = pathname.split('/')[2] !== 'cart' ? true : false
+  }
 </script>
 
 <nav>
@@ -15,14 +21,14 @@
   </div>
   <div>
     <Link class="navbar--link" to="./" title="Productos">
-      {#if pathname === '/products'}
+      {#if atProducts}
         <i class="bx bxs-shopping-bag" />
       {:else}<i class="bx bx-shopping-bag" />{/if}
     </Link>
-    <Link class="navbar--link" to="about" title="Acerca de nosotros">
-      {#if pathname === '/products/about'}
-        <i class="bx bxs-info-circle" />
-      {:else}<i class="bx bx-info-circle" />{/if}
+    <Link class="navbar--link" to="cart" title="Carrito de compras">
+      {#if atCart}
+        <i class="bx bxs-cart-alt" />
+      {:else}<i class="bx bx-cart-alt" />{/if}
     </Link>
   </div>
   <div>

@@ -35,9 +35,6 @@
     border: 3px dashed var(--pink);
     padding: 10px;
 
-    flex: 1 0 310px;
-    margin: 15px;
-
     transform: scale(1);
     transition: all 0.2s ease;
 
@@ -53,6 +50,7 @@
   }
 
   article:active {
+    opacity: 0.9;
     transform: scale(1);
   }
 
