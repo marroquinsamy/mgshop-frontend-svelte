@@ -1,3 +1,42 @@
+<script lang="ts">
+  import Toastify from 'toastify-js'
+  import 'toastify-js/src/toastify.css'
+
+  const showWhatsAppNumber = () => {
+    Toastify({
+      text: 'Nuestro WhatsApp: +502 4269 5893',
+      duration: 5000,
+      close: true,
+      gravity: 'bottom',
+      position: 'right',
+      avatar: '/images/whatsapp-logo.png',
+      backgroundColor: 'var(--green)',
+      stopOnFocus: true,
+    }).showToast()
+
+    setTimeout(copyWhatsAppNumber, 500)
+  }
+
+  const copyWhatsAppNumber = () => {
+    try {
+      navigator.clipboard.writeText('+502 4269 5893')
+
+      Toastify({
+        text: 'WhatsApp copiado exitosamente',
+        duration: 5000,
+        close: true,
+        gravity: 'bottom',
+        position: 'right',
+        avatar: '/images/info.png',
+        backgroundColor: '#3498db',
+        stopOnFocus: true,
+      }).showToast()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+</script>
+
 <footer>
   <section>
     <img src="/images/logowbweco.png" alt="MGShop logo" />
@@ -5,7 +44,7 @@
       <a href="https://facebook.com/mgshopgt" target="_blank" rel="noreferrer">
         <i class="bx bxl-facebook-circle" />
       </a>
-      <i class="bx bxl-whatsapp" role="button" />
+      <i class="bx bxl-whatsapp" role="button" on:click={showWhatsAppNumber} />
     </div>
   </section>
 

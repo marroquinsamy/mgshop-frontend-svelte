@@ -190,6 +190,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/toastify-js@npm:^1.9.1":
+  version: 1.9.1
+  resolution: "@types/toastify-js@npm:1.9.1"
+  checksum: 372d5d51a1faeb9c8320527f89b8656c4f0aad93fc246210de59f688bf7c2eff691ddb111340ece00327127d885b56f9c8ad47d4d8b6cacd76601d9234c1cd2b
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -1805,6 +1812,7 @@ resolve@^1.17.0:
     "@rollup/plugin-typescript": ^6.0.0
     "@tsconfig/svelte": ^1.0.10
     "@types/node": ^14.14.10
+    "@types/toastify-js": ^1.9.1
     dotenv: ^8.2.0
     rollup: ^2.3.4
     rollup-plugin-css-only: ^3.0.0

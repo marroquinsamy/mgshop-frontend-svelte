@@ -5662,8 +5662,422 @@ var app = (function () {
     	}
     }
 
+    var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+    function createCommonjsModule(fn, basedir, module) {
+    	return module = {
+    		path: basedir,
+    		exports: {},
+    		require: function (path, base) {
+    			return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    		}
+    	}, fn(module, module.exports), module.exports;
+    }
+
+    function commonjsRequire () {
+    	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+    }
+
+    var toastify = createCommonjsModule(function (module) {
+    /*!
+     * Toastify js 1.9.3
+     * https://github.com/apvarun/toastify-js
+     * @license MIT licensed
+     *
+     * Copyright (C) 2018 Varun A P
+     */
+    (function(root, factory) {
+      if ( module.exports) {
+        module.exports = factory();
+      } else {
+        root.Toastify = factory();
+      }
+    })(commonjsGlobal, function(global) {
+      // Object initialization
+      var Toastify = function(options) {
+          // Returning a new init object
+          return new Toastify.lib.init(options);
+        },
+        // Library version
+        version = "1.9.3";
+
+      // Defining the prototype of the object
+      Toastify.lib = Toastify.prototype = {
+        toastify: version,
+
+        constructor: Toastify,
+
+        // Initializing the object with required parameters
+        init: function(options) {
+          // Verifying and validating the input object
+          if (!options) {
+            options = {};
+          }
+
+          // Creating the options object
+          this.options = {};
+
+          this.toastElement = null;
+
+          // Validating the options
+          this.options.text = options.text || "Hi there!"; // Display message
+          this.options.node = options.node; // Display content as node
+          this.options.duration = options.duration === 0 ? 0 : options.duration || 3000; // Display duration
+          this.options.selector = options.selector; // Parent selector
+          this.options.callback = options.callback || function() {}; // Callback after display
+          this.options.destination = options.destination; // On-click destination
+          this.options.newWindow = options.newWindow || false; // Open destination in new window
+          this.options.close = options.close || false; // Show toast close icon
+          this.options.gravity = options.gravity === "bottom" ? "toastify-bottom" : "toastify-top"; // toast position - top or bottom
+          this.options.positionLeft = options.positionLeft || false; // toast position - left or right
+          this.options.position = options.position || ''; // toast position - left or right
+          this.options.backgroundColor = options.backgroundColor; // toast background color
+          this.options.avatar = options.avatar || ""; // img element src - url or a path
+          this.options.className = options.className || ""; // additional class names for the toast
+          this.options.stopOnFocus = options.stopOnFocus === undefined? true: options.stopOnFocus; // stop timeout on focus
+          this.options.onClick = options.onClick; // Callback after click
+
+          this.options.offset = options.offset || { x: 0, y: 0 }; // toast offset
+
+          // Returning the current object for chaining functions
+          return this;
+        },
+
+        // Building the DOM element
+        buildToast: function() {
+          // Validating if the options are defined
+          if (!this.options) {
+            throw "Toastify is not initialized";
+          }
+
+          // Creating the DOM object
+          var divElement = document.createElement("div");
+          divElement.className = "toastify on " + this.options.className;
+
+          // Positioning toast to left or right or center
+          if (!!this.options.position) {
+            divElement.className += " toastify-" + this.options.position;
+          } else {
+            // To be depreciated in further versions
+            if (this.options.positionLeft === true) {
+              divElement.className += " toastify-left";
+              console.warn('Property `positionLeft` will be depreciated in further versions. Please use `position` instead.');
+            } else {
+              // Default position
+              divElement.className += " toastify-right";
+            }
+          }
+
+          // Assigning gravity of element
+          divElement.className += " " + this.options.gravity;
+
+          if (this.options.backgroundColor) {
+            divElement.style.background = this.options.backgroundColor;
+          }
+
+          // Adding the toast message/node
+          if (this.options.node && this.options.node.nodeType === Node.ELEMENT_NODE) {
+            // If we have a valid node, we insert it
+            divElement.appendChild(this.options.node);
+          } else {
+            divElement.innerHTML = this.options.text;
+
+            if (this.options.avatar !== "") {
+              var avatarElement = document.createElement("img");
+              avatarElement.src = this.options.avatar;
+
+              avatarElement.className = "toastify-avatar";
+
+              if (this.options.position == "left" || this.options.positionLeft === true) {
+                // Adding close icon on the left of content
+                divElement.appendChild(avatarElement);
+              } else {
+                // Adding close icon on the right of content
+                divElement.insertAdjacentElement("afterbegin", avatarElement);
+              }
+            }
+          }
+
+          // Adding a close icon to the toast
+          if (this.options.close === true) {
+            // Create a span for close element
+            var closeElement = document.createElement("span");
+            closeElement.innerHTML = "&#10006;";
+
+            closeElement.className = "toast-close";
+
+            // Triggering the removal of toast from DOM on close click
+            closeElement.addEventListener(
+              "click",
+              function(event) {
+                event.stopPropagation();
+                this.removeElement(this.toastElement);
+                window.clearTimeout(this.toastElement.timeOutValue);
+              }.bind(this)
+            );
+
+            //Calculating screen width
+            var width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+
+            // Adding the close icon to the toast element
+            // Display on the right if screen width is less than or equal to 360px
+            if ((this.options.position == "left" || this.options.positionLeft === true) && width > 360) {
+              // Adding close icon on the left of content
+              divElement.insertAdjacentElement("afterbegin", closeElement);
+            } else {
+              // Adding close icon on the right of content
+              divElement.appendChild(closeElement);
+            }
+          }
+
+          // Clear timeout while toast is focused
+          if (this.options.stopOnFocus && this.options.duration > 0) {
+            var self = this;
+            // stop countdown
+            divElement.addEventListener(
+              "mouseover",
+              function(event) {
+                window.clearTimeout(divElement.timeOutValue);
+              }
+            );
+            // add back the timeout
+            divElement.addEventListener(
+              "mouseleave",
+              function() {
+                divElement.timeOutValue = window.setTimeout(
+                  function() {
+                    // Remove the toast from DOM
+                    self.removeElement(divElement);
+                  },
+                  self.options.duration
+                );
+              }
+            );
+          }
+          
+          // Adding an on-click destination path
+          if (typeof this.options.destination !== "undefined") {
+            divElement.addEventListener(
+              "click",
+              function(event) {
+                event.stopPropagation();
+                if (this.options.newWindow === true) {
+                  window.open(this.options.destination, "_blank");
+                } else {
+                  window.location = this.options.destination;
+                }
+              }.bind(this)
+            );
+          }
+
+          if (typeof this.options.onClick === "function" && typeof this.options.destination === "undefined") {
+            divElement.addEventListener(
+              "click",
+              function(event) {
+                event.stopPropagation();
+                this.options.onClick();            
+              }.bind(this)
+            );
+          }
+
+          // Adding offset
+          if(typeof this.options.offset === "object") {
+
+            var x = getAxisOffsetAValue("x", this.options);
+            var y = getAxisOffsetAValue("y", this.options);
+            
+            var xOffset = this.options.position == "left" ? x : "-" + x;
+            var yOffset = this.options.gravity == "toastify-top" ? y : "-" + y;
+
+            divElement.style.transform = "translate(" + xOffset + "," + yOffset + ")";
+
+          }
+
+          // Returning the generated element
+          return divElement;
+        },
+
+        // Displaying the toast
+        showToast: function() {
+          // Creating the DOM object for the toast
+          this.toastElement = this.buildToast();
+
+          // Getting the root element to with the toast needs to be added
+          var rootElement;
+          if (typeof this.options.selector === "undefined") {
+            rootElement = document.body;
+          } else {
+            rootElement = document.getElementById(this.options.selector);
+          }
+
+          // Validating if root element is present in DOM
+          if (!rootElement) {
+            throw "Root element is not defined";
+          }
+
+          // Adding the DOM element
+          rootElement.insertBefore(this.toastElement, rootElement.firstChild);
+
+          // Repositioning the toasts in case multiple toasts are present
+          Toastify.reposition();
+
+          if (this.options.duration > 0) {
+            this.toastElement.timeOutValue = window.setTimeout(
+              function() {
+                // Remove the toast from DOM
+                this.removeElement(this.toastElement);
+              }.bind(this),
+              this.options.duration
+            ); // Binding `this` for function invocation
+          }
+
+          // Supporting function chaining
+          return this;
+        },
+
+        hideToast: function() {
+          if (this.toastElement.timeOutValue) {
+            clearTimeout(this.toastElement.timeOutValue);
+          }
+          this.removeElement(this.toastElement);
+        },
+
+        // Removing the element from the DOM
+        removeElement: function(toastElement) {
+          // Hiding the element
+          // toastElement.classList.remove("on");
+          toastElement.className = toastElement.className.replace(" on", "");
+
+          // Removing the element from DOM after transition end
+          window.setTimeout(
+            function() {
+              // remove options node if any
+              if (this.options.node && this.options.node.parentNode) {
+                this.options.node.parentNode.removeChild(this.options.node);
+              }
+
+              // Remove the elemenf from the DOM, only when the parent node was not removed before.
+              if (toastElement.parentNode) {
+                toastElement.parentNode.removeChild(toastElement);
+              }
+
+              // Calling the callback function
+              this.options.callback.call(toastElement);
+
+              // Repositioning the toasts again
+              Toastify.reposition();
+            }.bind(this),
+            400
+          ); // Binding `this` for function invocation
+        },
+      };
+
+      // Positioning the toasts on the DOM
+      Toastify.reposition = function() {
+
+        // Top margins with gravity
+        var topLeftOffsetSize = {
+          top: 15,
+          bottom: 15,
+        };
+        var topRightOffsetSize = {
+          top: 15,
+          bottom: 15,
+        };
+        var offsetSize = {
+          top: 15,
+          bottom: 15,
+        };
+
+        // Get all toast messages on the DOM
+        var allToasts = document.getElementsByClassName("toastify");
+
+        var classUsed;
+
+        // Modifying the position of each toast element
+        for (var i = 0; i < allToasts.length; i++) {
+          // Getting the applied gravity
+          if (containsClass(allToasts[i], "toastify-top") === true) {
+            classUsed = "toastify-top";
+          } else {
+            classUsed = "toastify-bottom";
+          }
+
+          var height = allToasts[i].offsetHeight;
+          classUsed = classUsed.substr(9, classUsed.length-1);
+          // Spacing between toasts
+          var offset = 15;
+
+          var width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+
+          // Show toast in center if screen with less than or qual to 360px
+          if (width <= 360) {
+            // Setting the position
+            allToasts[i].style[classUsed] = offsetSize[classUsed] + "px";
+
+            offsetSize[classUsed] += height + offset;
+          } else {
+            if (containsClass(allToasts[i], "toastify-left") === true) {
+              // Setting the position
+              allToasts[i].style[classUsed] = topLeftOffsetSize[classUsed] + "px";
+
+              topLeftOffsetSize[classUsed] += height + offset;
+            } else {
+              // Setting the position
+              allToasts[i].style[classUsed] = topRightOffsetSize[classUsed] + "px";
+
+              topRightOffsetSize[classUsed] += height + offset;
+            }
+          }
+        }
+
+        // Supporting function chaining
+        return this;
+      };
+
+      // Helper function to get offset.
+      function getAxisOffsetAValue(axis, options) {
+
+        if(options.offset[axis]) {
+          if(isNaN(options.offset[axis])) {
+            return options.offset[axis];
+          }
+          else {
+            return options.offset[axis] + 'px';
+          }
+        }
+
+        return '0px';
+
+      }
+
+      function containsClass(elem, yourClass) {
+        if (!elem || typeof yourClass !== "string") {
+          return false;
+        } else if (
+          elem.className &&
+          elem.className
+            .trim()
+            .split(/\s+/gi)
+            .indexOf(yourClass) > -1
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      // Setting up the prototype for the init object
+      Toastify.lib.init.prototype = Toastify.lib;
+
+      // Returning the Toastify function to be assigned to the window object/module
+      return Toastify;
+    });
+    });
+
     /* src/components/Footer.svelte generated by Svelte v3.30.0 */
 
+    const { console: console_1 } = globals;
     const file$b = "src/components/Footer.svelte";
 
     function create_fragment$d(ctx) {
@@ -5685,6 +6099,8 @@ var app = (function () {
     	let i2;
     	let t4;
     	let a2;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
@@ -5709,39 +6125,39 @@ var app = (function () {
     			if (img.src !== (img_src_value = "/images/logowbweco.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "MGShop logo");
     			attr_dev(img, "class", "svelte-1ood148");
-    			add_location(img, file$b, 2, 4, 25);
+    			add_location(img, file$b, 37, 4, 990);
     			attr_dev(i0, "class", "bx bxl-facebook-circle svelte-1ood148");
-    			add_location(i0, file$b, 5, 8, 178);
+    			add_location(i0, file$b, 40, 8, 1143);
     			attr_dev(a0, "href", "https://facebook.com/mgshopgt");
     			attr_dev(a0, "target", "_blank");
     			attr_dev(a0, "rel", "noreferrer");
     			attr_dev(a0, "class", "svelte-1ood148");
-    			add_location(a0, file$b, 4, 6, 96);
+    			add_location(a0, file$b, 39, 6, 1061);
     			attr_dev(i1, "class", "bx bxl-whatsapp svelte-1ood148");
     			attr_dev(i1, "role", "button");
-    			add_location(i1, file$b, 7, 6, 232);
+    			add_location(i1, file$b, 42, 6, 1197);
     			attr_dev(div0, "class", "svelte-1ood148");
-    			add_location(div0, file$b, 3, 4, 84);
+    			add_location(div0, file$b, 38, 4, 1049);
     			attr_dev(section0, "class", "svelte-1ood148");
-    			add_location(section0, file$b, 1, 2, 11);
+    			add_location(section0, file$b, 36, 2, 976);
     			attr_dev(div1, "class", "separator svelte-1ood148");
-    			add_location(div1, file$b, 11, 2, 303);
+    			add_location(div1, file$b, 46, 2, 1298);
     			attr_dev(i2, "class", "bx bxl-github svelte-1ood148");
-    			add_location(i2, file$b, 15, 6, 455);
+    			add_location(i2, file$b, 50, 6, 1450);
     			attr_dev(a1, "href", "https://github.com/marroquinsamy");
     			attr_dev(a1, "target", "_blank");
     			attr_dev(a1, "rel", "noreferrer");
     			attr_dev(a1, "class", "svelte-1ood148");
-    			add_location(a1, file$b, 14, 4, 372);
+    			add_location(a1, file$b, 49, 4, 1367);
     			attr_dev(a2, "href", "https://github.com/marroquinsamy");
     			attr_dev(a2, "target", "_blank");
     			attr_dev(a2, "rel", "noreferrer");
     			attr_dev(a2, "class", "developer-name svelte-1ood148");
-    			add_location(a2, file$b, 18, 4, 527);
+    			add_location(a2, file$b, 53, 4, 1522);
     			attr_dev(section1, "class", "developer-credits svelte-1ood148");
-    			add_location(section1, file$b, 13, 2, 332);
+    			add_location(section1, file$b, 48, 2, 1327);
     			attr_dev(footer, "class", "svelte-1ood148");
-    			add_location(footer, file$b, 0, 0, 0);
+    			add_location(footer, file$b, 35, 0, 965);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5764,12 +6180,19 @@ var app = (function () {
     			append_dev(a1, i2);
     			append_dev(section1, t4);
     			append_dev(section1, a2);
+
+    			if (!mounted) {
+    				dispose = listen_dev(i1, "click", /*showWhatsAppNumber*/ ctx[0], false, false, false);
+    				mounted = true;
+    			}
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(footer);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -5784,16 +6207,57 @@ var app = (function () {
     	return block;
     }
 
-    function instance$d($$self, $$props) {
+    function instance$d($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Footer", slots, []);
+
+    	const showWhatsAppNumber = () => {
+    		toastify({
+    			text: "Nuestro WhatsApp: +502 4269 5893",
+    			duration: 5000,
+    			close: true,
+    			gravity: "bottom",
+    			position: "right",
+    			avatar: "/images/whatsapp-logo.png",
+    			backgroundColor: "var(--green)",
+    			stopOnFocus: true
+    		}).showToast();
+
+    		setTimeout(copyWhatsAppNumber, 500);
+    	};
+
+    	const copyWhatsAppNumber = () => {
+    		try {
+    			navigator.clipboard.writeText("+502 4269 5893");
+
+    			toastify({
+    				text: "WhatsApp copiado exitosamente",
+    				duration: 5000,
+    				close: true,
+    				gravity: "bottom",
+    				position: "right",
+    				avatar: "/images/info.png",
+    				backgroundColor: "#3498db",
+    				stopOnFocus: true
+    			}).showToast();
+    		} catch(error) {
+    			console.log(error);
+    		}
+    	};
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Footer> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Footer> was created with unknown prop '${key}'`);
     	});
 
-    	return [];
+    	$$self.$capture_state = () => ({
+    		Toastify: toastify,
+    		showWhatsAppNumber,
+    		copyWhatsAppNumber
+    	});
+
+    	return [showWhatsAppNumber];
     }
 
     class Footer extends SvelteComponentDev {
