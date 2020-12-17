@@ -8,8 +8,6 @@
 
   const registerFocus = useFocus()
 
-  const errorSeparator: string = '$$$'
-
   const loadProducts = async (): Promise<IProduct[]> => {
     const productsResponse = await getProducts()
     return sortProducts(productsResponse)
@@ -46,20 +44,10 @@
     {/each}
   </div>
 {:catch error}
-  <ErrorPage
-    code={error.message.split(errorSeparator)[0]}
-    title={error.message.split(errorSeparator)[1]}
-    description={error.message.split(errorSeparator)[2]} />
+  <ErrorPage message={error.message} />
 {/await}
 
 <style>
-  /*   div {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -15px auto;
-    width: max-content;
-  } */
-
   div {
     display: grid;
     grid-gap: 25px;
@@ -68,8 +56,9 @@
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
 
-  :global(.products-page--page-title) {
-    text-align: center;
-    font-size: 1.7em;
+  @media only screen and (max-width: 600px) {
+    div {
+      width: 90%;
+    }
   }
 </style>

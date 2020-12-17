@@ -1,7 +1,11 @@
 <script lang="ts">
-  export let title: string = 'Error'
-  export let description: string = 'Error'
-  export let code: string
+  export let message: string
+  import Button from './Button.svelte'
+
+  const errorSeparator: string = '$$$'
+  let code: string = message.split(errorSeparator)[0]
+  let title: string = message.split(errorSeparator)[1] || 'Error'
+  let description: string = message.split(errorSeparator)[2] || 'Error'
   let imageName: string = 'warning'
 
   if (code === '404') imageName = 'not-found'
@@ -14,20 +18,24 @@
   const navigate = useNavigate()
 </script>
 
-<div><img src="/images/{imageName}.svg" alt="Ilustración de error" /></div>
-<h2 class="products-page--page-title">{title}</h2>
-<p>{description}</p>
-{#if showButton}
-  <div class="button-container">
-    <button on:click={() => navigate('/products')}>¡Ir de compras!</button>
-  </div>
-{/if}
+<div>
+  <img src="/images/{imageName}.svg" alt="Ilustración de error" />
+  <h2 class="products-page--page-title">{title}</h2>
+  <p>{description}</p>
+  {#if showButton}
+    <div class="button-container">
+      <Button on:click={() => navigate('/products')} text="¡Ir de compras!" />
+    </div>
+  {/if}
+</div>
 
 <style>
   div {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   img {
@@ -48,24 +56,7 @@
     margin: auto;
   }
 
-  button {
+  .button-container {
     width: 250px;
-    margin: auto;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    border-radius: var(--border-radius);
-    padding: 15px;
-    background: var(--pink);
-    color: #fff;
-    font-weight: 500;
-    font-size: 1.1em;
-    transform: scale(1);
-    transition: var(--preferred-transition);
-  }
-
-  button:hover {
-    transform: scale(1.03);
-    box-shadow: var(--surface-shadow-deep);
   }
 </style>
