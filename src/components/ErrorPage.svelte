@@ -24,7 +24,10 @@
   <p>{description}</p>
   {#if showButton}
     <div class="button-container">
-      <Button on:click={() => navigate('/products')} text="¡Ir de compras!" />
+      <Button
+        on:click={() => navigate('/products')}
+        text="¡Ir de compras!"
+        fontSize="1.1em" />
     </div>
   {/if}
 </div>

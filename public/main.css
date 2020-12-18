@@ -37,6 +37,7 @@ body {
   color: var(--text);
   transition: var(--preferred-transition);
   background: var(--background-color);
+  color: var(--text);
 }
 
 body.dark {

@@ -1,11 +1,13 @@
 <script>
-  import { Route, Router } from 'svelte-navigator'
-
-  import NavBar from './components/NavBar.svelte'
+  // Components
+  import NavBar from '../components/NavBar.svelte'
   import ProductsList from './components/ProductsList.svelte'
   import SingleProduct from './components/SingleProduct.svelte'
   import Cart from './components/Cart.svelte'
   import PageNotFound from '../components/PageNotFound.svelte'
+
+  // External libraries
+  import { Route, Router } from 'svelte-navigator'
 </script>
 
 <Router>

@@ -1,34 +1,49 @@
 <script lang="ts">
-  import type { IProduct } from '../models/Product'
-  import { API } from '../services/ProductsService'
+  // Components
+  import AddToCartButton from './AddToCartButton.svelte'
+
+  // External libraries
   import { Link, useNavigate } from 'svelte-navigator'
 
-  export let product: IProduct
+  // Scripts
+  import { API } from '../services/productsService'
+  import type { IProduct } from '../models/Product'
 
   const navigate = useNavigate()
+
+  export let product: IProduct
 </script>
 
-<article on:click={() => navigate(product._id)}>
-  <header>
-    <h3>{product.title}</h3>
-    <p class="product-description">{product.description}</p>
-  </header>
+<article>
+  <Link to={product._id} class="product-card">
+    <header>
+      <h3>{product.title}</h3>
+      <p class="product-description">{product.description}</p>
+    </header>
+  </Link>
   <div class="image-container">
-    <img src={`${API}/${product.imagePath}`} alt={product.title} />
+    <img
+      src={`${API}/${product.imagePath}`}
+      alt={product.title}
+      on:click={() => navigate(product._id)} />
   </div>
   <footer>
     <div class="price">
       <i class="bx bxs-coin" />
       <span><small>Q</small>{product.price}</span>
     </div>
-    <Link to={product._id} class="product-card--footer--more-details">
-      <i class="bx bx-right-arrow-alt" />
-      <span class="more-details-text">Más detalles</span>
-    </Link>
+    <div class="button-container">
+      <AddToCartButton productID={product._id} />
+    </div>
   </footer>
 </article>
 
 <style>
+  :global(.product-card) {
+    color: unset;
+    text-decoration: none;
+  }
+
   article {
     height: 370px;
     border-radius: 12px;
@@ -41,6 +56,7 @@
     /* Esto es para que la sección del cetro (imagen) utilice el espacio restante que dejan la sección superior (detalles) y la inferior (footer) */
     display: grid;
     grid-template-rows: auto 1fr auto;
+    background: var(--surface-color);
   }
 
   article:hover {
@@ -49,9 +65,8 @@
     box-shadow: var(--surface-shadow-deep);
   }
 
-  article:active {
-    opacity: 0.9;
-    transform: scale(1);
+  :global(body.dark) article {
+    background: var(--surface-color-dark);
   }
 
   h3 {
@@ -96,10 +111,11 @@
   }
 
   .price {
-    border: 2px dashed var(--green);
+    border: 2px dashed var(--surface-color);
     padding: 7px;
     border-radius: 12px;
-    color: var(--green);
+    color: var(--text-dark);
+    background: var(--green);
     width: fit-content;
     font-weight: 700;
     margin: 0;
@@ -109,28 +125,12 @@
   }
 
   :global(body.dark) .price {
-    background: var(--green-dark);
+    border: 2px dashed var(--surface-color-dark);
+    color: var(--text);
   }
 
   .bxs-coin {
     font-size: 24px;
     margin: 0 5px;
-  }
-
-  footer :global(.product-card--footer--more-details) {
-    color: rgba(0, 0, 0, 0.5);
-    font-weight: 500;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-
-  :global(.product-card--footer--more-details:hover) .more-details-text {
-    text-decoration: underline;
-  }
-
-  .bx-right-arrow-alt {
-    margin-right: 5px;
-    font-size: 1.3em;
   }
 </style>

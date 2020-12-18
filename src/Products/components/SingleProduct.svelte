@@ -1,15 +1,19 @@
 <script lang="ts">
   export let id: string
 
+  // Components
   import ErrorPage from '../../components/ErrorPage.svelte'
   import Loader from '../../components/Loader.svelte'
-  import Button from '../../components/Button.svelte'
+  import AddToCartButton from './AddToCartButton.svelte'
 
+  // External libraries
   import Toastify from 'toastify-js'
-  import { API, getProduct } from '../services/ProductsService'
+  import { useFocus } from 'svelte-navigator'
+
+  // Scripts
+  import { API, getProduct } from '../services/productsService'
   import type { IProduct } from '../models/Product'
 
-  import { useFocus } from 'svelte-navigator'
   const registerFocus = useFocus()
 
   let promise: Promise<IProduct> = getProduct(id)
@@ -66,7 +70,11 @@
           <span><small>Q</small>{product.price}</span>
         </div>
 
-        <Button classes="bx bxs-cart-alt" text="Agregar al carrito" />
+        <AddToCartButton
+          text="Agregar al carrito"
+          fontSize="1.1em"
+          padding="10px"
+          productID={product._id} />
       </div>
     </section>
   </div>
@@ -77,7 +85,6 @@
 <style>
   .container {
     display: grid;
-    /* grid-template-columns: minmax(350px, 40%) 1fr; */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10px;
 
@@ -117,15 +124,21 @@
   }
 
   .price {
-    border: 2px dashed var(--green);
+    border: 2px dashed var(--surface-color);
     padding: 7px;
     border-radius: 12px;
-    color: var(--green);
+    color: #fff;
+    background: var(--green);
     width: fit-content;
     font-weight: 700;
     font-size: 1.5em;
     display: flex;
     align-items: center;
+  }
+
+  :global(body.dark) .price {
+    border: 2px dashed var(--surface-color-dark);
+    color: var(--text);
   }
 
   p {

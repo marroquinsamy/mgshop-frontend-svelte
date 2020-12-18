@@ -1,4 +1,8 @@
 <script lang="ts">
+  // Components
+  import NavBarDropdown from './NavBarDropdown.svelte'
+
+  // External libraries
   import { useLocation, Link } from 'svelte-navigator'
 
   const location = useLocation()
@@ -11,6 +15,9 @@
     atCart = pathname.split('/')[2] === 'cart' ? true : false
     atProducts = pathname.split('/')[2] !== 'cart' ? true : false
   }
+
+  let showDropdown: boolean = false
+  const toggleShowDropdown = () => (showDropdown = !showDropdown)
 </script>
 
 <nav>
@@ -32,9 +39,12 @@
     </Link>
   </div>
   <div>
-    <button title="Más opciones">
+    <button title="Más opciones" on:click={toggleShowDropdown}>
       <i class="bx bxs-chevron-down-circle" />
     </button>
+    {#if showDropdown}
+      <NavBarDropdown />
+    {/if}
   </div>
 </nav>
 
@@ -67,6 +77,10 @@
     font-weight: 700;
     margin: auto 5px;
     line-height: 40px;
+  }
+
+  :global(body.dark) nav {
+    background: var(--surface-color-dark);
   }
 
   .navbar--logo {

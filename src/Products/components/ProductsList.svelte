@@ -1,10 +1,15 @@
 <script lang="ts">
+  // Components
   import ProductItem from './ProductItem.svelte'
-  import { getProducts } from '../services/ProductsService'
-  import type { IProduct } from '../models/Product'
   import Loader from '../../components/Loader.svelte'
   import ErrorPage from '../../components/ErrorPage.svelte'
+
+  // External libraries
   import { useFocus } from 'svelte-navigator'
+
+  // Scripts
+  import { getProducts } from '../services/productsService'
+  import type { IProduct } from '../models/Product'
 
   const registerFocus = useFocus()
 
