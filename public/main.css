@@ -18,6 +18,8 @@
   --preferred-transition: 0.2s ease all;
 
   --border-radius: 12px;
+
+  --navbar-height: 60px;
 }
 
 * {

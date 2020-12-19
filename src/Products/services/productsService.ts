@@ -1,7 +1,7 @@
 // Scripts
 import type { IProduct } from '../models/Product'
 
-export const API = 'http://192.168.0.106:4000'
+export const API = 'http://192.168.0.110:4000'
 
 export const errorSeparator: string = '$$$' // Use this constant to separate the res status code, the error title and the error description
 

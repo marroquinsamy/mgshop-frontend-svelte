@@ -11,8 +11,10 @@
   if (code === '404') imageName = 'not-found'
   else if (code === '204') imageName = 'no-data'
   else if (code === '001') imageName = 'taken'
+  else if (code === '002') imageName = 'empty-cart'
 
-  const showButton: boolean = code === '404' || code === '001' ? true : false
+  const showButton: boolean =
+    code === '404' || code === '001' || code === '002' ? true : false
 
   import { useNavigate } from 'svelte-navigator'
   const navigate = useNavigate()

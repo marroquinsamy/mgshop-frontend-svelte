@@ -18,6 +18,10 @@
 
   let showDropdown: boolean = false
   const toggleShowDropdown = () => (showDropdown = !showDropdown)
+
+  window.onclick = (e) => {
+    if (!e.target.matches('#show-dropdown-button')) showDropdown = false
+  }
 </script>
 
 <nav>
@@ -40,7 +44,7 @@
   </div>
   <div>
     <button title="Más opciones" on:click={toggleShowDropdown}>
-      <i class="bx bxs-chevron-down-circle" />
+      <i class="bx bx-menu" id="show-dropdown-button" />
     </button>
     {#if showDropdown}
       <NavBarDropdown />
@@ -50,7 +54,7 @@
 
 <style>
   nav {
-    height: 60px;
+    height: var(--navbar-height);
     display: flex;
     align-items: center;
     justify-content: space-between;

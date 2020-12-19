@@ -7,8 +7,11 @@
   // Components
   import Button from '../../components/Button.svelte'
 
+  // Scripts
+  import { cart } from '../../stores/cart'
+
   const addToCart = (id: string): any => {
-    console.log(id)
+    cart.addProduct(id)
   }
 </script>
 
