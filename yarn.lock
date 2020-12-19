@@ -609,6 +609,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es6-object-assign@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "es6-object-assign@npm:1.1.0"
+  checksum: 18f01190b46b15a5fd6275dfc37c1c10bb331be4e392362785f63a141aa33edd0d8fbd2d5150c4b0a524aa14b8c4f825a559274cbc765bce59331e015923b4d8
+  languageName: node
+  linkType: hard
+
 "escape-string-regexp@npm:^1.0.5":
   version: 1.0.5
   resolution: "escape-string-regexp@npm:1.0.5"
@@ -1399,6 +1406,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"promise-polyfill@npm:^6.0.2":
+  version: 6.1.0
+  resolution: "promise-polyfill@npm:6.1.0"
+  checksum: 764068d0486b844f58e85731c1546fa264b68b6df9eeb53ee8f50e6c1ea1503490bc55c0d75f4004ef2412796586633dbb8b594ab699454ca9793eb8fc7e8235
+  languageName: node
+  linkType: hard
+
 "psl@npm:^1.1.28":
   version: 1.8.0
   resolution: "psl@npm:1.8.0"
@@ -1825,6 +1839,7 @@ resolve@^1.17.0:
     svelte-language-server: ^0.10.158
     svelte-navigator: ^3.1.4
     svelte-preprocess: ^4.0.0
+    sweetalert: ^2.1.2
     toastify-js: ^1.9.3
     tslib: ^2.0.0
     typescript: ^4.1.2
@@ -1973,6 +1988,16 @@ resolve@^1.17.0:
   version: 3.30.0
   resolution: "svelte@npm:3.30.0"
   checksum: 2498c0abd4ac7cf8458372a17e5cf79e8ddff2edd54c88c817d1676dd30bdc9b873f3d1aad49978d84f4856156b4cbed6466f38681d373bb1f9108a0e70eeed3
+  languageName: node
+  linkType: hard
+
+"sweetalert@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "sweetalert@npm:2.1.2"
+  dependencies:
+    es6-object-assign: ^1.1.0
+    promise-polyfill: ^6.0.2
+  checksum: 28a90b657b9d4d44d52ef72218c3c92795b798e32f485e509e7cc078cd6bc22ca247e024a4155c32c23a2a608923d524df24f7710860830cf8e2e00d1de078df
   languageName: node
   linkType: hard
 

@@ -31,6 +31,7 @@
   "dependencies": {
     "sirv-cli": "^1.0.0",
     "svelte-navigator": "^3.1.4",
+    "sweetalert": "^2.1.2",
     "toastify-js": "^1.9.3"
   }
 }

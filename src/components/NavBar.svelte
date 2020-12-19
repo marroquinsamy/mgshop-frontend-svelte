@@ -20,7 +20,7 @@
   const toggleShowDropdown = () => (showDropdown = !showDropdown)
 
   window.onclick = (e) => {
-    if (!e.target.matches('#show-dropdown-button')) showDropdown = false
+    if (!e.target.matches('.show-dropdown-button')) showDropdown = false
   }
 </script>
 
@@ -43,8 +43,11 @@
     </Link>
   </div>
   <div>
-    <button title="Más opciones" on:click={toggleShowDropdown}>
-      <i class="bx bx-menu" id="show-dropdown-button" />
+    <button
+      title="Más opciones"
+      on:click={toggleShowDropdown}
+      class="show-dropdown-button">
+      <i class="bx bx-menu show-dropdown-button" />
     </button>
     {#if showDropdown}
       <NavBarDropdown />
@@ -95,15 +98,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     outline: none;
     border: none;
     cursor: pointer;
-    background: none;
     color: var(--green);
+    background: none;
+
+    padding: 10px auto;
   }
 
   i {
     font-size: 40px;
-    margin: 10px auto;
   }
 </style>
