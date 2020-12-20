@@ -1,8 +1,7 @@
 <script lang="ts">
   // Components
   import ErrorPage from '../../components/ErrorPage.svelte'
-  import Button from '../../components/Button.svelte'
-  import CartItem from './CartItem.svelte'
+  import CartProductItem from './CartProductItem.svelte'
   import Loader from '../../components/Loader.svelte'
 
   // Scripts
@@ -57,7 +56,7 @@
         </header>
         <div>
           {#each products as product}
-            <CartItem {product} klass="cart-item" />
+            <CartProductItem {product} klass="cart-item" />
           {/each}
         </div>
       </section>
@@ -96,14 +95,6 @@
     text-decoration: underline;
   }
 
-  .products-container :global(.cart-item):nth-child(even) {
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  :global(body.dark) .products-container :global(.cart-item):nth-child(even) {
-    background: rgba(255, 255, 255, 0.1);
-  }
-
   main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -115,7 +106,7 @@
     border: 3px dashed var(--pink);
     border-radius: var(--border-radius);
     margin: auto;
-    padding: 20px;
+    padding: 10px;
   }
 
   /* main section:nth-child(1) {

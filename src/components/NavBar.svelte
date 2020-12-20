@@ -104,11 +104,10 @@
     cursor: pointer;
     color: var(--green);
     background: none;
-
-    padding: 10px auto;
   }
 
   i {
+    margin: 10px auto;
     font-size: 40px;
   }
 </style>

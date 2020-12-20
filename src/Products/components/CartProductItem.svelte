@@ -15,8 +15,12 @@
 
 <style>
   div {
-    border-radius: var(--border-radius);
     padding: 7px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  :global(body.dark) div {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   h4 {
