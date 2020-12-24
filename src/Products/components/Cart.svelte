@@ -10,6 +10,9 @@
   import type { IProduct } from '../models/Product'
   import { useFocus } from 'svelte-navigator'
 
+  // External libraries
+  import swal from 'sweetalert'
+
   const registerFocus = useFocus()
 
   const loadProducts = async (): Promise<IProduct[]> => {
@@ -25,9 +28,19 @@
     return formatedProducts
   }
 
-  const deleteAllProducts = () => {
-    cart.deleteAllProducts()
-    thereAreProductsInCart = false
+  const deleteAllProducts = async () => {
+    const userConfirmation = await swal({
+      icon: 'warning',
+      title: '¿Deseas vaciar tu carrito?',
+      text:
+        'Esta acción no se puede deshacer y tendrás que agregarlos de nuevo manualmente.',
+      buttons: ['Cancelar', 'Vaciar'],
+      dangerMode: true,
+    })
+    if (userConfirmation) {
+      cart.deleteAllProducts()
+      thereAreProductsInCart = false
+    }
   }
 
   let thereAreProductsInCart: boolean = $cart.length !== 0 ? true : false
@@ -53,6 +66,7 @@
       <section class="products-container">
         <header>
           <h3>Productos</h3>
+          <span>{products.length}</span>
         </header>
         <div>
           {#each products as product}
@@ -92,7 +106,7 @@
   }
 
   #delete-cart:hover {
-    text-decoration: underline;
+    opacity: 0.8;
   }
 
   main {
@@ -109,14 +123,6 @@
     padding: 10px;
   }
 
-  /* main section:nth-child(1) {
-    background: blue;
-  }
-
-  main section:nth-child(2) {
-    background: green;
-  } */
-
   section {
     border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius);
@@ -124,12 +130,21 @@
 
   header,
   section > div {
-    padding: 10px;
+    padding: 10px 17px;
   }
 
   header {
     width: 100%;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header > span {
+    font-weight: 700;
+    font-size: 1.2em;
+    opacity: 0.6;
   }
 
   :global(body.dark) header {
@@ -146,6 +161,6 @@
 
   h3 {
     font-size: 1.3em;
-    margin: 5px 0 0px;
+    margin: 0px;
   }
 </style>

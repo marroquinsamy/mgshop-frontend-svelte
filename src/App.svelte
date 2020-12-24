@@ -10,6 +10,11 @@
 
   // Scripts
   import createAnnouncement from './helpers/createAnnouncement'
+  import { darkMode } from './stores/darkMode'
+
+  $: $darkMode
+    ? document.body.classList.add('dark')
+    : document.body.classList.remove('dark')
 </script>
 
 <Router a11y={{ createAnnouncement }}>

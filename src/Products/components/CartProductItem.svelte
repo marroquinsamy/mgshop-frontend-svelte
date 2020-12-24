@@ -15,8 +15,8 @@
 
 <style>
   div {
-    padding: 7px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 7px 0;
   }
 
   :global(body.dark) div {

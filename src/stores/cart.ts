@@ -58,12 +58,10 @@ const setStorageCart = (products: string[]) => {
 }
 
 const getStorageCart = () => {
-  let productsFromLocalStorage = localStorage.getItem('cart')
-  let cartProducts: string[]
-
-  if (productsFromLocalStorage)
-    cartProducts = JSON.parse(productsFromLocalStorage)
-  else cartProducts = []
+  const productsFromLocalStorage = localStorage.getItem('cart')
+  const cartProducts: string[] = productsFromLocalStorage
+    ? JSON.parse(productsFromLocalStorage)
+    : []
 
   return cartProducts
 }

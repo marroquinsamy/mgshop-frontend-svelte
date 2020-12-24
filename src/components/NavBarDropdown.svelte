@@ -1,20 +1,13 @@
 <script lang="ts">
-  // Compponents
+  // Components
   import NavBarDropdownItem from './NavBarDropdownItem.svelte'
 
-  // External libraries
-  import { onMount } from 'svelte'
-  onMount(() => checkDarkMode())
+  // Scripts
+  import { darkMode } from '../stores/darkMode'
 
-  let isDarkModeEnabled: boolean = false
-  const toggleDarkTheme = () => {
-    document.body.classList.toggle('dark')
-    checkDarkMode()
-  }
+  $: isDarkModeEnabled = $darkMode
 
-  const checkDarkMode = () => {
-    isDarkModeEnabled = document.body.classList.contains('dark')
-  }
+  const toggleDarkTheme = () => darkMode.toggleDarkModeStatus()
 </script>
 
 <div on:click={(e) => e.stopPropagation()} id="navbar-dropdown">

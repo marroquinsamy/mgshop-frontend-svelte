@@ -1,0 +1,26 @@
+body.dark .swal-modal {
+  background: #181a1b;
+}
+
+body.dark .swal-title {
+  color: #a0a09e;
+}
+
+body.dark .swal-text {
+  color: #9d9d9b;
+}
+
+body.dark .swal-button--cancel {
+  background: #212425;
+  color: #aca89d;
+}
+
+body.dark .swal-button--cancel:hover {
+  background: #25282a;
+  color: #ada89d;
+}
+
+body.dark .swal-button--danger {
+  background: #9e2e21;
+  color: #e8e6e3;
+}
