@@ -20,7 +20,22 @@ body.dark .swal-button--cancel:hover {
   color: #ada89d;
 }
 
-body.dark .swal-button--danger {
-  background: #9e2e21;
+body.dark .swal-button--confirm {
+  background: #005382;
   color: #e8e6e3;
+}
+
+body.dark .swal-button--confirm:hover {
+  background: #005783;
+  color: #e2e2e0;
+}
+
+body.dark .swal-button--danger {
+  background: #870804;
+  color: #d8d4cf;
+}
+
+body.dark .swal-button--danger:hover {
+  background: #a90000;
+  color: #cdc9c1;
 }

@@ -73,7 +73,7 @@
     right: 0;
 
     height: 150px;
-    background: var(--pink);
+    background: rgba(var(--pink));
     padding: 10px;
     color: #fff;
     display: flex;

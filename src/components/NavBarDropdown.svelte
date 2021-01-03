@@ -10,7 +10,7 @@
   const toggleDarkTheme = () => darkMode.toggleDarkModeStatus()
 </script>
 
-<div on:click={(e) => e.stopPropagation()} id="navbar-dropdown">
+<div on:click|stopPropagation id="navbar-dropdown">
   <h3>Más opciones</h3>
   <NavBarDropdownItem
     text="{isDarkModeEnabled ? 'Apagar' : 'Encender'} modo oscuro"

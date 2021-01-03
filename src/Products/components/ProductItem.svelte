@@ -47,7 +47,7 @@
   article {
     height: 370px;
     border-radius: 12px;
-    border: 3px dashed var(--pink);
+    border: 3px dashed rgba(var(--pink));
     padding: 10px;
 
     transform: scale(1);
@@ -63,6 +63,8 @@
     transform: scale(1.01);
     cursor: pointer;
     box-shadow: var(--surface-shadow-deep);
+
+    z-index: 3;
   }
 
   :global(body.dark) article {

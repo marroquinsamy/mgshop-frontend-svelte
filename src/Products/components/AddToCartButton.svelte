@@ -21,4 +21,5 @@
   {padding}
   {fontSize}
   on:click={addToCart(productID)}
-  title="Añadir producto al carrito" />
+  title="Añadir producto al carrito"
+  disabled={$cart.includes(productID)} />

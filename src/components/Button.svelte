@@ -5,20 +5,22 @@
   export let iconClasses: string = ''
   export let buttonStyle: string = 'products-primary'
   export let title: string = 'Haz click'
+  export let disabled: boolean = false
 </script>
 
 <button
   on:click
   style="padding: {padding}; font-size: {fontSize};"
   class={buttonStyle}
+  {disabled}
   {title}>
-  <i class={`${iconClasses} ${buttonStyle}`} />
+  <i class={`${iconClasses}`} />
   <span>{text}</span>
 </button>
 
 <style>
   .products-primary {
-    background: var(--pink);
+    background: rgba(var(--pink));
   }
 
   .products-secondary {
@@ -51,8 +53,13 @@
     transform: scale(1);
   }
 
+  button:disabled {
+    background: rgba(var(--pink), 0.5);
+  }
+
   i {
     font-size: 28px;
     margin-right: 5px;
+    background: transparent;
   }
 </style>

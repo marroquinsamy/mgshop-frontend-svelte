@@ -5,7 +5,7 @@
   --surface-color: #fff;
   --surface-color-dark: #181a1b;
 
-  --pink: #ff5656;
+  --pink: 255, 86, 86;
 
   --green: #55aa2a;
 
@@ -46,3 +46,62 @@ body.dark {
   background: var(--background-color-dark);
   color: var(--text-dark);
 }
+
+/* <--- Personalized titles attributes */
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
+}
+
+[data-title]:after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: -1.3em;
+  left: 70%;
+  padding: 5px;
+  white-space: nowrap;
+
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+
+  /* background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f8f8f8),
+    color-stop(1, #cccccc)
+  );
+  background-image: -webkit-linear-gradient(top, #f8f8f8, #cccccc);
+  background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc);
+  background-image: -ms-linear-gradient(top, #f8f8f8, #cccccc);
+  background-image: -o-linear-gradient(top, #f8f8f8, #cccccc); */
+
+  opacity: 0;
+  z-index: 99999;
+  visibility: hidden;
+
+  font-weight: 400 !important;
+  line-height: 16px !important;
+  font-size: 16px !important;
+
+  /* color: #222; */
+  color: var(--text);
+  background: var(--background-color);
+
+  border: solid 2px rgba(0, 0, 0, 0.2);
+}
+
+body.dark [data-title]:after {
+  color: var(--text-dark);
+  background: var(--background-color-dark);
+
+  border: solid 2px rgba(255, 255, 255, 0.2);
+}
+
+[data-title] {
+  position: relative;
+}
+/* ---> */

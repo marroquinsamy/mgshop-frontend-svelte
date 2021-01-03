@@ -76,7 +76,7 @@
   }
 
   nav :global(.navbar--link) {
-    color: var(--pink);
+    color: rgba(var(--pink));
     max-width: 40%;
     text-decoration: none;
     text-align: center;

@@ -37,6 +37,7 @@
       buttons: ['Cancelar', 'Vaciar'],
       dangerMode: true,
     })
+
     if (userConfirmation) {
       cart.deleteAllProducts()
       thereAreProductsInCart = false
@@ -100,7 +101,7 @@
   }
 
   #delete-cart {
-    color: var(--pink);
+    color: rgba(var(--pink));
     cursor: pointer;
     font-size: 1.1em;
   }
@@ -117,7 +118,7 @@
     width: 90%;
     max-width: 1200px;
 
-    border: 3px dashed var(--pink);
+    border: 3px dashed rgba(var(--pink));
     border-radius: var(--border-radius);
     margin: auto;
     padding: 10px;
