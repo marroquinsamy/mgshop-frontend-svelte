@@ -5,13 +5,15 @@
   import ErrorPage from '../../components/ErrorPage.svelte'
   import Loader from '../../components/Loader.svelte'
   import AddToCartButton from './AddToCartButton.svelte'
+  import ImageLoader from '../../components/ImageLoader.svelte'
+  import ImageError from '../../components/ImageError.svelte'
 
   // External libraries
   import Toastify from 'toastify-js'
   import { useFocus } from 'svelte-navigator'
 
   // Scripts
-  import { API, getProduct } from '../services/productsService'
+  import { API, getProduct, getImage } from '../services/productsService'
   import type { IProduct } from '../models/Product'
 
   const registerFocus = useFocus()
@@ -36,6 +38,13 @@
       console.log(error)
     }
   }
+
+  const loadImage = async (): Promise<string> => {
+    const response: string = await getImage(id, true)
+    return response
+  }
+
+  const image: Promise<string> = loadImage()
 </script>
 
 {#await promise}
@@ -44,7 +53,13 @@
   <h2 class="products-page--page-title" use:registerFocus>{product.title}</h2>
   <div class="container">
     <section>
-      <img src={`${API}/${product.imagePath}`} alt={product.title} />
+      {#await image}
+        <ImageLoader />
+      {:then image}
+        <img src={image} alt={product.title} />
+      {:catch}
+        <ImageError />
+      {/await}
     </section>
 
     <section class="details-container">

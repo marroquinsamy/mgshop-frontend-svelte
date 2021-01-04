@@ -1,17 +1,26 @@
 <script lang="ts">
   // Components
   import AddToCartButton from './AddToCartButton.svelte'
+  import ImageLoader from '../../components/ImageLoader.svelte'
+  import ImageError from '../../components/ImageError.svelte'
 
   // External libraries
   import { Link, useNavigate } from 'svelte-navigator'
 
   // Scripts
-  import { API } from '../services/productsService'
+  import { API, getImage } from '../services/productsService'
   import type { IProduct } from '../models/Product'
 
   const navigate = useNavigate()
 
   export let product: IProduct
+
+  const loadImage = async (): Promise<string> => {
+    const response: string = await getImage(product.imagePath)
+    return response
+  }
+
+  const image: Promise<string> = loadImage()
 </script>
 
 <article>
@@ -21,12 +30,20 @@
       <p class="product-description">{product.description}</p>
     </header>
   </Link>
+
   <div class="image-container">
-    <img
-      src={`${API}/${product.imagePath}`}
-      alt={product.title}
-      on:click={() => navigate(product._id)} />
+    {#await image}
+      <ImageLoader />
+    {:then image}
+      <img
+        src={image}
+        alt={product.title}
+        on:click={() => navigate(product._id)} />
+    {:catch}
+      <ImageError />
+    {/await}
   </div>
+
   <footer>
     <div class="price">
       <i class="bx bxs-coin" />

@@ -71,7 +71,7 @@
         </header>
         <div>
           {#each products as product}
-            <CartProductItem {product} klass="cart-item" />
+            <CartProductItem {product} />
           {/each}
         </div>
       </section>

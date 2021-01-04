@@ -1,7 +1,7 @@
 // Scripts
 import type { IProduct } from '../models/Product'
 
-export const API = 'http://192.168.0.111:4000'
+export const API = 'http://192.168.0.106:4000'
 
 export const errorSeparator: string = '$$$' // Use this constant to separate the res status code, the error title and the error description
 
@@ -51,4 +51,35 @@ export const getProduct = async (id: string) => {
     throw new Error(
       `000${errorSeparator}Hubo un error obteniendo el producto que nos solicitaste${errorSeparator}Intenta de nuevo más tarde o ponte en contacto con nosotros mediante nuestras redes sociales.`
     )
+}
+
+/**
+ *
+ * @param {string} imagePathOrID The path in the server where the image is storaged. If given and isID is passed as true, it will fetch the product first and then it will fetch the picture
+ * @param {boolean} isID If marked as true, it will fetch the product first and then the picture
+ */
+export const getImage = async (
+  imagePathOrID: string,
+  isID: boolean = false
+) => {
+  if (isID) {
+    const product: Promise<IProduct> = getProduct(imagePathOrID)
+    return getImage((await product).imagePath)
+  } else {
+    let res: Response
+    try {
+      res = await fetch(`${API}/${imagePathOrID}`)
+    } catch (error) {
+      console.log(error)
+      throw new Error()
+    }
+
+    if (res.ok) {
+      const image = await res.blob()
+      const outside = URL.createObjectURL(image)
+      return outside
+    } else {
+      throw new Error()
+    }
+  }
 }

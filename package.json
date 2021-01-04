@@ -13,6 +13,7 @@
     "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-typescript": "^6.0.0",
     "@tsconfig/svelte": "^1.0.10",
+    "@types/clipboardy": "^2",
     "@types/node": "^14.14.10",
     "@types/toastify-js": "^1.9.1",
     "dotenv": "^8.2.0",
@@ -29,6 +30,7 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
+    "clipboardy": "^2.3.0",
     "sirv-cli": "^1.0.0",
     "svelte-navigator": "^3.1.4",
     "sweetalert": "^2.1.2",

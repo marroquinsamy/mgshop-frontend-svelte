@@ -14,7 +14,7 @@
   const registerFocus = useFocus()
 
   const loadProducts = async (): Promise<IProduct[]> => {
-    const productsResponse = await getProducts()
+    const productsResponse: IProduct[] = await getProducts()
     return sortProducts(productsResponse)
   }
 
