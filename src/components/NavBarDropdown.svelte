@@ -11,7 +11,7 @@
 </script>
 
 <div on:click|stopPropagation id="navbar-dropdown">
-  <h3>Más opciones</h3>
+  <h2>Más opciones</h2>
   <NavBarDropdownItem
     text="{isDarkModeEnabled ? 'Apagar' : 'Encender'} modo oscuro"
     iconClasses="bx bxs-moon"
@@ -25,21 +25,25 @@
     right: 5px;
     top: calc(var(--navbar-height) - 7px);
 
-    background: var(--surface-color);
+    background: rgba(var(--surface-color));
+
     box-shadow: var(--surface-shadow-deep);
+
     padding: 7px;
     border-radius: var(--border-radius);
-    border: 2px solid var(--green);
+    /* border: 2px solid rgba(var(--pink)); */
 
     width: 85%;
     max-width: 350px;
   }
 
   :global(body.dark) div {
-    background: var(--surface-color-dark);
+    background: rgba(var(--surface-color-dark));
+
+    box-shadow: var(--surface-shadow-deep-dark);
   }
 
-  h3 {
+  h2 {
     margin: 5px 0px 10px 10px;
   }
 </style>

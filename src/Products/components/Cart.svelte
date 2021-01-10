@@ -9,6 +9,7 @@
   import { errorSeparator, getProducts } from '../services/productsService'
   import type { IProduct } from '../models/Product'
   import { useFocus } from 'svelte-navigator'
+  import { title } from '../../stores/title'
 
   // External libraries
   import swal from 'sweetalert'
@@ -48,6 +49,10 @@
   const promise = thereAreProductsInCart ? loadProducts() : []
 </script>
 
+<svelte:head>
+  <title>Carrito | {$title}</title>
+</svelte:head>
+
 {#await promise}
   <Loader text="Cargando carrito" />
 {:then products}
@@ -55,13 +60,6 @@
     <h2 class="products-page--page-title" use:registerFocus>
       Carrito de compras
     </h2>
-
-    <div id="delete-cart-container">
-      <span id="delete-cart" role="link" on:click={deleteAllProducts}>
-        <i class="bx bxs-trash" />
-        Borrar carrito
-      </span>
-    </div>
 
     <main>
       <section class="products-container">
@@ -82,6 +80,13 @@
         </header>
       </section>
     </main>
+
+    <div class="delete-cart-container">
+      <span class="delete-cart" role="link" on:click={deleteAllProducts}>
+        <i class="bx bxs-trash" />
+        Borrar carrito
+      </span>
+    </div>
   {:else}
     <ErrorPage
       message={`002${errorSeparator}Hay mucha tranquilidad aquí, ¿no crees?${errorSeparator}Tu carrito de compras está vacío. Haz click en el botón para hacer tu primera compra con nosotros.`} />
@@ -89,7 +94,7 @@
 {/await}
 
 <style>
-  #delete-cart-container {
+  .delete-cart-container {
     display: flex;
     justify-content: flex-end;
 
@@ -100,13 +105,13 @@
     padding-right: 10px;
   }
 
-  #delete-cart {
+  .delete-cart {
     color: rgba(var(--pink));
     cursor: pointer;
     font-size: 1.1em;
   }
 
-  #delete-cart:hover {
+  .delete-cart:hover {
     opacity: 0.8;
   }
 
@@ -118,15 +123,19 @@
     width: 90%;
     max-width: 1200px;
 
-    border: 3px dashed rgba(var(--pink));
     border-radius: var(--border-radius);
     margin: auto;
     padding: 10px;
   }
 
   section {
+    background: rgba(var(--surface-color));
     border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius);
+  }
+
+  :global(body.dark) section {
+    background: rgba(var(--surface-color-dark));
   }
 
   header,

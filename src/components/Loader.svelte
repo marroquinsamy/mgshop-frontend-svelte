@@ -28,7 +28,7 @@
     width: 150px;
     height: 150px;
     animation: spin 0.7s ease infinite;
-    fill: var(--green);
+    fill: rgba(var(--green));
     margin: auto;
   }
 </style>

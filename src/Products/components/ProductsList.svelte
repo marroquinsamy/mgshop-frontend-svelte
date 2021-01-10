@@ -10,6 +10,7 @@
   // Scripts
   import { getProducts } from '../services/productsService'
   import type { IProduct } from '../models/Product'
+  import { title } from '../../stores/title'
 
   const registerFocus = useFocus()
 
@@ -39,6 +40,10 @@
   const sortedProducts: Promise<IProduct[]> = loadProducts()
 </script>
 
+<svelte:head>
+  <title>Productos | {$title}</title>
+</svelte:head>
+
 {#await sortedProducts}
   <Loader text="Cargando productos" />
 {:then products}
@@ -58,7 +63,7 @@
     grid-gap: 25px;
     width: 95%;
     margin: auto;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
   @media only screen and (max-width: 600px) {

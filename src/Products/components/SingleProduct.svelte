@@ -15,6 +15,7 @@
   // Scripts
   import { API, getProduct, getImage } from '../services/productsService'
   import type { IProduct } from '../models/Product'
+  import { title } from '../../stores/title'
 
   const registerFocus = useFocus()
 
@@ -46,6 +47,10 @@
 
   const image: Promise<string> = loadImage()
 </script>
+
+<svelte:head>
+  <title>Productos | {$title}</title>
+</svelte:head>
 
 {#await promise}
   <Loader text="Cargando tu producto" />
@@ -103,12 +108,18 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10px;
 
-    border: 3px dashed var(--green);
     border-radius: var(--border-radius);
     margin: auto;
     padding: 20px;
     width: 90%;
     max-width: 1200px;
+    background: rgba(var(--surface-color));
+    box-shadow: var(--surface-shadow);
+  }
+
+  :global(body.dark) .container {
+    background: rgba(var(--surface-color-dark));
+    box-shadow: var(--surface-shadow-dark);
   }
 
   .details-container {
@@ -139,11 +150,11 @@
   }
 
   .price {
-    border: 2px dashed var(--surface-color);
+    border: 2px dashed rgba(var(--surface-color));
     padding: 7px;
     border-radius: 12px;
     color: #fff;
-    background: var(--green);
+    background: rgba(var(--green));
     width: fit-content;
     font-weight: 700;
     font-size: 1.5em;
@@ -152,7 +163,7 @@
   }
 
   :global(body.dark) .price {
-    border: 2px dashed var(--surface-color-dark);
+    border: 2px dashed rgba(var(--surface-color-dark));
     color: var(--text);
   }
 

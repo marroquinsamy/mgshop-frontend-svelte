@@ -20,7 +20,8 @@
 
 <style>
   .products-primary {
-    background: rgba(var(--pink));
+    background: rgba(var(--pink), 0.1);
+    color: rgba(var(--pink));
   }
 
   .products-secondary {
@@ -37,7 +38,7 @@
     font-weight: 500;
 
     transform: scale(1);
-    transition: var(--preferred-transition);
+    transition: 0.05s ease all;
 
     display: flex;
     justify-content: center;
@@ -45,16 +46,11 @@
   }
 
   button:hover {
-    transform: scale(1.02);
-    box-shadow: var(--surface-shadow-deep);
+    opacity: 0.8;
   }
 
   button:active {
-    transform: scale(1);
-  }
-
-  button:disabled {
-    background: rgba(var(--pink), 0.5);
+    transform: scale(0.95);
   }
 
   i {

@@ -18,6 +18,6 @@
     width: 100%;
     height: 100%;
     animation: spin 0.7s ease infinite;
-    fill: yellow;
+    fill: rgba(var(--pink), 0.7);
   }
 </style>

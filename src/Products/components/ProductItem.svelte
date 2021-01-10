@@ -64,7 +64,7 @@
   article {
     height: 370px;
     border-radius: 12px;
-    border: 3px dashed rgba(var(--pink));
+    /* border: 3px dashed rgba(var(--pink)); */
     padding: 10px;
 
     transform: scale(1);
@@ -73,19 +73,23 @@
     /* Esto es para que la sección del cetro (imagen) utilice el espacio restante que dejan la sección superior (detalles) y la inferior (footer) */
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background: var(--surface-color);
+    background: rgba(var(--surface-color));
+
+    box-shadow: var(--surface-shadow);
   }
 
   article:hover {
     transform: scale(1.01);
     cursor: pointer;
     box-shadow: var(--surface-shadow-deep);
-
-    z-index: 3;
   }
 
   :global(body.dark) article {
-    background: var(--surface-color-dark);
+    background: rgba(var(--surface-color-dark));
+  }
+
+  :global(body.dark) article:hover {
+    box-shadow: var(--surface-shadow-deep-dark);
   }
 
   h3 {
@@ -130,11 +134,11 @@
   }
 
   .price {
-    border: 2px dashed var(--surface-color);
+    border: 2px dashed rgba(var(--surface-color));
     padding: 7px;
     border-radius: 12px;
     color: var(--text-dark);
-    background: var(--green);
+    background: rgba(var(--green));
     width: fit-content;
     font-weight: 700;
     margin: 0;
@@ -144,7 +148,7 @@
   }
 
   :global(body.dark) .price {
-    border: 2px dashed var(--surface-color-dark);
+    border: 2px dashed rgba(var(--surface-color-dark));
     color: var(--text);
   }
 
