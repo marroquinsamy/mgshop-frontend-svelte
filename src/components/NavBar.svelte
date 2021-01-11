@@ -33,13 +33,13 @@
   <div>
     <Link class="navbar--link" to="./" title="Productos">
       {#if atProducts}
-        <i class="bx bxs-shopping-bag" />
-      {:else}<i class="bx bx-shopping-bag" />{/if}
+        <i class="navbar--link--inside bx bxs-shopping-bag" />
+      {:else}<i class="navbar--link--inside bx bx-shopping-bag" />{/if}
     </Link>
     <Link class="navbar--link" to="cart" title="Carrito de compras">
       {#if atCart}
-        <i class="bx bxs-cart-alt" />
-      {:else}<i class="bx bx-cart-alt" />{/if}
+        <i class="navbar--link--inside bx bxs-cart-alt" />
+      {:else}<i class="navbar--link--inside bx bx-cart-alt" />{/if}
     </Link>
   </div>
   <div>
@@ -84,6 +84,15 @@
     font-weight: 700;
     margin: auto 5px;
     line-height: 40px;
+  }
+
+  .navbar--link--inside {
+    padding: 4px;
+    border-radius: var(--border-radius);
+  }
+
+  .navbar--link--inside:hover {
+    background: rgba(var(--pink), 0.1);
   }
 
   :global(body.dark) nav {

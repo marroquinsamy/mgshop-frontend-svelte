@@ -29,7 +29,7 @@
       <Button
         on:click={() => navigate('/products')}
         text="¡Ir de compras!"
-        fontSize="1.1em" />
+        isBig={true} />
     </div>
   {/if}
 </div>
