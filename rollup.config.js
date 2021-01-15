@@ -1,5 +1,3 @@
-import { config } from 'dotenv'
-import replace from '@rollup/plugin-replace'
 import svelte from 'rollup-plugin-svelte'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
@@ -73,7 +71,8 @@ export default {
     }),
     commonjs(),
     typescript({
-      sourceMap: !production,
+      // sourceMap: !production,
+      sourceMap: true,
       inlineSources: !production,
     }),
 
