@@ -65,7 +65,7 @@
     /* border-bottom: 3px dashed rgba(var(--green));
     border-left: 3px dashed rgba(var(--green));
     border-right: 3px dashed rgba(var(--green)); */
-    box-shadow: var(--surface-shadow);
+    box-shadow: var(--surface-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     border-radius: 0 0 12px 12px;
     margin: 0 10px;
     position: fixed;
@@ -97,6 +97,7 @@
 
   :global(body.dark) nav {
     background: rgba(var(--surface-color-dark));
+    box-shadow: var(--surface-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 
   .navbar--logo {

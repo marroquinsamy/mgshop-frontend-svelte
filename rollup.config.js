@@ -46,20 +46,18 @@ export default {
   },
   plugins: [
     svelte({
-      preprocess: sveltePreprocess(),
+      preprocess: sveltePreprocess({
+        scss: true,
+        postcss: {
+          plugins: [require('autoprefixer')],
+        },
+      }),
       compilerOptions: {
         // enable run-time checks when not in production
         dev: !production,
       },
     }),
-    replace({
-      __myapp: JSON.stringify({
-        env: {
-          isProd: production,
-          ...config().parsed,
-        },
-      }),
-    }),
+
     // we'll extract any component CSS out into
     // a separate file - better for performance
     css({ output: 'bundle.css' }),

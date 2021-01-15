@@ -140,7 +140,14 @@
 
   header,
   section > div {
-    padding: 10px 17px;
+    padding: 10px 12px;
+  }
+
+  @media only screen and (min-width: 600px) {
+    header,
+    section > div {
+      padding: 10px 17px;
+    }
   }
 
   header {

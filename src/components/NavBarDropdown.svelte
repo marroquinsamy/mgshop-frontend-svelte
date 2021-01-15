@@ -6,8 +6,6 @@
   import { darkMode } from '../stores/darkMode'
 
   $: isDarkModeEnabled = $darkMode
-
-  const toggleDarkTheme = () => darkMode.toggleDarkModeStatus()
 </script>
 
 <div on:click|stopPropagation id="navbar-dropdown">
@@ -15,7 +13,7 @@
   <NavBarDropdownItem
     text="{isDarkModeEnabled ? 'Apagar' : 'Encender'} modo oscuro"
     iconClasses="bx bxs-moon"
-    on:click={toggleDarkTheme} />
+    on:click={() => darkMode.toggleDarkModeStatus()} />
   <NavBarDropdownItem text="Ayuda" iconClasses="bx bxs-help-circle" />
 </div>
 
@@ -27,7 +25,8 @@
 
     background: rgba(var(--surface-color));
 
-    box-shadow: var(--surface-shadow-deep);
+    box-shadow: var(--surface-shadow-deep),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 
     padding: 7px;
     border-radius: var(--border-radius);

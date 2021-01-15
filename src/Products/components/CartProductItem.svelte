@@ -42,7 +42,7 @@
 </script>
 
 <article>
-  <div class="details-container">
+  <div class="details-container ">
     <p
       class="id"
       title="Haz click para copiar el ID del producto"
@@ -52,8 +52,8 @@
       {product._id}
     </p>
     <h4>{product.title}</h4>
-    <p>{product.description}</p>
-    <p>Q{product.price}</p>
+    <p class="description-paragraph text-small">{product.description}</p>
+    <p class="price">Q{product.price}</p>
   </div>
 
   {#await image}
@@ -86,9 +86,20 @@
     margin: 5px 0;
   }
 
+  .price {
+    text-align: right;
+    background: rgba(var(--green), 0.1);
+    color: rgba(var(--green));
+    font-weight: 500;
+    width: fit-content;
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+
   .id {
     opacity: 0.7;
     cursor: pointer;
+    font-size: 0.875em;
   }
 
   .image-container {

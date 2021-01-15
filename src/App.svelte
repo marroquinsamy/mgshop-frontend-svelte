@@ -7,6 +7,10 @@
 
   // External libraries
   import { Router, Route } from 'svelte-navigator'
+  import { onMount } from 'svelte'
+  import mousetrap from 'mousetrap'
+
+  mousetrap.bind('D', () => darkMode.toggleDarkModeStatus())
 
   // Scripts
   import createAnnouncement from './helpers/createAnnouncement'

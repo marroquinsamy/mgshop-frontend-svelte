@@ -26,7 +26,7 @@
 <article>
   <Link to={product._id} class="product-card">
     <header>
-      <h3>{product.title}</h3>
+      <h3 class="title">{product.title}</h3>
       <p class="product-description">{product.description}</p>
     </header>
   </Link>
@@ -65,7 +65,7 @@
     height: 370px;
     border-radius: 12px;
     /* border: 3px dashed rgba(var(--pink)); */
-    padding: 10px;
+    padding: 10px 15px;
 
     transform: scale(1);
     transition: all 0.2s ease;
@@ -92,17 +92,19 @@
     box-shadow: var(--surface-shadow-deep-dark);
   }
 
-  h3 {
-    margin: 2px;
+  .title {
+    margin: 5px 0px;
   }
 
   p {
+    font-family: var(--paragraph-font);
+    line-height: 1.5;
+    font-size: 0.9em;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-
-    margin: 7px 2px;
+    margin: 5px 0px 10px;
   }
 
   .image-container {
@@ -120,17 +122,12 @@
   }
 
   footer {
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
     margin-top: 5px;
-    padding: 7px 7px 0;
+    padding-top: 7px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  :global(body.dark) footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .price {

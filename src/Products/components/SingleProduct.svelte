@@ -57,7 +57,7 @@
 {:then product}
   <h2 class="products-page--page-title" use:registerFocus>{product.title}</h2>
   <div class="container">
-    <section>
+    <section class="image-container">
       {#await image}
         <ImageLoader />
       {:then image}
@@ -90,11 +90,7 @@
           <span><small>Q</small>{product.price}</span>
         </div>
 
-        <AddToCartButton
-          text="Agregar al carrito"
-          fontSize="1.1em"
-          padding="10px"
-          productID={product._id} />
+        <AddToCartButton text="Agregar al carrito" productID={product._id} />
       </div>
     </section>
   </div>
@@ -115,6 +111,11 @@
     max-width: 1200px;
     background: rgba(var(--surface-color));
     box-shadow: var(--surface-shadow);
+  }
+
+  .image-container {
+    display: grid;
+    place-items: center;
   }
 
   :global(body.dark) .container {
@@ -172,11 +173,14 @@
   }
 
   .title {
-    color: var(--pink);
+    color: rgba(var(--pink));
+    font-weight: 500;
   }
 
   .description {
-    font-size: 1.1em;
+    font-family: var(--paragraph-font);
+    font-weight: 400;
+    line-height: 1.5;
   }
 
   img {
