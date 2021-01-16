@@ -36,6 +36,7 @@
   "dependencies": {
     "clipboardy": "^2.3.0",
     "mousetrap": "^1.6.5",
+    "sass": "^1.32.4",
     "sirv-cli": "^1.0.0",
     "svelte-navigator": "^3.1.4",
     "sweetalert": "^2.1.2",

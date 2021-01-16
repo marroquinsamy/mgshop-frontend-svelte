@@ -41,6 +41,8 @@
 
   /* Fonts */
   --paragraph-font: 'AlteHaasGrotesk', sans-serif;
+
+  --border-color: #eff3f5;
 }
 
 ::selection {
