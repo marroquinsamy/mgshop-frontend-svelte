@@ -962,6 +962,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"frontend@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "frontend@workspace:."
+  dependencies:
+    "@rollup/plugin-commonjs": ^16.0.0
+    "@rollup/plugin-node-resolve": ^10.0.0
+    "@rollup/plugin-typescript": ^6.0.0
+    "@tsconfig/svelte": ^1.0.10
+    "@types/clipboardy": ^2
+    "@types/mousetrap": ^1
+    "@types/node": ^14.14.10
+    "@types/toastify-js": ^1.9.1
+    autoprefixer: ^10.2.1
+    clipboardy: ^2.3.0
+    dotenv: ^8.2.0
+    mousetrap: ^1.6.5
+    node-sass: ^5.0.0
+    postcss: ^8.2.4
+    postcss-load-config: ^3.0.0
+    rollup: ^2.3.4
+    rollup-plugin-css-only: ^3.0.0
+    rollup-plugin-livereload: ^2.0.0
+    rollup-plugin-svelte: ^7.0.0
+    rollup-plugin-terser: ^7.0.0
+    sirv-cli: ^1.0.0
+    svelte: ^3.0.0
+    svelte-check: ^1.0.0
+    svelte-language-server: ^0.10.158
+    svelte-navigator: ^3.1.4
+    svelte-preprocess: ^4.6.1
+    sweetalert: ^2.1.2
+    toastify-js: ^1.9.3
+    tslib: ^2.0.0
+    typescript: ^4.1.2
+  languageName: unknown
+  linkType: soft
+
 "fs-minipass@npm:^2.0.0":
   version: 2.1.0
   resolution: "fs-minipass@npm:2.1.0"
@@ -980,7 +1017,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.1.2#builtin<compat/fsevents>":
   version: 2.1.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=127e8e"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=11e9ea"
   dependencies:
     node-gyp: latest
   checksum: e2b8c379340e21a786d32c653854c8876f94eb1202dd5be378fd42c062bc123aab5051c32bf0011865257c85982c41ded203f9fe8c9f9c8f8c84dc4672abc0e0
@@ -2755,43 +2792,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"svelte-app@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "svelte-app@workspace:."
-  dependencies:
-    "@rollup/plugin-commonjs": ^16.0.0
-    "@rollup/plugin-node-resolve": ^10.0.0
-    "@rollup/plugin-typescript": ^6.0.0
-    "@tsconfig/svelte": ^1.0.10
-    "@types/clipboardy": ^2
-    "@types/mousetrap": ^1
-    "@types/node": ^14.14.10
-    "@types/toastify-js": ^1.9.1
-    autoprefixer: ^10.2.1
-    clipboardy: ^2.3.0
-    dotenv: ^8.2.0
-    mousetrap: ^1.6.5
-    node-sass: ^5.0.0
-    postcss: ^8.2.4
-    postcss-load-config: ^3.0.0
-    rollup: ^2.3.4
-    rollup-plugin-css-only: ^3.0.0
-    rollup-plugin-livereload: ^2.0.0
-    rollup-plugin-svelte: ^7.0.0
-    rollup-plugin-terser: ^7.0.0
-    sirv-cli: ^1.0.0
-    svelte: ^3.0.0
-    svelte-check: ^1.0.0
-    svelte-language-server: ^0.10.158
-    svelte-navigator: ^3.1.4
-    svelte-preprocess: ^4.6.1
-    sweetalert: ^2.1.2
-    toastify-js: ^1.9.3
-    tslib: ^2.0.0
-    typescript: ^4.1.2
-  languageName: unknown
-  linkType: soft
-
 "svelte-check@npm:^1.0.0":
   version: 1.1.17
   resolution: "svelte-check@npm:1.1.17"
@@ -3072,11 +3072,11 @@ fsevents@~2.1.2:
 
 "typescript@patch:typescript@*#builtin<compat/typescript>, typescript@patch:typescript@^4.1.2#builtin<compat/typescript>":
   version: 4.1.2
-  resolution: "typescript@patch:typescript@npm%3A4.1.2#builtin<compat/typescript>::version=4.1.2&hash=5bf698"
+  resolution: "typescript@patch:typescript@npm%3A4.1.2#builtin<compat/typescript>::version=4.1.2&hash=cc6730"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: acfc7be6a091806432f324ad258c4a7d2a63996106a4c001db1eebb2661608a9fd0d109d0d29249c3e6890e3547a97b8580cbe0833aa64b2fb83f66e4d88a466
+  checksum: 001ab09bb8f597aab1ec43476aedb91b5d547749219273c232bf34cf5a2209d18fa782e64475755115f0907598bb9b503f5e1c0fed06c3651cac584fc88a8172
   languageName: node
   linkType: hard
 
