@@ -5,15 +5,11 @@
   // Scripts
   import { darkMode } from '../stores/darkMode'
 
-  // External libraries
-  import { useFocus } from 'svelte-navigator'
-  const registerFocus = useFocus()
-
   $: isDarkModeEnabled = $darkMode
 </script>
 
 <div on:click|stopPropagation id="navbar-dropdown">
-  <h2 use:registerFocus>Más opciones</h2>
+  <h2>Más opciones</h2>
   <NavBarDropdownItem
     text="{isDarkModeEnabled ? 'Apagar' : 'Encender'} modo oscuro"
     iconClasses="bx bxs-moon"

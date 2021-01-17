@@ -46,7 +46,7 @@
     <button
       title="Más opciones"
       on:click={toggleShowDropdown}
-      class="show-dropdown-button">
+      class="show-dropdown-button navbar--link">
       <i class="bx bx-menu show-dropdown-button" role="button" />
     </button>
     {#if showDropdown}
@@ -80,7 +80,7 @@
     padding: 7px 3px;
     font-weight: 700;
     margin: auto 5px;
-    line-height: 40px;
+    font-size: 40px;
   }
 
   .navbar--link--inside {
@@ -115,6 +115,9 @@
 
   i {
     margin: 10px auto;
-    font-size: 40px;
+  }
+
+  .show-dropdown-button {
+    color: $secondary-color;
   }
 </style>

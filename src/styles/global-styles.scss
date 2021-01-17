@@ -7,6 +7,8 @@ $third-color: #f7ab5c;
 $title-color: #303536;
 $text-color: #303536;
 $body-color: #f0f2f5;
+$shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
+  0px 0px 1px 0px rgba(173, 154, 154, 0.1);
 
 :root {
   --background-color: 240, 242, 245;
@@ -16,7 +18,7 @@ $body-color: #f0f2f5;
   --surface-color-dark: 36, 37, 38;
 
   --surface-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
-    0px 0px 1px 0px rgba(0, 0, 0, 0.1);
+    0px 0px 1px 0px rgba(173, 154, 154, 0.1);
   /* --surface-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */ /* It has less on top */
   --surface-shadow-dark: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
     0px 0px 1px 0px rgba(0, 0, 0, 0.1);
@@ -67,12 +69,17 @@ h6 {
   color: $title-color;
 }
 
-button:focus {
-  // border: 1px solid black;
+a {
+  color: $main-color;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 *:focus {
-  border: 1px solid red;
+  outline: 2px solid;
 }
 
 .description-paragraph {
