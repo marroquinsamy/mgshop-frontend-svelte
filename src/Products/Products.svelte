@@ -16,20 +16,23 @@
     <Route
       path="/"
       component={ProductsList}
-      meta={{ viewName: 'lista de productos' }} />
+      meta={{ viewName: 'lista de productos' }}
+    />
     <Route
       path=":id"
       component={SingleProduct}
-      meta={{ viewName: 'producto individual' }} />
+      meta={{ viewName: 'producto individual' }}
+    />
     <Route
       path="cart"
       component={Cart}
-      meta={{ viewName: 'carrito de compras' }} />
+      meta={{ viewName: 'carrito de compras' }}
+    />
     <PageNotFound />
   </div>
 </Router>
 
-<style>
+<style lang="scss">
   div {
     padding-top: 60px;
   }

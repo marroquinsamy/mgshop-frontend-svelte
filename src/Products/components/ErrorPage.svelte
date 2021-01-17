@@ -20,7 +20,7 @@
   </div>
 {/if}
 
-<style>
+<style lang="scss">
   div {
     margin-top: 20px;
     display: flex;
@@ -53,7 +53,7 @@
     cursor: pointer;
     border-radius: var(--border-radius);
     padding: 15px;
-    background: var(--pink);
+    background: $main-color;
     color: #fff;
     font-weight: 500;
     font-size: 1.1em;

@@ -1,0 +1,85 @@
+/* Global variables */
+$main-color: #eb585d;
+$secondary-color: #66913c;
+/* $main-color: #FF5656;
+$secondary-color: #52a329; */
+$third-color: #f7ab5c;
+$title-color: #303536;
+$text-color: #303536;
+$body-color: #f0f2f5;
+
+:root {
+  --background-color: 240, 242, 245;
+  --background-color-dark: 24, 25, 26;
+
+  --surface-color: 255, 255, 255;
+  --surface-color-dark: 36, 37, 38;
+
+  --surface-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
+    0px 0px 1px 0px rgba(0, 0, 0, 0.1);
+  /* --surface-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */ /* It has less on top */
+  --surface-shadow-dark: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
+    0px 0px 1px 0px rgba(0, 0, 0, 0.1);
+
+  --surface-shadow-deep: 0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  --surface-shadow-deep-dark: 0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  --notion-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
+    rgba(15, 15, 15, 0.1) 0px 2px 4px;
+
+  --text: #000;
+  --text-dark: #fff;
+
+  --preferred-transition: 0.2s ease all;
+
+  --border-radius: 12px;
+
+  --navbar-height: 60px;
+
+  /* COLORS */
+  /* To use them with rgba */
+  --pink: 255, 86, 86;
+  --green: 85, 170, 42;
+
+  /* Fonts */
+  --paragraph-font: 'AlteHaasGrotesk', sans-serif;
+
+  --border-color: #eff3f5;
+}
+
+::selection {
+  background: rgba(var(--pink), 0.3);
+}
+
+body {
+  background: $body-color;
+  color: $text-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $title-color;
+}
+
+button:focus {
+  // border: 1px solid black;
+}
+
+*:focus {
+  border: 1px solid red;
+}
+
+.description-paragraph {
+  font-family: var(--paragraph-font);
+  line-height: 1.5;
+}
+
+.text-small {
+  font-size: 0.875em;
+}

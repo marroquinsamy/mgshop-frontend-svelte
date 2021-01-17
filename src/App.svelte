@@ -21,16 +21,19 @@
 </script>
 
 <Router a11y={{ createAnnouncement }}>
-  <div>
+  <main>
     <Route path="/" component={Home} meta={{ viewName: 'página de inicio' }} />
     <Route path="products/*" component={Products} />
     <PageNotFound />
-  </div>
+  </main>
   <Footer />
 </Router>
 
-<style>
-  div {
+<style lang="scss">
+  :global {
+    @import 'styles/global-styles';
+  }
+  main {
     padding-bottom: 170px;
   }
 </style>

@@ -38,7 +38,8 @@
       <img
         src={image}
         alt={product.title}
-        on:click={() => navigate(product._id)} />
+        on:click={() => navigate(product._id)}
+      />
     {:catch}
       <ImageError />
     {/await}
@@ -55,7 +56,7 @@
   </footer>
 </article>
 
-<style>
+<style lang="scss">
   :global(.product-card) {
     color: unset;
     text-decoration: none;
@@ -64,7 +65,6 @@
   article {
     height: 370px;
     border-radius: 12px;
-    /* border: 3px dashed rgba(var(--pink)); */
     padding: 10px 15px;
 
     transform: scale(1);
@@ -135,7 +135,7 @@
     padding: 7px;
     border-radius: 12px;
     color: var(--text-dark);
-    background: rgba(var(--green));
+    background: $secondary-color;
     width: fit-content;
     font-weight: 700;
     margin: 0;

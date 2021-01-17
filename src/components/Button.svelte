@@ -12,14 +12,14 @@
   <span>{text}</span>
 </button>
 
-<style>
+<style lang="scss">
   .products-primary {
     background: rgba(var(--pink), 0.1);
-    color: rgba(var(--pink));
+    color: $main-color;
   }
 
   .products-secondary {
-    background: var(--green);
+    background: $secondary-color;
   }
 
   .big {

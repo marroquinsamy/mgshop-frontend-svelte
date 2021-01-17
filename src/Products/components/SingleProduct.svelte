@@ -32,7 +32,7 @@
         gravity: 'bottom',
         position: 'right',
         avatar: '/images/check.png',
-        backgroundColor: 'var(--green)',
+        backgroundColor: '$secondary-color',
         stopOnFocus: true,
       }).showToast()
     } catch (error) {
@@ -80,7 +80,8 @@
             class="description id"
             role="button"
             on:click={copyID}
-            title="Haz click para copiar el ID">
+            title="Haz click para copiar el ID"
+          >
             {product._id}
           </p>
         </div>
@@ -98,7 +99,7 @@
   <ErrorPage message={error.message} />
 {/await}
 
-<style>
+<style lang="scss">
   .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -155,7 +156,7 @@
     padding: 7px;
     border-radius: 12px;
     color: #fff;
-    background: rgba(var(--green));
+    background: $secondary-color;
     width: fit-content;
     font-weight: 700;
     font-size: 1.5em;
@@ -173,7 +174,7 @@
   }
 
   .title {
-    color: rgba(var(--pink));
+    color: $main-color;
     font-weight: 500;
   }
 

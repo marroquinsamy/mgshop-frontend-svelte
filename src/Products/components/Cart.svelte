@@ -89,11 +89,12 @@
     </div>
   {:else}
     <ErrorPage
-      message={`002${errorSeparator}Hay mucha tranquilidad aquí, ¿no crees?${errorSeparator}Tu carrito de compras está vacío. Haz click en el botón para hacer tu primera compra con nosotros.`} />
+      message={`002${errorSeparator}Hay mucha tranquilidad aquí, ¿no crees?${errorSeparator}Tu carrito de compras está vacío. Haz click en el botón para hacer tu primera compra con nosotros.`}
+    />
   {/if}
 {/await}
 
-<style>
+<style lang="scss">
   .delete-cart-container {
     display: flex;
     justify-content: flex-end;
@@ -106,7 +107,7 @@
   }
 
   .delete-cart {
-    color: rgba(var(--pink));
+    color: $main-color;
     cursor: pointer;
     font-size: 1.1em;
   }

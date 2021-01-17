@@ -29,12 +29,13 @@
       <Button
         on:click={() => navigate('/products')}
         text="¡Ir de compras!"
-        isBig={true} />
+        isBig={true}
+      />
     </div>
   {/if}
 </div>
 
-<style>
+<style lang="scss">
   div {
     margin-top: 20px;
     display: flex;

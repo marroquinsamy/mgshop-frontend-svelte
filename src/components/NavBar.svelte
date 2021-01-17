@@ -47,7 +47,7 @@
       title="Más opciones"
       on:click={toggleShowDropdown}
       class="show-dropdown-button">
-      <i class="bx bx-menu show-dropdown-button" />
+      <i class="bx bx-menu show-dropdown-button" role="button" />
     </button>
     {#if showDropdown}
       <NavBarDropdown />
@@ -55,16 +55,13 @@
   </div>
 </nav>
 
-<style>
+<style lang="scss">
   nav {
     height: var(--navbar-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 25px;
-    /* border-bottom: 3px dashed rgba(var(--green));
-    border-left: 3px dashed rgba(var(--green));
-    border-right: 3px dashed rgba(var(--green)); */
     box-shadow: var(--surface-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     border-radius: 0 0 12px 12px;
     margin: 0 10px;
@@ -76,7 +73,7 @@
   }
 
   nav :global(.navbar--link) {
-    color: rgba(var(--pink));
+    color: $main-color;
     max-width: 40%;
     text-decoration: none;
     text-align: center;
@@ -112,7 +109,7 @@
     outline: none;
     border: none;
     cursor: pointer;
-    color: rgba(var(--green));
+    color: $secondary-color;
     background: none;
   }
 

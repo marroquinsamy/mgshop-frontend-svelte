@@ -5,19 +5,24 @@
   // Scripts
   import { darkMode } from '../stores/darkMode'
 
+  // External libraries
+  import { useFocus } from 'svelte-navigator'
+  const registerFocus = useFocus()
+
   $: isDarkModeEnabled = $darkMode
 </script>
 
 <div on:click|stopPropagation id="navbar-dropdown">
-  <h2>Más opciones</h2>
+  <h2 use:registerFocus>Más opciones</h2>
   <NavBarDropdownItem
     text="{isDarkModeEnabled ? 'Apagar' : 'Encender'} modo oscuro"
     iconClasses="bx bxs-moon"
-    on:click={() => darkMode.toggleDarkModeStatus()} />
+    on:click={() => darkMode.toggleDarkModeStatus()}
+  />
   <NavBarDropdownItem text="Ayuda" iconClasses="bx bxs-help-circle" />
 </div>
 
-<style>
+<style lang="scss">
   div {
     position: absolute;
     right: 5px;
@@ -30,7 +35,6 @@
 
     padding: 7px;
     border-radius: var(--border-radius);
-    /* border: 2px solid rgba(var(--pink)); */
 
     width: 85%;
     max-width: 350px;

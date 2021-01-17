@@ -25,7 +25,7 @@
         gravity: 'bottom',
         position: 'right',
         avatar: '/images/check.png',
-        backgroundColor: 'var(--green)',
+        backgroundColor: '$secondary-color',
         stopOnFocus: true,
       }).showToast()
     } catch (error) {
@@ -47,7 +47,8 @@
       class="id"
       title="Haz click para copiar el ID del producto"
       role="button"
-      on:click={copyID}>
+      on:click={copyID}
+    >
       ID:
       {product._id}
     </p>
@@ -65,7 +66,7 @@
   {/await}
 </article>
 
-<style>
+<style lang="scss">
   article {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 7px 0;
@@ -88,8 +89,8 @@
 
   .price {
     text-align: right;
-    background: rgba(var(--green), 0.1);
-    color: rgba(var(--green));
+    // background: rgba(var(--green), 0.1);
+    color: $secondary-color;
     font-weight: 500;
     width: fit-content;
     padding: 8px 12px;

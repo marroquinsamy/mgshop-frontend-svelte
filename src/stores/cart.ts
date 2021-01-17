@@ -19,7 +19,7 @@ const cartStore = () => {
             gravity: 'bottom',
             position: 'right',
             avatar: '/images/check.png',
-            backgroundColor: 'var(--green)',
+            backgroundColor: '$secondary-color',
             stopOnFocus: true,
           }).showToast()
         } else {
@@ -46,7 +46,7 @@ const cartStore = () => {
         gravity: 'bottom',
         position: 'right',
         avatar: '/images/check.png',
-        backgroundColor: 'var(--green)',
+        backgroundColor: '$secondary-color',
         stopOnFocus: true,
       }).showToast()
     },

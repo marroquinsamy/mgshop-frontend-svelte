@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -12,15 +14,14 @@ body {
 
   font-family: 'Poppins', sans-serif; /* Font weights: 300, 400, 500, 700 */
   font-weight: 400;
-  color: var(--text);
   transition: var(--preferred-transition);
   background: rgba(var(--background-color));
-  color: var(--text);
+  /* color: var(--text); */
 }
 
 body.dark {
   background: rgba(var(--background-color-dark));
-  color: var(--text-dark);
+  /* color: var(--text-dark); */
 }
 
 @font-face {
@@ -28,4 +29,9 @@ body.dark {
   src: url('/fonts/texgyreheros-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: AlteHaasGrotesk;
+  src: url(/fonts/AlteHaasGroteskRegular.woff);
 }
