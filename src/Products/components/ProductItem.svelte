@@ -31,15 +31,11 @@
     </header>
   </Link>
 
-  <div class="image-container">
+  <div class="image-container" on:click={() => navigate(product._id)}>
     {#await image}
       <ImageLoader />
     {:then image}
-      <img
-        src={image}
-        alt={product.title}
-        on:click={() => navigate(product._id)}
-      />
+      <img src={image} alt={product.title} />
     {:catch}
       <ImageError />
     {/await}
@@ -62,10 +58,14 @@
     text-decoration: none;
   }
 
+  :global(.product-card):hover {
+    text-decoration: none;
+  }
+
   article {
     height: 370px;
     border-radius: 12px;
-    padding: 10px 15px;
+    padding: 15px;
 
     transform: scale(1);
     transition: all 0.2s ease;
@@ -93,7 +93,7 @@
   }
 
   .title {
-    margin: 5px 0px;
+    margin: 0 0 5px;
   }
 
   p {
@@ -124,6 +124,7 @@
   footer {
     margin-top: 5px;
     padding-top: 7px;
+    border-top: 2px solid $body-color;
 
     display: flex;
     justify-content: space-between;
