@@ -4,7 +4,7 @@
   export let code: string
   let imageName: string = 'warning'
 
-  if (code === '404') imageName = 'not-found'
+  if (code === '404') imageName = 'page-not-found'
   else if (code === '204') imageName = 'no-data'
 
   import { useNavigate } from 'svelte-navigator'

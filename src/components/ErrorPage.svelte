@@ -8,7 +8,7 @@
   let description: string = message.split(errorSeparator)[2] || 'Error'
   let imageName: string = 'warning'
 
-  if (code === '404') imageName = 'not-found'
+  if (code === '404') imageName = 'page-not-found'
   else if (code === '204') imageName = 'no-data'
   else if (code === '001') imageName = 'taken'
   else if (code === '002') imageName = 'empty-cart'
