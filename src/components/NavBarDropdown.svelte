@@ -24,9 +24,9 @@
     right: 5px;
     top: calc(var(--navbar-height) - 7px);
 
-    background: rgba(var(--surface-color));
+    background: var(--surface-color);
 
-    box-shadow: var(--shadow-2), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-3), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 
     padding: 7px;
     border-radius: var(--border-radius);

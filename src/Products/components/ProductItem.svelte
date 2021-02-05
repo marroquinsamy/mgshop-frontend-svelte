@@ -64,7 +64,7 @@
 
   article {
     height: 370px;
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     padding: 15px;
     padding-top: 18px;
 

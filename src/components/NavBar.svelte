@@ -48,7 +48,12 @@
       on:click={toggleShowDropdown}
       class="show-dropdown-button navbar--link"
     >
-      <i class="bx bx-menu show-dropdown-button" role="button" />
+      <i
+        class="bx bx{showDropdown
+          ? 's'
+          : ''}-chevron-down-square show-dropdown-button"
+        role="button"
+      />
     </button>
     {#if showDropdown}
       <NavBarDropdown />
@@ -68,7 +73,7 @@
     z-index: 100;
     left: 0;
     right: 0;
-    background: rgba(var(--surface-color));
+    background: var(--surface-color);
   }
 
   nav :global(.navbar--link) {
@@ -79,7 +84,6 @@
     padding: 7px 3px;
     font-weight: 700;
     margin: auto 5px;
-    font-size: 40px;
   }
 
   .navbar--link--inside {
@@ -114,9 +118,11 @@
 
   i {
     margin: 10px auto;
+    font-size: 40px;
   }
 
   .show-dropdown-button {
-    color: var(--secondary-color-500);
+    /* color: var(--secondary-color-500); */
+    box-shadow: none;
   }
 </style>

@@ -110,8 +110,8 @@
     padding: 20px;
     width: 90%;
     max-width: 1200px;
-    background: rgba(var(--surface-color));
-    box-shadow: var(--surface-shadow);
+    background: var(--surface-color);
+    box-shadow: var(--shadow-1);
   }
 
   .image-container {

@@ -1,10 +1,16 @@
 <script lang="ts">
-  export let text: string = 'Cargando...'
+  export let text: string = 'Cargando'
+  export let showText: boolean = true
+  export let size: string = '90px'
 </script>
 
 <div class="container">
-  <div class="spinner" />
-  <h2 class="text">{text}</h2>
+  <div class="spinner" style="width: {size}; height: {size};" />
+  {#if showText}
+    <h2 class="text">
+      {text}
+    </h2>
+  {/if}
 </div>
 
 <style>
@@ -20,12 +26,10 @@
 
   .spinner {
     border: 8px solid rgba(0, 0, 0, 0.1);
-    width: 90px;
-    height: 90px;
     border-radius: 50%;
-    border-left-color: var(--secondary-color-500);
+    border-left-color: var(--main-color-500);
 
-    animation: spin 1s ease infinite;
+    animation: spin 0.75s linear infinite;
   }
 
   @keyframes spin {

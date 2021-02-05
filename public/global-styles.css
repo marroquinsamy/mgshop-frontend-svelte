@@ -52,7 +52,7 @@
   --green-color-500: #03a574ff;
   --blue-color-500: #038bf9ff;
 
-  --border-radius: 12px;
+  --border-radius: 10px;
   --border-color: #eff3f5;
 }
 
@@ -68,17 +68,21 @@ body {
 h1,
 h2,
 h3,
-h4 {
-  letter-spacing: -0.035em;
+h4,
+h5,
+h6 {
+  color: var(--title-color);
 }
 
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
-  color: var(--title-color);
+h4 {
+  letter-spacing: -0.035em;
+}
+
+h1,
+h2 {
   font-weight: 800;
 }
 
