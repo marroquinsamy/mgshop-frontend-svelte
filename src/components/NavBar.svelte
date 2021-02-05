@@ -1,19 +1,21 @@
 <script lang="ts">
   // Components
   import NavBarDropdown from './NavBarDropdown.svelte'
+  import NavBarLink from './NavBarLink.svelte'
 
   // External libraries
   import { useLocation, Link } from 'svelte-navigator'
+  import 'boxicons'
 
   const location = useLocation()
 
   let pathname: string
-  let atCart: boolean
-  let atProducts: boolean
+  let isAtCartComponent: boolean
+  let isAtProductsComponent: boolean
   $: {
     pathname = $location.pathname
-    atCart = pathname.split('/')[2] === 'cart' ? true : false
-    atProducts = pathname.split('/')[2] !== 'cart' ? true : false
+    isAtCartComponent = pathname.split('/')[2] === 'cart' ? true : false
+    isAtProductsComponent = pathname.split('/')[2] !== 'cart' ? true : false
   }
 
   let showDropdown: boolean = false
@@ -31,28 +33,32 @@
     </Link>
   </div>
   <div>
-    <Link class="navbar--link" to="./" title="Productos">
-      {#if atProducts}
-        <i class="navbar--link--inside bx bxs-shopping-bag" />
-      {:else}<i class="navbar--link--inside bx bx-shopping-bag" />{/if}
-    </Link>
-    <Link class="navbar--link" to="cart" title="Carrito de compras">
-      {#if atCart}
-        <i class="navbar--link--inside bx bxs-cart-alt" />
-      {:else}<i class="navbar--link--inside bx bx-cart-alt" />{/if}
-    </Link>
+    <NavBarLink
+      iconName="shopping-bag"
+      isAtIconComponent={isAtProductsComponent}
+      to="./"
+      title="Productos"
+    />
+    <NavBarLink
+      iconName="cart-alt"
+      isAtIconComponent={isAtCartComponent}
+      to="cart"
+      title="Carrito de compras"
+    />
   </div>
   <div>
     <button
       title="Más opciones"
       on:click={toggleShowDropdown}
-      class="show-dropdown-button navbar--link"
+      class="show-dropdown-button"
     >
-      <i
-        class="bx bx{showDropdown
-          ? 's'
-          : ''}-chevron-down-square show-dropdown-button"
+      <box-icon
+        name="chevron-down"
+        class="show-dropdown-button"
+        rotate={showDropdown ? '180' : '0'}
         role="button"
+        size="40px"
+        color="var(--gray-color-always)"
       />
     </button>
     {#if showDropdown}
@@ -76,30 +82,6 @@
     background: var(--surface-color);
   }
 
-  nav :global(.navbar--link) {
-    color: var(--main-color);
-    max-width: 40%;
-    text-decoration: none;
-    text-align: center;
-    padding: 7px 3px;
-    font-weight: 700;
-    margin: auto 5px;
-  }
-
-  .navbar--link--inside {
-    padding: 4px;
-    border-radius: var(--border-radius);
-  }
-
-  .navbar--link--inside:hover {
-    background: rgba(var(--pink), 0.1);
-  }
-
-  :global(body.dark) nav {
-    background: rgba(var(--surface-color-dark));
-    box-shadow: var(--surface-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  }
-
   .navbar--logo {
     height: 40px;
   }
@@ -112,17 +94,10 @@
     outline: none;
     border: none;
     cursor: pointer;
-    color: var(--secondary-color-500);
     background: none;
   }
 
-  i {
-    margin: 10px auto;
-    font-size: 40px;
-  }
-
   .show-dropdown-button {
-    /* color: var(--secondary-color-500); */
     box-shadow: none;
   }
 </style>

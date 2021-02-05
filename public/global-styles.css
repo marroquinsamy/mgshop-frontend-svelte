@@ -34,6 +34,7 @@
   --gray-color-200: #8d8d8d;
   --gray-color-100: #979797;
   --gray-color-rgb: 109, 109, 109;
+  --gray-color-always: #65676b;
 
   --body-color: #f0f2f5;
   --surface-color: #fff;
@@ -54,6 +55,10 @@
 
   --border-radius: 10px;
   --border-color: #eff3f5;
+}
+
+body.dark {
+  --gray-color-always: #b0b3b8;
 }
 
 ::selection {
