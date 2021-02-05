@@ -52,7 +52,7 @@
   </footer>
 </article>
 
-<style lang="scss">
+<style>
   :global(.product-card) {
     color: unset;
     text-decoration: none;
@@ -66,22 +66,24 @@
     height: 370px;
     border-radius: 12px;
     padding: 15px;
-
-    transform: scale(1);
-    transition: all 0.2s ease;
+    padding-top: 18px;
 
     /* Esto es para que la sección del cetro (imagen) utilice el espacio restante que dejan la sección superior (detalles) y la inferior (footer) */
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background: rgba(var(--surface-color));
+    background: var(--surface-color);
 
-    box-shadow: var(--surface-shadow);
+    box-shadow: var(--shadow-2);
+    transition: all ease 0.25s;
   }
 
   article:hover {
-    transform: scale(1.01);
     cursor: pointer;
-    box-shadow: var(--surface-shadow-deep);
+    box-shadow: var(--shadow-3);
+  }
+
+  article:hover .title {
+    text-decoration: underline;
   }
 
   :global(body.dark) article {
@@ -97,14 +99,13 @@
   }
 
   p {
-    font-family: var(--paragraph-font);
-    line-height: 1.5;
-    font-size: 0.9em;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin: 5px 0px 10px;
+
+    line-height: 1.5;
   }
 
   .image-container {
@@ -124,7 +125,7 @@
   footer {
     margin-top: 5px;
     padding-top: 7px;
-    border-top: 2px solid $body-color;
+    border-top: 2px solid var(--body-color);
 
     display: flex;
     justify-content: space-between;
@@ -136,7 +137,7 @@
     padding: 7px;
     border-radius: 12px;
     color: var(--text-dark);
-    background: $secondary-color;
+    background: var(--secondary-color-500);
     width: fit-content;
     font-weight: 700;
     margin: 0;

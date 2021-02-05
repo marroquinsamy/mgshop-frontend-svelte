@@ -35,7 +35,7 @@
   {/if}
 </div>
 
-<style lang="scss">
+<style>
   div {
     margin-top: 20px;
     display: flex;

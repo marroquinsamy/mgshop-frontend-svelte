@@ -32,7 +32,7 @@
         gravity: 'bottom',
         position: 'right',
         avatar: '/images/check.png',
-        backgroundColor: '$secondary-color',
+        backgroundColor: ' var(--secondary-color-500)',
         stopOnFocus: true,
       }).showToast()
     } catch (error) {
@@ -99,7 +99,7 @@
   <ErrorPage message={error.message} />
 {/await}
 
-<style lang="scss">
+<style>
   .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -156,7 +156,7 @@
     padding: 7px;
     border-radius: 12px;
     color: #fff;
-    background: $secondary-color;
+    background: var(--secondary-color-500);
     width: fit-content;
     font-weight: 700;
     font-size: 1.5em;
@@ -174,7 +174,7 @@
   }
 
   .title {
-    color: $main-color;
+    color: var(--main-color-500);
     font-weight: 500;
   }
 

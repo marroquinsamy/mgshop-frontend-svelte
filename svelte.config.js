@@ -5,7 +5,4 @@ module.exports.preprocess = sveltePreprocess({
   postcss: {
     plugins: [require('autoprefixer')],
   },
-  scss: {
-    prependData: `@import "src/styles/global-styles.scss";`,
-  },
 })

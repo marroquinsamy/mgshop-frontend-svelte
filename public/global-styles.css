@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* 60 - 30 - 10 rule
+     60% -> ghost white
+     30% -> pink
+     10% -> green
+   */
+
+  --main-color-900: #cd181e;
+  --main-color-800: #e21b21;
+  --main-color-700: #e62d33;
+  --main-color-600: #e94247;
+  --main-color-500: #eb585d;
+  --main-color-400: #ed6267;
+  --main-color-300: #ee6e72;
+  --main-color-200: #ef7a7e;
+  --main-color-100: #f1868a;
+  --main-color-rgb: 235, 88, 93;
+
+  --secondary-color-500: #66913c;
+
+  --gray-color-900: #4e4e4e;
+  --gray-color-800: #565656;
+  --gray-color-700: #5e5e5e;
+  --gray-color-600: #666666;
+  --gray-color-500: #6d6d6d;
+  --gray-color-400: #787878;
+  --gray-color-300: #828282;
+  --gray-color-200: #8d8d8d;
+  --gray-color-100: #979797;
+  --gray-color-rgb: 109, 109, 109;
+
+  --body-color: #f0f2f5;
+  --surface-color: #fff;
+  --title-color: #000000;
+  --text-color: #000000;
+
+  --shadow-1: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
+    rgba(15, 15, 15, 0.1) 0px 2px 4px;
+  --shadow-2: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
+    0px 0px 1px 0px rgba(173, 154, 154, 0.1);
+  --shadow-3: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+
+  --yellow-color-500: #febf12ff;
+  --red-color-500: #ff6750ff;
+  --green-color-500: #03a574ff;
+  --blue-color-500: #038bf9ff;
+
+  --border-radius: 12px;
+  --border-color: #eff3f5;
+}
+
+::selection {
+  background: rgba(var(--main-color-rgb), 0.3);
+}
+
+body {
+  background: var(--body-color);
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.035em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--title-color);
+  font-weight: 800;
+}
+
+a {
+  color: var(--main-color-500);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+*:focus {
+  outline: 2px solid;
+  /* box-shadow: 0 0 0 0.2em rgba(52, 208, 88, 0.4); */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(var(--main-color-rgb), 0.4);
+}
+
+.toastify {
+  border-radius: 12px !important;
+  padding: 15px !important;
+  background: #fff !important;
+  border-bottom: 5px solid transparent;
+  color: var(--text-color) !important;
+  font-weight: 700;
+  box-shadow: var(--shadow-3) !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .toastify {
+    max-width: 85% !important;
+  }
+}
+
+.toastify-success {
+  border-bottom-color: var(--green-color-500);
+}
+
+.toastify-information {
+  border-bottom-color: var(--blue-color-500);
+}
+
+.toast-close {
+  padding: 5px !important;
+  opacity: 0.6 !important;
+  margin-left: 7px;
+}

@@ -18,7 +18,7 @@
   <NavBarDropdownItem text="Ayuda" iconClasses="bx bxs-help-circle" />
 </div>
 
-<style lang="scss">
+<style>
   div {
     position: absolute;
     right: 5px;
@@ -26,8 +26,7 @@
 
     background: rgba(var(--surface-color));
 
-    box-shadow: var(--surface-shadow-deep),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-2), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 
     padding: 7px;
     border-radius: var(--border-radius);

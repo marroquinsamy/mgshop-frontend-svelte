@@ -49,9 +49,6 @@ export default {
         postcss: {
           plugins: [require('autoprefixer')],
         },
-        scss: {
-          prependData: `@import "src/styles/global-styles.scss";`,
-        },
       }),
       compilerOptions: {
         // enable run-time checks when not in production

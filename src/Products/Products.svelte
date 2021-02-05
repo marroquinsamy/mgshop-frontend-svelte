@@ -32,7 +32,7 @@
   </div>
 </Router>
 
-<style lang="scss">
+<style>
   div {
     padding-top: 60px;
   }

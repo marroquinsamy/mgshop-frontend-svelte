@@ -57,7 +57,7 @@
   <ErrorPage message={error.message} />
 {/await}
 
-<style lang="scss">
+<style>
   div {
     display: grid;
     grid-gap: 25px;

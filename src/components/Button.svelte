@@ -12,14 +12,14 @@
   <span>{text}</span>
 </button>
 
-<style lang="scss">
+<style>
   .products-primary {
-    background: rgba(var(--pink), 0.1);
-    color: $main-color;
+    background: var(--main-color-500);
+    color: #fff;
   }
 
   .products-secondary {
-    background: $secondary-color;
+    background: var(--secondary-color-500);
   }
 
   .big {
@@ -34,7 +34,7 @@
     cursor: pointer;
     border-radius: var(--border-radius);
     color: #fff;
-    font-weight: 500;
+    font-weight: 600;
 
     transform: scale(1);
     transition: 0.05s ease all;
