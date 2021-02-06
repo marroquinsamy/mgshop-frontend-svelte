@@ -22,23 +22,17 @@
   div {
     position: absolute;
     right: 5px;
-    top: calc(var(--navbar-height) - 7px);
+    top: calc(60px - 5px);
 
     background: var(--surface-color);
 
-    box-shadow: var(--shadow-3), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-3), var(--shadow-inset-1);
 
     padding: 7px;
     border-radius: var(--border-radius);
 
     width: 85%;
     max-width: 350px;
-  }
-
-  :global(body.dark) div {
-    background: rgba(var(--surface-color-dark));
-
-    box-shadow: var(--surface-shadow-deep-dark);
   }
 
   h2 {

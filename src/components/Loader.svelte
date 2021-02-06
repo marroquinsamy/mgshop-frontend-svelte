@@ -25,7 +25,7 @@
   }
 
   .spinner {
-    border: 8px solid rgba(0, 0, 0, 0.1);
+    border: 8px solid rgba(var(--black-and-white-color), 0.1);
     border-radius: 50%;
     border-left-color: var(--main-color-500);
 

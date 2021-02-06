@@ -4,6 +4,7 @@
   import ProductsList from './components/ProductsList.svelte'
   import SingleProduct from './components/SingleProduct.svelte'
   import Cart from './components/Cart.svelte'
+  import ElementsTest from '../components/ElementsTest.svelte'
   import PageNotFound from '../components/PageNotFound.svelte'
 
   // External libraries
@@ -28,6 +29,7 @@
       component={Cart}
       meta={{ viewName: 'carrito de compras' }}
     />
+    <Route path="elements-test" component={ElementsTest} />
     <PageNotFound />
   </div>
 </Router>

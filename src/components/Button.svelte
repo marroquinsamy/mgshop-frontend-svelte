@@ -18,6 +18,10 @@
     color: #fff;
   }
 
+  .products-primary:hover {
+    background: var(--main-color-900);
+  }
+
   .products-secondary {
     background: var(--secondary-color-500);
   }
@@ -37,16 +41,11 @@
     font-weight: 600;
 
     transform: scale(1);
-    transition: 0.05s ease all;
 
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 7px;
-  }
-
-  button:hover {
-    opacity: 0.8;
   }
 
   button:active {

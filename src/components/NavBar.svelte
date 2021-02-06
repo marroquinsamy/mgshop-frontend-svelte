@@ -74,7 +74,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 25px;
-    box-shadow: var(--shadow-1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-1), var(--shadow-inset-1);
     position: fixed;
     z-index: 100;
     left: 0;
@@ -95,6 +95,7 @@
     border: none;
     cursor: pointer;
     background: none;
+    padding: 0;
   }
 
   .show-dropdown-button {

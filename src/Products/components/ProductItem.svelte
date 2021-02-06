@@ -86,14 +86,6 @@
     text-decoration: underline;
   }
 
-  :global(body.dark) article {
-    background: rgba(var(--surface-color-dark));
-  }
-
-  :global(body.dark) article:hover {
-    box-shadow: var(--surface-shadow-deep-dark);
-  }
-
   .title {
     margin: 0 0 5px;
   }
@@ -125,7 +117,7 @@
   footer {
     margin-top: 5px;
     padding-top: 7px;
-    border-top: 2px solid var(--body-color);
+    border-top: 2px solid rgba(var(--black-and-white-color), 0.2);
 
     display: flex;
     justify-content: space-between;
