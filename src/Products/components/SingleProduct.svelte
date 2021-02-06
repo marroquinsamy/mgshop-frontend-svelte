@@ -119,11 +119,6 @@
     place-items: center;
   }
 
-  :global(body.dark) .container {
-    background: rgba(var(--surface-color-dark));
-    box-shadow: var(--surface-shadow-dark);
-  }
-
   .details-container {
     display: flex;
     justify-content: center;

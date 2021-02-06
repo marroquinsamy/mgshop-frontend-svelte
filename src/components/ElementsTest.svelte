@@ -1,6 +1,8 @@
 <button>Simple button</button>
 <button class="secondary">Secondary button</button>
 <button class="primary">Primary button</button>
+<button disabled>Disabled button</button>
+<button class="primary" disabled>Primary button disabled</button>
 
 <input type="text" />
 <input type="text" class="invalid" />

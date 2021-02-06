@@ -3,8 +3,8 @@
   export let productID: string
   export let isBig: boolean
 
-  // Components
-  import Button from '../../components/Button.svelte'
+  // External libraries
+  import 'boxicons'
 
   // Scripts
   import { cart } from '../../stores/cart'
@@ -14,10 +14,12 @@
   }
 </script>
 
-<Button
-  {text}
-  iconClasses="bx bxs-cart-alt"
+<button
   on:click={addToCart(productID)}
   title="Añadir producto al carrito"
-  {isBig}
-  disabled={false} />
+  disabled={false}
+  class="primary"
+>
+  <box-icon name="cart-alt" type="solid" />
+  {text}</button
+>

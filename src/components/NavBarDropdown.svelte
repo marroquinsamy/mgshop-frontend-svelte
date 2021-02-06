@@ -5,10 +5,17 @@
   // Scripts
   import { darkMode } from '../stores/darkMode'
 
+  // External libraries
+  import { slide } from 'svelte/transition'
+
   $: isDarkModeEnabled = $darkMode
 </script>
 
-<div on:click|stopPropagation id="navbar-dropdown">
+<div
+  on:click|stopPropagation
+  id="navbar-dropdown"
+  transition:slide={{ duration: 200 }}
+>
   <h2>Más opciones</h2>
   <NavBarDropdownItem
     text="{isDarkModeEnabled ? 'Apagar' : 'Encender'} modo oscuro"

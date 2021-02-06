@@ -1,6 +1,5 @@
 <script lang="ts">
   export let message: string
-  import Button from './Button.svelte'
 
   const errorSeparator: string = '$$$'
   let code: string = message.split(errorSeparator)[0]
@@ -26,22 +25,25 @@
   <p>{description}</p>
   {#if showButton}
     <div class="button-container">
-      <Button
-        on:click={() => navigate('/products')}
-        text="¡Ir de compras!"
-        isBig={true}
-      />
+      <button on:click={() => navigate('/products')} class="primary"
+        >¡Ir de compras!</button
+      >
     </div>
   {/if}
 </div>
 
 <style>
   div {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    width: 100%;
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   img {
@@ -60,9 +62,18 @@
     max-width: 500px;
     text-align: center;
     margin: auto;
+    margin-top: 1.3em;
+    opacity: 0.9;
   }
 
   .button-container {
-    width: 250px;
+    width: 100%;
+    max-width: 500px;
+    padding: 0 20px;
+    margin-top: 1em;
+  }
+
+  button {
+    width: 100%;
   }
 </style>
