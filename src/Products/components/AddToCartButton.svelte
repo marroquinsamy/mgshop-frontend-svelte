@@ -1,7 +1,6 @@
 <script lang="ts">
   export let text: string = 'Agregar'
   export let productID: string
-  export let isBig: boolean
 
   // External libraries
   import 'boxicons'
@@ -20,6 +19,20 @@
   disabled={false}
   class="primary"
 >
-  <box-icon name="cart-alt" type="solid" />
+  <box-icon name="cart-alt" color="#fff" />
   {text}</button
 >
+
+<style>
+  button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  box-icon {
+    margin-right: 5px;
+  }
+</style>

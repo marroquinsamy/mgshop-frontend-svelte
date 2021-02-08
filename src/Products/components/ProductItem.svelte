@@ -27,7 +27,8 @@
   <Link to={product._id} class="product-card">
     <header>
       <h3 class="title">{product.title}</h3>
-      <p class="product-description">{product.description}</p>
+      <p class="description">{product.description}</p>
+      <span class="tag price"><small>Q</small>{product.price}</span>
     </header>
   </Link>
 
@@ -42,23 +43,13 @@
   </div>
 
   <footer>
-    <div class="price">
-      <i class="bx bxs-coin" />
-      <span><small>Q</small>{product.price}</span>
-    </div>
-    <div class="button-container">
-      <AddToCartButton productID={product._id} />
-    </div>
+    <AddToCartButton productID={product._id} />
   </footer>
 </article>
 
 <style>
-  :global(.product-card) {
+  article :global(.product-card) {
     color: unset;
-    text-decoration: none;
-  }
-
-  :global(.product-card):hover {
     text-decoration: none;
   }
 
@@ -90,14 +81,18 @@
     margin: 0 0 5px;
   }
 
-  p {
+  .description {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin: 5px 0px 10px;
+    margin: 5px 0px 15px;
 
     line-height: 1.5;
+  }
+
+  .tag.price {
+    font-size: 1.2em;
   }
 
   .image-container {
@@ -117,34 +112,9 @@
   footer {
     margin-top: 5px;
     padding-top: 7px;
-    border-top: 2px solid rgba(var(--black-and-white-color), 0.2);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .price {
-    border: 2px dashed rgba(var(--surface-color));
-    padding: 7px;
-    border-radius: 12px;
-    color: var(--text-dark);
-    background: var(--secondary-color-500);
-    width: fit-content;
-    font-weight: 700;
-    margin: 0;
-    font-size: 1.1em;
-    display: flex;
-    align-items: center;
-  }
-
-  :global(body.dark) .price {
-    border: 2px dashed rgba(var(--surface-color-dark));
-    color: var(--text);
-  }
-
-  .bxs-coin {
-    font-size: 24px;
-    margin: 0 5px;
   }
 </style>

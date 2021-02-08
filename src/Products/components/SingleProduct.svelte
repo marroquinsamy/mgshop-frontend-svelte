@@ -13,7 +13,7 @@
   import { useFocus } from 'svelte-navigator'
 
   // Scripts
-  import { API, getProduct, getImage } from '../services/productsService'
+  import { getProduct, getImage } from '../services/productsService'
   import type { IProduct } from '../models/Product'
   import { title } from '../../stores/title'
 
@@ -31,9 +31,8 @@
         close: true,
         gravity: 'bottom',
         position: 'right',
-        avatar: '/images/check.png',
-        backgroundColor: ' var(--secondary-color-500)',
         stopOnFocus: true,
+        className: 'toastify-success',
       }).showToast()
     } catch (error) {
       console.log(error)
@@ -69,15 +68,15 @@
 
     <section class="details-container">
       <div class="details">
-        <div class="group">
+        <div class="details-group">
           <p class="title">Descripción</p>
           <p class="description">{product.description}</p>
         </div>
 
-        <div class="group">
-          <p class="title">ID</p>
+        <div class="details-group">
+          <p class="title">ID del producto</p>
           <p
-            class="description id"
+            class="description product-id"
             role="button"
             on:click={copyID}
             title="Haz click para copiar el ID"
@@ -86,9 +85,8 @@
           </p>
         </div>
 
-        <div class="group price">
-          <i class="bx bxs-coin" />
-          <span><small>Q</small>{product.price}</span>
+        <div class="details-group price-tag">
+          <span class="tag price"><small>Q</small>{product.price}</span>
         </div>
 
         <AddToCartButton text="Agregar al carrito" productID={product._id} />
@@ -134,34 +132,8 @@
     }
   }
 
-  .group {
+  .details-group {
     margin-bottom: 15px;
-  }
-
-  .id {
-    cursor: pointer;
-  }
-
-  .bxs-coin {
-    margin-right: 5px;
-  }
-
-  .price {
-    border: 2px dashed rgba(var(--surface-color));
-    padding: 7px;
-    border-radius: 12px;
-    color: #fff;
-    background: var(--secondary-color-500);
-    width: fit-content;
-    font-weight: 700;
-    font-size: 1.5em;
-    display: flex;
-    align-items: center;
-  }
-
-  :global(body.dark) .price {
-    border: 2px dashed rgba(var(--surface-color-dark));
-    color: var(--text);
   }
 
   p {
@@ -169,14 +141,26 @@
   }
 
   .title {
-    color: var(--main-color-500);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .description {
     font-family: var(--paragraph-font);
     font-weight: 400;
     line-height: 1.5;
+  }
+
+  .product-id {
+    cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+
+  .details-group.price-tag {
+    margin-bottom: 50px;
+  }
+
+  .tag.price {
+    font-size: 1.4em;
   }
 
   img {
