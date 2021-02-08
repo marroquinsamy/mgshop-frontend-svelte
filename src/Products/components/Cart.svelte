@@ -94,7 +94,7 @@
   {/if}
 {/await}
 
-<style lang="scss">
+<style>
   .delete-cart-container {
     display: flex;
     justify-content: flex-end;
@@ -107,7 +107,7 @@
   }
 
   .delete-cart {
-    color: $main-color;
+    color: var(--main-color-500);
     cursor: pointer;
     font-size: 1.1em;
   }

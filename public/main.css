@@ -1,9 +1,3 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 html {
   height: 100%; /* This ensures the footer to stay at the bottom always */
 }
@@ -12,26 +6,6 @@ body {
   position: relative;
   min-height: 100%; /* This ensures the footer to stay at the bottom always */
 
-  font-family: 'Poppins', sans-serif; /* Font weights: 300, 400, 500, 700 */
-  font-weight: 400;
+  font-family: Inter, sans-serif;
   transition: var(--preferred-transition);
-  background: rgba(var(--background-color));
-  /* color: var(--text); */
-}
-
-body.dark {
-  background: rgba(var(--background-color-dark));
-  /* color: var(--text-dark); */
-}
-
-@font-face {
-  font-family: 'tex_gyre_herosregular';
-  src: url('/fonts/texgyreheros-regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: AlteHaasGrotesk;
-  src: url(/fonts/AlteHaasGroteskRegular.woff);
 }

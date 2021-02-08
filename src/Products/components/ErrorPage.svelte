@@ -4,7 +4,7 @@
   export let code: string
   let imageName: string = 'warning'
 
-  if (code === '404') imageName = 'not-found'
+  if (code === '404') imageName = 'page-not-found'
   else if (code === '204') imageName = 'no-data'
 
   import { useNavigate } from 'svelte-navigator'
@@ -20,7 +20,7 @@
   </div>
 {/if}
 
-<style lang="scss">
+<style>
   div {
     margin-top: 20px;
     display: flex;
@@ -53,7 +53,7 @@
     cursor: pointer;
     border-radius: var(--border-radius);
     padding: 15px;
-    background: $main-color;
+    background: var(--main-color-500);
     color: #fff;
     font-weight: 500;
     font-size: 1.1em;

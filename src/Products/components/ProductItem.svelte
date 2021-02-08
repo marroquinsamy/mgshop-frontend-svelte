@@ -27,7 +27,8 @@
   <Link to={product._id} class="product-card">
     <header>
       <h3 class="title">{product.title}</h3>
-      <p class="product-description">{product.description}</p>
+      <p class="description">{product.description}</p>
+      <span class="tag price"><small>Q</small>{product.price}</span>
     </header>
   </Link>
 
@@ -42,69 +43,56 @@
   </div>
 
   <footer>
-    <div class="price">
-      <i class="bx bxs-coin" />
-      <span><small>Q</small>{product.price}</span>
-    </div>
-    <div class="button-container">
-      <AddToCartButton productID={product._id} />
-    </div>
+    <AddToCartButton productID={product._id} />
   </footer>
 </article>
 
-<style lang="scss">
-  :global(.product-card) {
+<style>
+  article :global(.product-card) {
     color: unset;
-    text-decoration: none;
-  }
-
-  :global(.product-card):hover {
     text-decoration: none;
   }
 
   article {
     height: 370px;
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     padding: 15px;
-
-    transform: scale(1);
-    transition: all 0.2s ease;
+    padding-top: 18px;
 
     /* Esto es para que la sección del cetro (imagen) utilice el espacio restante que dejan la sección superior (detalles) y la inferior (footer) */
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background: rgba(var(--surface-color));
+    background: var(--surface-color);
 
-    box-shadow: var(--surface-shadow);
+    box-shadow: var(--shadow-2);
+    transition: all ease 0.25s;
   }
 
   article:hover {
-    transform: scale(1.01);
     cursor: pointer;
-    box-shadow: var(--surface-shadow-deep);
+    box-shadow: var(--shadow-3);
   }
 
-  :global(body.dark) article {
-    background: rgba(var(--surface-color-dark));
-  }
-
-  :global(body.dark) article:hover {
-    box-shadow: var(--surface-shadow-deep-dark);
+  article:hover .title {
+    text-decoration: underline;
   }
 
   .title {
     margin: 0 0 5px;
   }
 
-  p {
-    font-family: var(--paragraph-font);
-    line-height: 1.5;
-    font-size: 0.9em;
+  .description {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin: 5px 0px 10px;
+    margin: 5px 0px 15px;
+
+    line-height: 1.5;
+  }
+
+  .tag.price {
+    font-size: 1.2em;
   }
 
   .image-container {
@@ -124,34 +112,9 @@
   footer {
     margin-top: 5px;
     padding-top: 7px;
-    border-top: 2px solid $body-color;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .price {
-    border: 2px dashed rgba(var(--surface-color));
-    padding: 7px;
-    border-radius: 12px;
-    color: var(--text-dark);
-    background: $secondary-color;
-    width: fit-content;
-    font-weight: 700;
-    margin: 0;
-    font-size: 1.1em;
-    display: flex;
-    align-items: center;
-  }
-
-  :global(body.dark) .price {
-    border: 2px dashed rgba(var(--surface-color-dark));
-    color: var(--text);
-  }
-
-  .bxs-coin {
-    font-size: 24px;
-    margin: 0 5px;
   }
 </style>

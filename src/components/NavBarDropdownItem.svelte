@@ -8,7 +8,7 @@
   <span>{text}</span>
 </section>
 
-<style lang="scss">
+<style>
   section {
     cursor: pointer;
     padding: 10px;

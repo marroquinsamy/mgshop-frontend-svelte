@@ -29,10 +29,7 @@
   <Footer />
 </Router>
 
-<style lang="scss">
-  :global {
-    @import 'styles/global-styles';
-  }
+<style>
   main {
     padding-bottom: 170px;
   }

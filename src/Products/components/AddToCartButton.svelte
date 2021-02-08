@@ -1,10 +1,9 @@
 <script lang="ts">
   export let text: string = 'Agregar'
   export let productID: string
-  export let isBig: boolean
 
-  // Components
-  import Button from '../../components/Button.svelte'
+  // External libraries
+  import 'boxicons'
 
   // Scripts
   import { cart } from '../../stores/cart'
@@ -14,10 +13,26 @@
   }
 </script>
 
-<Button
-  {text}
-  iconClasses="bx bxs-cart-alt"
+<button
   on:click={addToCart(productID)}
   title="Añadir producto al carrito"
-  {isBig}
-  disabled={false} />
+  disabled={false}
+  class="primary"
+>
+  <box-icon name="cart-alt" color="#fff" />
+  {text}</button
+>
+
+<style>
+  button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  box-icon {
+    margin-right: 5px;
+  }
+</style>

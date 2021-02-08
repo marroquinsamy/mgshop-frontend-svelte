@@ -39,3 +39,7 @@ body.dark .swal-button--danger:hover {
   background: #a90000;
   color: #cdc9c1;
 }
+
+.swal-title {
+  font-weight: 700;
+}

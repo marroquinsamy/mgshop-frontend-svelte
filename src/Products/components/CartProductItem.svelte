@@ -25,7 +25,7 @@
         gravity: 'bottom',
         position: 'right',
         avatar: '/images/check.png',
-        backgroundColor: '$secondary-color',
+        backgroundColor: ' var(--secondary-color-500)',
         stopOnFocus: true,
       }).showToast()
     } catch (error) {
@@ -66,7 +66,7 @@
   {/await}
 </article>
 
-<style lang="scss">
+<style>
   article {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 7px 0;
@@ -89,8 +89,7 @@
 
   .price {
     text-align: right;
-    // background: rgba(var(--green), 0.1);
-    color: $secondary-color;
+    color: var(--secondary-color-500);
     font-weight: 500;
     width: fit-content;
     padding: 8px 12px;

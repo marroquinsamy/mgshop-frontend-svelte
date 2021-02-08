@@ -1,19 +1,21 @@
 <script lang="ts">
   // Components
   import NavBarDropdown from './NavBarDropdown.svelte'
+  import NavBarLink from './NavBarLink.svelte'
 
   // External libraries
   import { useLocation, Link } from 'svelte-navigator'
+  import 'boxicons'
 
   const location = useLocation()
 
   let pathname: string
-  let atCart: boolean
-  let atProducts: boolean
+  let isAtCartComponent: boolean
+  let isAtProductsComponent: boolean
   $: {
     pathname = $location.pathname
-    atCart = pathname.split('/')[2] === 'cart' ? true : false
-    atProducts = pathname.split('/')[2] !== 'cart' ? true : false
+    isAtCartComponent = pathname.split('/')[2] === 'cart' ? true : false
+    isAtProductsComponent = pathname.split('/')[2] !== 'cart' ? true : false
   }
 
   let showDropdown: boolean = false
@@ -31,23 +33,33 @@
     </Link>
   </div>
   <div>
-    <Link class="navbar--link" to="./" title="Productos">
-      {#if atProducts}
-        <i class="navbar--link--inside bx bxs-shopping-bag" />
-      {:else}<i class="navbar--link--inside bx bx-shopping-bag" />{/if}
-    </Link>
-    <Link class="navbar--link" to="cart" title="Carrito de compras">
-      {#if atCart}
-        <i class="navbar--link--inside bx bxs-cart-alt" />
-      {:else}<i class="navbar--link--inside bx bx-cart-alt" />{/if}
-    </Link>
+    <NavBarLink
+      iconName="shopping-bag"
+      isAtIconComponent={isAtProductsComponent}
+      to="./"
+      title="Productos"
+    />
+    <NavBarLink
+      iconName="cart-alt"
+      isAtIconComponent={isAtCartComponent}
+      to="cart"
+      title="Carrito de compras"
+    />
   </div>
   <div>
     <button
       title="Más opciones"
       on:click={toggleShowDropdown}
-      class="show-dropdown-button navbar--link">
-      <i class="bx bx-menu show-dropdown-button" role="button" />
+      class="show-dropdown-button"
+    >
+      <box-icon
+        name="chevron-down"
+        class="show-dropdown-button"
+        rotate={showDropdown ? '180' : '0'}
+        role="button"
+        size="40px"
+        color="var(--gray-color-always)"
+      />
     </button>
     {#if showDropdown}
       <NavBarDropdown />
@@ -55,46 +67,19 @@
   </div>
 </nav>
 
-<style lang="scss">
+<style>
   nav {
-    height: var(--navbar-height);
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 25px;
-    box-shadow: var(--surface-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-    border-radius: 0 0 12px 12px;
-    margin: 0 10px;
+    box-shadow: var(--shadow-1), var(--shadow-inset-1);
     position: fixed;
     z-index: 100;
     left: 0;
     right: 0;
-    background: rgba(var(--surface-color));
-  }
-
-  nav :global(.navbar--link) {
-    color: $main-color;
-    max-width: 40%;
-    text-decoration: none;
-    text-align: center;
-    padding: 7px 3px;
-    font-weight: 700;
-    margin: auto 5px;
-    font-size: 40px;
-  }
-
-  .navbar--link--inside {
-    padding: 4px;
-    border-radius: var(--border-radius);
-  }
-
-  .navbar--link--inside:hover {
-    background: rgba(var(--pink), 0.1);
-  }
-
-  :global(body.dark) nav {
-    background: rgba(var(--surface-color-dark));
-    box-shadow: var(--surface-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    background: var(--surface-color);
   }
 
   .navbar--logo {
@@ -109,15 +94,11 @@
     outline: none;
     border: none;
     cursor: pointer;
-    color: $secondary-color;
     background: none;
-  }
-
-  i {
-    margin: 10px auto;
+    padding: 0;
   }
 
   .show-dropdown-button {
-    color: $secondary-color;
+    box-shadow: none;
   }
 </style>

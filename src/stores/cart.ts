@@ -18,9 +18,9 @@ const cartStore = () => {
             close: true,
             gravity: 'bottom',
             position: 'right',
-            avatar: '/images/check.png',
-            backgroundColor: '$secondary-color',
+            backgroundColor: ' var(--secondary-color-500)',
             stopOnFocus: true,
+            className: 'toastify-success',
           }).showToast()
         } else {
           Toastify({
@@ -29,9 +29,9 @@ const cartStore = () => {
             close: true,
             gravity: 'bottom',
             position: 'right',
-            avatar: '/images/info.png',
             backgroundColor: '#3498db',
             stopOnFocus: true,
+            className: 'toastify-information',
           }).showToast()
         }
         return products
@@ -45,8 +45,7 @@ const cartStore = () => {
         close: true,
         gravity: 'bottom',
         position: 'right',
-        avatar: '/images/check.png',
-        backgroundColor: '$secondary-color',
+        className: 'toastify-success',
         stopOnFocus: true,
       }).showToast()
     },

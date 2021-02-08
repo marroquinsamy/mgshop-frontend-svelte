@@ -10,7 +10,7 @@
       gravity: 'bottom',
       position: 'right',
       avatar: '/images/whatsapp-logo.png',
-      backgroundColor: '$secondary-color',
+      backgroundColor: ' var(--secondary-color-500)',
       stopOnFocus: true,
     }).showToast()
 
@@ -59,11 +59,14 @@
       href="https://github.com/marroquinsamy"
       target="_blank"
       rel="noreferrer"
-      class="developer-name"> Samuel Marroquín G. </a>
+      class="developer-name"
+    >
+      Samuel Marroquín G.
+    </a>
   </section>
 </footer>
 
-<style lang="scss">
+<style>
   footer {
     position: absolute;
     bottom: 0;
@@ -71,7 +74,7 @@
     right: 0;
 
     height: 150px;
-    background: $main-color;
+    background: var(--main-color-500);
     padding: 10px;
     color: #fff;
     display: flex;

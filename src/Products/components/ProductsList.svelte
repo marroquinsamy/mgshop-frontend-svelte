@@ -57,11 +57,12 @@
   <ErrorPage message={error.message} />
 {/await}
 
-<style lang="scss">
+<style>
   div {
     display: grid;
     grid-gap: 25px;
     width: 95%;
+    max-width: 1200px;
     margin: auto;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
