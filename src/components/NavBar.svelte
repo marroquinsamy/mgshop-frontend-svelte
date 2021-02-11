@@ -54,7 +54,7 @@
     <button
       title="Más opciones"
       on:click={toggleShowDropdown}
-      class="show-dropdown-button button"
+      class="show-dropdown-button button secondary"
     >
       <box-icon
         name="chevron-down"

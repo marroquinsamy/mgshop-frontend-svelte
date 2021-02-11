@@ -20,11 +20,13 @@
     type={isAtIconComponent ? 'solid' : 'regular'}
     color="var(--gray-color-always)"
     size="40px"
+    class="button secondary"
   />
 </Link>
 
 <style>
   box-icon {
-    margin: auto 5px;
+    margin: 0;
+    padding: 5px;
   }
 </style>
