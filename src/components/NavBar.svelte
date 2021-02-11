@@ -26,54 +26,62 @@
   }
 </script>
 
-<nav>
-  <div>
-    <Link to="/" title="MGShop">
-      <img
-        src="/images/MG Shop logo color.svg"
-        alt="MGShop"
-        class="navbar--logo"
+<div class="navbar-container">
+  <nav>
+    <div>
+      <Link to="/" title="MGShop">
+        <img
+          src="/images/MG Shop logo color.svg"
+          alt="MGShop"
+          class="navbar--logo"
+        />
+      </Link>
+    </div>
+    <div>
+      <NavBarLink
+        iconName="shopping-bag"
+        isAtIconComponent={isAtProductsComponent}
+        to="./"
+        title="Productos"
       />
-    </Link>
-  </div>
-  <div>
-    <NavBarLink
-      iconName="shopping-bag"
-      isAtIconComponent={isAtProductsComponent}
-      to="./"
-      title="Productos"
-    />
-    <NavBarLink
-      iconName="cart-alt"
-      isAtIconComponent={isAtCartComponent}
-      to="cart"
-      title="Carrito de compras"
-    />
-  </div>
-  <div>
-    <button
-      title="Más opciones"
-      on:click={toggleShowDropdown}
-      class="show-dropdown-button button secondary"
-    >
-      <box-icon
-        name="chevron-down"
-        class="show-dropdown-button"
-        rotate={showDropdown ? '180' : '0'}
-        role="button"
-        size="40px"
-        color="var(--gray-color-always)"
+      <NavBarLink
+        iconName="cart-alt"
+        isAtIconComponent={isAtCartComponent}
+        to="cart"
+        title="Carrito de compras"
       />
-    </button>
-    {#if showDropdown}
-      <NavBarDropdown />
-    {/if}
-  </div>
-</nav>
+    </div>
+    <div>
+      <button
+        title="Más opciones"
+        on:click={toggleShowDropdown}
+        class="show-dropdown-button button secondary"
+      >
+        <box-icon
+          name="chevron-down"
+          class="show-dropdown-button"
+          rotate={showDropdown ? '180' : '0'}
+          role="button"
+          size="40px"
+          color="var(--gray-color-always)"
+        />
+      </button>
+      {#if showDropdown}
+        <NavBarDropdown />
+      {/if}
+    </div>
+  </nav>
+</div>
 
 <style>
+  .navbar-container {
+    --navbar-height: 60px;
+    background: blue;
+    height: var(--navbar-height);
+  }
+
   nav {
-    height: 60px;
+    height: var(--navbar-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
