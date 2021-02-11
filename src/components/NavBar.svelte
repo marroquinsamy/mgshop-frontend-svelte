@@ -29,7 +29,11 @@
 <nav>
   <div>
     <Link to="/" title="MGShop">
-      <img src="/images/logowb.png" alt="MGShop" class="navbar--logo" />
+      <img
+        src="/images/MG Shop logo color.svg"
+        alt="MGShop"
+        class="navbar--logo"
+      />
     </Link>
   </div>
   <div>
@@ -50,7 +54,7 @@
     <button
       title="Más opciones"
       on:click={toggleShowDropdown}
-      class="show-dropdown-button"
+      class="show-dropdown-button button secondary"
     >
       <box-icon
         name="chevron-down"
@@ -74,7 +78,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 25px;
-    box-shadow: var(--shadow-1), var(--shadow-inset-1);
+    box-shadow: var(--shadow-1);
+    border-bottom: 1px solid rgba(var(--black-and-white-color), 0.1);
     position: fixed;
     z-index: 100;
     left: 0;
@@ -100,5 +105,9 @@
 
   .show-dropdown-button {
     box-shadow: none;
+  }
+
+  .show-dropdown-button.button:focus {
+    outline: 2px solid;
   }
 </style>
