@@ -61,15 +61,14 @@
   div {
     display: grid;
     grid-gap: 25px;
-    width: 95%;
-    max-width: 1200px;
+    width: 90%;
     margin: auto;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (min-width: 700px) {
     div {
-      width: 90%;
+      width: 100%;
     }
   }
 </style>

@@ -14,7 +14,7 @@
 
 <Router>
   <NavBar />
-  <div>
+  <div class="products-page-container">
     <Route
       path="/"
       component={ProductsList}
@@ -37,7 +37,17 @@
 </Router>
 
 <style>
-  div {
-    padding-top: 60px;
+  .products-page-container {
+    width: 100%;
+    max-width: 1300px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media only screen and (min-width: 700px) {
+    .products-page-container {
+      width: 95%;
+    }
   }
 </style>
