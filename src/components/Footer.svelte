@@ -1,6 +1,8 @@
 <script lang="ts">
   import Toastify from 'toastify-js'
   import 'toastify-js/src/toastify.css'
+  const boxIconsColor: string = 'rgba(var(--black-and-white-color), 0.9)'
+  const boxIconsSize: string = '40px'
 
   const showWhatsAppNumber = () => {
     Toastify({
@@ -9,8 +11,7 @@
       close: true,
       gravity: 'bottom',
       position: 'right',
-      avatar: '/images/whatsapp-logo.png',
-      backgroundColor: ' var(--secondary-color-500)',
+      className: 'toastify-information',
       stopOnFocus: true,
     }).showToast()
 
@@ -27,8 +28,7 @@
         close: true,
         gravity: 'bottom',
         position: 'right',
-        avatar: '/images/info.png',
-        backgroundColor: '#3498db',
+        className: 'toastify-success',
         stopOnFocus: true,
       }).showToast()
     } catch (error) {
@@ -39,12 +39,28 @@
 
 <footer>
   <section>
-    <img src="/images/logowbweco.png" alt="MGShop logo" />
-    <div>
+    <img
+      src="/images/MG Shop logo color.svg"
+      class="company-logo"
+      alt="MGShop logo"
+    />
+    <div class="social-media-icons-container">
       <a href="https://facebook.com/mgshopgt" target="_blank" rel="noreferrer">
-        <i class="bx bxl-facebook-circle" />
+        <box-icon
+          type="logo"
+          name="facebook"
+          size={boxIconsSize}
+          color={boxIconsColor}
+        />
       </a>
-      <i class="bx bxl-whatsapp" role="button" on:click={showWhatsAppNumber} />
+      <button class="whatsapp-logo-button" on:click={showWhatsAppNumber}>
+        <box-icon
+          name="whatsapp"
+          type="logo"
+          size={boxIconsSize}
+          color={boxIconsColor}
+        />
+      </button>
     </div>
   </section>
 
@@ -52,17 +68,24 @@
 
   <section class="developer-credits">
     <a href="https://github.com/marroquinsamy" target="_blank" rel="noreferrer">
-      <i class="bx bxl-github" />
+      <box-icon
+        name="github"
+        type="logo"
+        color={boxIconsColor}
+        size={boxIconsSize}
+      />
     </a>
-    Escrito y desarrollado por
-    <a
-      href="https://github.com/marroquinsamy"
-      target="_blank"
-      rel="noreferrer"
-      class="developer-name"
-    >
-      Samuel Marroquín G.
-    </a>
+    <p class="developer-name">
+      Escrito y desarrollado por
+      <a
+        href="https://github.com/marroquinsamy"
+        target="_blank"
+        rel="noreferrer"
+        class="developer-name"
+      >
+        Samuel Marroquín G.
+      </a>
+    </p>
   </section>
 </footer>
 
@@ -74,58 +97,61 @@
     right: 0;
 
     height: 150px;
-    background: var(--main-color-500);
+    background: var(--surface-color);
     padding: 10px;
-    color: #fff;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
     font-weight: 500;
+    border-top: 1px solid rgba(var(--black-and-white-color), 0.2);
   }
 
   section {
     width: 40%;
-    /* margin: auto; */
     display: flex;
     flex-direction: column;
-    opacity: 0.8;
+    align-items: center;
   }
 
   .developer-credits {
     font-size: 0.9em;
   }
 
-  div {
-    margin: auto;
+  .developer-name {
+    margin: 0;
+  }
+  .company-logo {
+    width: 100px;
+    fill: red !important;
+    margin-bottom: 15px;
   }
 
-  img {
-    width: 100px;
-    margin: auto;
+  .whatsapp-logo-button {
+    padding: 0;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .whatsapp-logo-button:focus {
+    outline: 2px solid;
   }
 
   a {
     color: inherit;
     width: fit-content;
-    margin: auto;
-    text-decoration: none;
   }
 
-  .developer-name:hover {
-    text-decoration: underline;
-  }
-
-  i {
+  box-icon {
     cursor: pointer;
-    font-size: 40px;
-    margin: 10px auto;
   }
 
   .separator {
-    height: 90%;
-    width: 3px;
-    background: rgba(255, 255, 255, 0.3);
+    height: 70%;
+    width: 2px;
+    background: rgba(var(--black-and-white-color), 0.3);
     margin: 0;
   }
 </style>

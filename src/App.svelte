@@ -8,6 +8,7 @@
   // External libraries
   import { Router, Route } from 'svelte-navigator'
   import mousetrap from 'mousetrap'
+  import 'boxicons'
 
   mousetrap.bind('shift+d', () => darkMode.toggleDarkModeStatus())
 
