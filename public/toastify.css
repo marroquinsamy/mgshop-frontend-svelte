@@ -1,0 +1,29 @@
+.toastify {
+  border-radius: 12px !important;
+  padding: 15px !important;
+  background: var(--surface-color) !important;
+  border-bottom: 7px solid transparent;
+  color: var(--text-color) !important;
+  font-weight: 700;
+  box-shadow: var(--shadow-3), var(--shadow-inset-1) !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .toastify {
+    max-width: 85% !important;
+  }
+}
+
+.toastify-success {
+  border-bottom-color: var(--green-color-500);
+}
+
+.toastify-information {
+  border-bottom-color: var(--blue-color-500);
+}
+
+.toast-close {
+  padding: 5px !important;
+  opacity: 0.6 !important;
+  margin-left: 7px;
+}

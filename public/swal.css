@@ -1,45 +1,50 @@
-body.dark .swal-modal {
-  background: #181a1b;
+.swal-overlay {
+  background: rgba(0, 0, 0, 0.6);
 }
 
-body.dark .swal-title {
-  color: #a0a09e;
-}
-
-body.dark .swal-text {
-  color: #9d9d9b;
-}
-
-body.dark .swal-button--cancel {
-  background: #212425;
-  color: #aca89d;
-}
-
-body.dark .swal-button--cancel:hover {
-  background: #25282a;
-  color: #ada89d;
-}
-
-body.dark .swal-button--confirm {
-  background: #005382;
-  color: #e8e6e3;
-}
-
-body.dark .swal-button--confirm:hover {
-  background: #005783;
-  color: #e2e2e0;
-}
-
-body.dark .swal-button--danger {
-  background: #870804;
-  color: #d8d4cf;
-}
-
-body.dark .swal-button--danger:hover {
-  background: #a90000;
-  color: #cdc9c1;
+.swal-modal {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-inset-1), var(--shadow-inset-1);
+  background: var(--surface-color);
 }
 
 .swal-title {
   font-weight: 700;
+}
+
+.swal-title,
+.swal-text {
+  color: var(--text-color);
+}
+
+.swal-button {
+  color: var(--text-color);
+}
+
+.swal-button--cancel {
+  background: #212425;
+  background: rgba(var(--black-and-white-color), 0.1) !important;
+}
+
+.swal-button--cancel:hover {
+  background: #25282a;
+  background: rgba(var(--black-and-white-color), 0.2) !important;
+}
+
+.swal-button--confirm {
+  background: #16aef4 !important;
+  color: #fff !important;
+}
+
+.swal-button--confirm:hover {
+  background: #0ba0e5 !important;
+}
+
+.swal-button--danger {
+  background: #ce241b !important;
+  color: #fff !important;
+}
+
+.swal-button--danger:hover {
+  background: #bb2018 !important;
 }
