@@ -9,6 +9,7 @@
 
   // External libraries
   import { Route, Router } from 'svelte-navigator'
+  import Loader from '../components/Loader.svelte'
 </script>
 
 <Router>
@@ -30,6 +31,7 @@
       meta={{ viewName: 'carrito de compras' }}
     />
     <Route path="elements-test" component={ElementsTest} />
+    <Route path="loader" component={Loader} />
     <PageNotFound />
   </div>
 </Router>
