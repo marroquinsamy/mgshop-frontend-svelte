@@ -70,7 +70,7 @@
 
   article:hover {
     cursor: pointer;
-    box-shadow: var(--shadow-3), var(--shadow-inset-1);
+    box-shadow: var(--shadow-2), var(--shadow-inset-1);
   }
 
   article:hover .title {

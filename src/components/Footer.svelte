@@ -3,38 +3,6 @@
   import 'toastify-js/src/toastify.css'
   const boxIconsColor: string = 'rgba(var(--black-and-white-color), 0.9)'
   const boxIconsSize: string = '40px'
-
-  const showWhatsAppNumber = () => {
-    Toastify({
-      text: 'Nuestro WhatsApp: +502 4269 5893',
-      duration: 5000,
-      close: true,
-      gravity: 'bottom',
-      position: 'right',
-      className: 'toastify-information',
-      stopOnFocus: true,
-    }).showToast()
-
-    setTimeout(copyWhatsAppNumber, 500)
-  }
-
-  const copyWhatsAppNumber = () => {
-    try {
-      navigator.clipboard.writeText('+502 4269 5893')
-
-      Toastify({
-        text: 'WhatsApp copiado exitosamente',
-        duration: 5000,
-        close: true,
-        gravity: 'bottom',
-        position: 'right',
-        className: 'toastify-success',
-        stopOnFocus: true,
-      }).showToast()
-    } catch (error) {
-      console.log(error)
-    }
-  }
 </script>
 
 <footer>
@@ -53,14 +21,14 @@
           color={boxIconsColor}
         />
       </a>
-      <button class="whatsapp-logo-button" on:click={showWhatsAppNumber}>
+      <a href="https://wa.me/50251892571" target="_blank" rel="noreferrer">
         <box-icon
           name="whatsapp"
           type="logo"
           size={boxIconsSize}
           color={boxIconsColor}
         />
-      </button>
+      </a>
     </div>
   </section>
 
@@ -126,17 +94,6 @@
     width: 100px;
     fill: red !important;
     margin-bottom: 15px;
-  }
-
-  .whatsapp-logo-button {
-    padding: 0;
-    margin: 0;
-    background: none;
-    box-shadow: none;
-  }
-
-  .whatsapp-logo-button:focus {
-    outline: 2px solid;
   }
 
   a {
