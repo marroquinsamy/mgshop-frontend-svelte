@@ -2,7 +2,7 @@
   // Components
   import ErrorPage from '../../components/ErrorPage.svelte'
   import CartProductItem from './CartProductItem.svelte'
-  import Loader from '../../components/Loader.svelte'
+  import ProductsLoader from './ProductsLoader.svelte'
 
   // Scripts
   import { cart } from '../../stores/cart'
@@ -54,7 +54,7 @@
 </svelte:head>
 
 {#await promise}
-  <Loader text="Cargando carrito" />
+  <ProductsLoader text="Cargando carrito" />
 {:then products}
   {#if thereAreProductsInCart}
     <h2 class="products-page--page-title" use:registerFocus>
