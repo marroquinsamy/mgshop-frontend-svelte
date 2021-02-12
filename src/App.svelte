@@ -1,7 +1,7 @@
 <script lang="ts">
   // Routes
-  import Home from './Landing/components/Home.svelte'
-  import Products from './Products/Products.svelte'
+  import Home from './landing/components/Home.svelte'
+  import Products from './products/Products.svelte'
   import PageNotFound from './components/PageNotFound.svelte'
   import Footer from './components/Footer.svelte'
 
