@@ -111,7 +111,6 @@
   }
 
   .product-image {
-    display: block;
     max-height: 100%;
   }
 

@@ -3,6 +3,7 @@
   import Home from './landing/components/Home.svelte'
   import Products from './products/Products.svelte'
   import PageNotFound from './components/PageNotFound.svelte'
+  import AdminLogin from './admin-dashboard/AdminLogin.svelte'
   import Footer from './components/Footer.svelte'
 
   // External libraries
@@ -25,6 +26,7 @@
   <main>
     <Route path="/" component={Home} meta={{ viewName: 'página de inicio' }} />
     <Route path="products/*" component={Products} />
+    <Route path="login" component={AdminLogin} />
     <PageNotFound />
   </main>
   <Footer />
