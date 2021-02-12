@@ -57,7 +57,7 @@
   }
 
   article {
-    height: 370px;
+    height: 400px;
     border-radius: var(--border-radius);
     padding: 15px;
     padding-top: 18px;
@@ -106,9 +106,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-top: 15px;
   }
 
   .product-image {
+    display: block;
     max-height: 100%;
   }
 
@@ -117,8 +120,7 @@
   }
 
   footer {
-    margin-top: 5px;
-    padding-top: 7px;
+    padding-top: 30px;
 
     display: flex;
     justify-content: space-between;
