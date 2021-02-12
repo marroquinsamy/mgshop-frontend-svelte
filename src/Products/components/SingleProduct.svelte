@@ -5,8 +5,6 @@
   import ErrorPage from '../../components/ErrorPage.svelte'
   import Loader from '../../components/Loader.svelte'
   import AddToCartButton from './AddToCartButton.svelte'
-  import ImageLoader from '../../components/ImageLoader.svelte'
-  import ImageError from '../../components/ImageError.svelte'
 
   // External libraries
   import Toastify from 'toastify-js'
@@ -16,6 +14,7 @@
   import { getProduct, getImage } from '../services/productsService'
   import type { IProduct } from '../models/Product'
   import { title } from '../../stores/title'
+  import ProductsLoader from './ProductsLoader.svelte'
 
   const registerFocus = useFocus()
 
@@ -52,17 +51,21 @@
 </svelte:head>
 
 {#await promise}
-  <Loader text="Cargando tu producto" />
+  <ProductsLoader text="Cargando tu producto" />
 {:then product}
   <h2 class="products-page--page-title" use:registerFocus>{product.title}</h2>
   <div class="container">
     <section class="image-container">
       {#await image}
-        <ImageLoader />
+        <Loader showText={false} />
       {:then image}
-        <img src={image} alt={product.title} />
+        <img src={image} alt={product.title} class="product-image" />
       {:catch}
-        <ImageError />
+        <img
+          src="/images/015-laptop.svg"
+          alt={product.title}
+          class="product-image error-image"
+        />
       {/await}
     </section>
 
@@ -130,6 +133,10 @@
     .details {
       width: 100%;
     }
+
+    .container {
+      gap: 20px;
+    }
   }
 
   .details-group {
@@ -163,7 +170,11 @@
     font-size: 1.4em;
   }
 
-  img {
+  .product-image {
     max-width: 100%;
+  }
+
+  .error-image {
+    max-width: 40%;
   }
 </style>

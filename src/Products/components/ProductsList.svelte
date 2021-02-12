@@ -1,8 +1,8 @@
 <script lang="ts">
   // Components
   import ProductItem from './ProductItem.svelte'
-  import Loader from '../../components/Loader.svelte'
   import ErrorPage from '../../components/ErrorPage.svelte'
+  import ProductsLoader from './ProductsLoader.svelte'
 
   // External libraries
   import { useFocus } from 'svelte-navigator'
@@ -45,10 +45,10 @@
 </svelte:head>
 
 {#await sortedProducts}
-  <Loader text="Cargando productos" />
+  <ProductsLoader text="Cargando productos" />
 {:then products}
   <h2 class="products-page--page-title" use:registerFocus>Productos</h2>
-  <div>
+  <div class="products-container">
     {#each products as product}
       <ProductItem {product} />
     {/each}
@@ -58,7 +58,7 @@
 {/await}
 
 <style>
-  div {
+  .products-container {
     display: grid;
     grid-gap: 25px;
     width: 90%;
@@ -67,7 +67,7 @@
   }
 
   @media only screen and (min-width: 700px) {
-    div {
+    .products-container {
       width: 100%;
     }
   }

@@ -1,14 +1,13 @@
 <script lang="ts">
   // Components
   import AddToCartButton from './AddToCartButton.svelte'
-  import ImageLoader from '../../components/ImageLoader.svelte'
-  import ImageError from '../../components/ImageError.svelte'
+  import Loader from '../../components/Loader.svelte'
 
   // External libraries
   import { Link, useNavigate } from 'svelte-navigator'
 
   // Scripts
-  import { API, getImage } from '../services/productsService'
+  import { getImage } from '../services/productsService'
   import type { IProduct } from '../models/Product'
 
   const navigate = useNavigate()
@@ -34,11 +33,15 @@
 
   <div class="image-container" on:click={() => navigate(product._id)}>
     {#await image}
-      <ImageLoader />
+      <Loader showText={false} size="70px" />
     {:then image}
-      <img src={image} alt={product.title} />
+      <img src={image} alt={product.title} class="product-image" />
     {:catch}
-      <ImageError />
+      <img
+        src="/images/015-laptop.svg"
+        alt={product.title}
+        class="product-image error-image"
+      />
     {/await}
   </div>
 
@@ -105,8 +108,12 @@
     align-items: center;
   }
 
-  img {
+  .product-image {
     max-height: 100%;
+  }
+
+  .error-image {
+    max-height: 70%;
   }
 
   footer {

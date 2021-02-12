@@ -16,10 +16,10 @@
 <style>
   .spinner-container {
     width: fit-content;
-    background: skyblue;
     display: grid;
     place-items: center;
   }
+
   .spinner {
     border: 8px solid rgba(var(--black-and-white-color), 0.2);
     border-radius: 50%;

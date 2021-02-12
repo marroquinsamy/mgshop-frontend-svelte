@@ -78,6 +78,7 @@
     --navbar-height: 60px;
     background: blue;
     height: var(--navbar-height);
+    margin-bottom: 20px;
   }
 
   nav {
