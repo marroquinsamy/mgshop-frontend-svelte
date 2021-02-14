@@ -1,17 +1,33 @@
 <script lang="ts">
+  // Stores
   import { title } from '../stores/title'
+  import token from '../stores/token'
 
-  let username: string
-  let password: string
+  // Scripts
+  import adminDashboardService from './adminDashboardService'
 
+  // Components
+  import Loader from '../components/Loader.svelte'
+
+  // External libraries
+  import { onMount } from 'svelte'
+  import { useNavigate } from 'svelte-navigator'
+
+  const navigate = useNavigate()
+
+  onMount(() => {
+    $token && navigate('/dashboard')
+  })
+
+  let username: string = ''
+  let password: string = ''
+
+  let adminAuthorization
   const handleSubmit = () => {
-    console.log('username')
-    console.log(username)
-    console.log('password')
-    console.log(password)
-
+    const res = adminDashboardService.loginAdmin({ username, password })
     username = ''
     password = ''
+    adminAuthorization = res
   }
 </script>
 
@@ -44,7 +60,20 @@
         bind:value={password}
       />
     </div>
-    <button type="submit" class="primary">Iniciar sesión</button>
+    {#await adminAuthorization then login}
+      <div class="form-group error-message" />
+    {:catch error}
+      <div class="form-group error-message full">{error.message}</div>
+    {/await}
+    <button type="submit" class="primary">
+      {#await adminAuthorization}
+        <Loader showText={false} size="25px" />
+      {:then login}
+        Iniciar sesión
+      {:catch error}
+        Iniciar sesión
+      {/await}
+    </button>
   </form>
 </div>
 
@@ -87,6 +116,17 @@
     width: 100%;
     margin: 0;
     margin-top: 5px;
+  }
+
+  .error-message {
+    background: rgba(var(--main-color-rgb), 0.2);
+    border-radius: var(--border-radius);
+    margin: 0;
+  }
+
+  .full {
+    margin-bottom: 15px;
+    padding: 15px;
   }
 
   button {
