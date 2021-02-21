@@ -1,4 +1,5 @@
 import config from '../config/config'
+import { token } from '../stores/auth'
 
 interface IAdminCredentials {
   username: string
@@ -17,22 +18,22 @@ const loginAdmin = async (adminCredentials: IAdminCredentials) => {
   }
 
   let res: Response
-  let data
+  let returnedToken
   try {
     res = await fetch(`${config.API}/login`, loginAdminOptions)
-    data = await res.json()
-
-    console.log(res)
-    console.log(data)
+    returnedToken = await res.json()
   } catch (error) {
     console.log(error)
-    throw new Error(error)
+    throw new Error(
+      'Hubo un error al iniciar sesión. Inténtalo de nuevo en unos momentos.'
+    )
   }
 
   if (res.ok) {
-    return data
+    token.login(returnedToken.token)
+    return returnedToken
   } else {
-    throw new Error(data.message)
+    throw new Error(returnedToken.message)
   }
 }
 

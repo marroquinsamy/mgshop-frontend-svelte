@@ -3,7 +3,7 @@ interface IConfig {
 }
 
 const config: IConfig = {
-  API: 'http://192.168.0.104:4000',
+  API: 'http://192.168.1.111:4000',
 }
 
 export default config

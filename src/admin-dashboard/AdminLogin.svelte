@@ -1,7 +1,7 @@
 <script lang="ts">
   // Stores
   import { title } from '../stores/title'
-  import token from '../stores/token'
+  import { token, checkAuthStatus } from '../stores/auth'
 
   // Scripts
   import adminDashboardService from './adminDashboardService'
@@ -15,9 +15,12 @@
 
   const navigate = useNavigate()
 
-  onMount(() => {
-    $token && navigate('/dashboard')
-  })
+  /* onMount(() => {
+    $token &&
+      navigate('/dashboard', {
+        state: { from: 'admin-login' },
+      })
+  }) */
 
   let username: string = ''
   let password: string = ''
@@ -25,9 +28,12 @@
   let adminAuthorization
   const handleSubmit = () => {
     const res = adminDashboardService.loginAdmin({ username, password })
+    console.log('res')
+    console.log(res)
+    adminAuthorization = res
+    res.then(() => navigate('/dashboard', { state: { from: 'admin-login' } }))
     username = ''
     password = ''
-    adminAuthorization = res
   }
 </script>
 
@@ -79,7 +85,8 @@
 
 <style>
   .form-container {
-    height: calc(100vh - 170px);
+    padding-top: 10em;
+    padding-bottom: 10em;
     display: grid;
     place-items: center;
   }
