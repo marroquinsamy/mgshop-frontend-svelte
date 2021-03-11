@@ -17,29 +17,60 @@
   // Scripts
   import createAnnouncement from './helpers/createAnnouncement'
   import { darkMode } from './stores/darkMode'
+  import NavBar from './components/NavBar.svelte'
 
   $: $darkMode
     ? document.body.classList.add('dark')
     : document.body.classList.remove('dark')
 </script>
 
-<Router a11y={{ createAnnouncement }}>
-  <main>
-    <Route path="/" component={Home} meta={{ viewName: 'página de inicio' }} />
-    <Route path="products/*" component={Products} />
-    <Route
-      path="login"
-      component={AdminLogin}
-      meta={{ viewName: 'inicio de sesión de administrador' }}
-    />
-    <Route path="dashboard" component={Dashboard} />
-    <PageNotFound />
-  </main>
-  <Footer />
-</Router>
+<div id="app">
+  <Router a11y={{ createAnnouncement }}>
+    <NavBar />
+    <div class="middle-section">
+      <main>
+        <Route
+          path="/"
+          component={Home}
+          meta={{ viewName: 'página de inicio' }}
+        />
+        <Route path="products/*" component={Products} />
+        <Route
+          path="login"
+          component={AdminLogin}
+          meta={{ viewName: 'inicio de sesión de administrador' }}
+        />
+        <Route path="dashboard" component={Dashboard} />
+        <PageNotFound />
+      </main>
+      <Footer />
+    </div>
+  </Router>
+</div>
 
 <style>
+  #app {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      'header'
+      'middle-section';
+  }
+
+  .middle-section {
+    grid-area: middle-section;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      'main'
+      'footer';
+  }
+
   main {
-    padding-bottom: 170px;
+    grid-area: main;
   }
 </style>
