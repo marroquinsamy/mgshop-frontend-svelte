@@ -57,7 +57,6 @@
     grid-template-areas:
       'header'
       'middle-section';
-    gap: 20px;
   }
 
   .middle-section {
@@ -69,6 +68,8 @@
     grid-template-areas:
       'main'
       'footer';
+    gap: 20px;
+    padding-top: 20px;
   }
 
   main {
