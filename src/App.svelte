@@ -1,7 +1,7 @@
 <script lang="ts">
   // Routes
   import Home from './landing/components/Home.svelte'
-  import Products from './products/Products.svelte'
+  import ProductsManager from './products/ProductsManager.svelte'
   import PageNotFound from './components/PageNotFound.svelte'
   import AdminLogin from './admin-dashboard/AdminLogin.svelte'
   import Dashboard from './admin-dashboard/DashboardRouter.svelte'
@@ -16,6 +16,9 @@
   import createAnnouncement from './helpers/createAnnouncement'
   import { darkMode } from './stores/darkMode'
   import NavBar from './components/NavBar.svelte'
+  import ProductsList from './products/components/ProductsList.svelte'
+  import ProductItem from './products/components/ProductItem.svelte'
+  import SingleProduct from './products/components/SingleProduct.svelte'
 
   mousetrap.bind('shift+d', () => darkMode.toggleDarkModeStatus())
 
@@ -33,7 +36,16 @@
           <Home />
         </Route>
         <Route path="products/*">
-          <Products />
+          <Route path="/" meta={{ viewName: 'lista de productos' }}>
+            <ProductsManager let:products>
+              <ProductsList {products} let:product>
+                <ProductItem {product} />
+              </ProductsList>
+            </ProductsManager>
+          </Route>
+          <Route path=":id" meta={{ viewName: 'producto individual' }}>
+            <SingleProduct />
+          </Route>
         </Route>
         <Route
           path="login"
