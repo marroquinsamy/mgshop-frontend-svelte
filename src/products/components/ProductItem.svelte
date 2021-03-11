@@ -23,7 +23,7 @@
 </script>
 
 <article>
-  <Link to={product._id} class="product-article-link">
+  <Link to={product._id} class="product-article-link header">
     <header>
       <h3 class="title">{product.title}</h3>
       <p class="description">{product.description}</p>
@@ -47,7 +47,7 @@
     <!-- </div> -->
   </Link>
 
-  <footer>
+  <footer class="action">
     <AddToCartButton productID={product._id} />
   </footer>
 </article>
@@ -67,26 +67,27 @@
       'information'
       'picture'
       'action';
+    gap: 10px;
     background: var(--surface-color);
 
     box-shadow: var(--shadow-2);
     transition: all ease 0.25s;
   }
 
+  article:hover {
+    cursor: pointer;
+    box-shadow: var(--shadow-2), var(--shadow-inset-1);
+  }
   article :global(a.product-article-link) {
     color: var(--text-color);
     text-decoration: none;
     display: block;
   }
 
-  article:hover {
-    cursor: pointer;
-    box-shadow: var(--shadow-2), var(--shadow-inset-1);
-  }
-
-  header {
+  article :global(a.product-article-link.header) {
     grid-area: information;
   }
+
   article:hover .title {
     text-decoration: underline;
   }
@@ -100,7 +101,8 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin: 5px 0px 15px;
+    margin: 0;
+    margin-bottom: 10px;
 
     line-height: 1.5;
     color: var(--text-color);
@@ -109,6 +111,7 @@
 
   .tag.price {
     font-size: 1.2em;
+    display: inline-block;
   }
 
   article :global(.product-article-link.image-container) {
@@ -120,7 +123,6 @@
     justify-content: center;
     align-items: center;
 
-    margin-top: 15px;
     grid-area: picture;
   }
 
@@ -133,8 +135,8 @@
     max-height: 70%;
   }
 
-  footer {
-    padding-top: 30px;
+  .action {
+    grid-area: action;
 
     display: flex;
     justify-content: space-between;
