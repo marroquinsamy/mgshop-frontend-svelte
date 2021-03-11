@@ -82,16 +82,9 @@ body.dark {
   --shadow-inset-1: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-html {
-  height: 100%; /* This ensures the footer to stay at the bottom always */
-}
-
 body {
   background: var(--body-color);
   color: var(--text-color);
-
-  position: relative;
-  min-height: 100%; /* This ensures the footer to stay at the bottom always */
 
   font-family: Inter, sans-serif;
 }
