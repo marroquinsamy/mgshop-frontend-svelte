@@ -12,12 +12,12 @@
   import mousetrap from 'mousetrap'
   import 'boxicons'
 
-  mousetrap.bind('shift+d', () => darkMode.toggleDarkModeStatus())
-
   // Scripts
   import createAnnouncement from './helpers/createAnnouncement'
   import { darkMode } from './stores/darkMode'
   import NavBar from './components/NavBar.svelte'
+
+  mousetrap.bind('shift+d', () => darkMode.toggleDarkModeStatus())
 
   $: $darkMode
     ? document.body.classList.add('dark')
@@ -29,18 +29,21 @@
     <NavBar />
     <div class="middle-section">
       <main>
-        <Route
-          path="/"
-          component={Home}
-          meta={{ viewName: 'página de inicio' }}
-        />
-        <Route path="products/*" component={Products} />
+        <Route path="/" meta={{ viewName: 'página de inicio' }}>
+          <Home />
+        </Route>
+        <Route path="products/*">
+          <Products />
+        </Route>
         <Route
           path="login"
-          component={AdminLogin}
           meta={{ viewName: 'inicio de sesión de administrador' }}
-        />
-        <Route path="dashboard" component={Dashboard} />
+        >
+          <AdminLogin />
+        </Route>
+        <Route path="dashboard">
+          <Dashboard />
+        </Route>
         <PageNotFound />
       </main>
       <Footer />
