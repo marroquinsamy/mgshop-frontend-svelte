@@ -23,7 +23,7 @@
 </script>
 
 <article>
-  <Link to={product._id} class="product-card">
+  <Link to={product._id} class="product-article-link">
     <header>
       <h3 class="title">{product.title}</h3>
       <p class="description">{product.description}</p>
@@ -31,7 +31,8 @@
     </header>
   </Link>
 
-  <div class="image-container" on:click={() => navigate(product._id)}>
+  <Link to={product._id} class="product-article-link image-container">
+    <!-- <div class="image-container" on:click={() => navigate(product._id)}> -->
     {#await image}
       <Loader showText={false} size="70px" />
     {:then image}
@@ -43,7 +44,8 @@
         class="product-image error-image"
       />
     {/await}
-  </div>
+    <!-- </div> -->
+  </Link>
 
   <footer>
     <AddToCartButton productID={product._id} />
@@ -51,11 +53,6 @@
 </article>
 
 <style>
-  article :global(.product-card) {
-    color: unset;
-    text-decoration: none;
-  }
-
   article {
     height: 400px;
     border-radius: var(--border-radius);
@@ -64,11 +61,22 @@
 
     /* Esto es para que la sección del cetro (imagen) utilice el espacio restante que dejan la sección superior (detalles) y la inferior (footer) */
     display: grid;
+    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      'information'
+      'picture'
+      'action';
     background: var(--surface-color);
 
     box-shadow: var(--shadow-2);
     transition: all ease 0.25s;
+  }
+
+  article :global(a.product-article-link) {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
   }
 
   article:hover {
@@ -76,6 +84,9 @@
     box-shadow: var(--shadow-2), var(--shadow-inset-1);
   }
 
+  header {
+    grid-area: information;
+  }
   article:hover .title {
     text-decoration: underline;
   }
@@ -92,13 +103,15 @@
     margin: 5px 0px 15px;
 
     line-height: 1.5;
+    color: var(--text-color);
+    text-decoration: none;
   }
 
   .tag.price {
     font-size: 1.2em;
   }
 
-  .image-container {
+  article :global(.product-article-link.image-container) {
     /* Esto es para que la imagen dentro no se sobrepase de la altura de su contenedor y para que no pierda su radio de aspecto */
     height: 100%;
     overflow: hidden;
@@ -108,10 +121,12 @@
     align-items: center;
 
     margin-top: 15px;
+    grid-area: picture;
   }
 
   .product-image {
     max-height: 100%;
+    display: inline-block;
   }
 
   .error-image {
