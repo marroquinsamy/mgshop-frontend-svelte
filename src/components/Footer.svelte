@@ -59,11 +59,7 @@
 
 <style>
   footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
+    grid-area: footer;
     height: 150px;
     background: var(--surface-color);
     padding: 10px;
