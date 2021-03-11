@@ -26,62 +26,54 @@
   }
 </script>
 
-<div class="navbar-container">
-  <nav>
-    <div>
-      <Link to="/" title="MGShop">
-        <img
-          src="/images/MG Shop logo color.svg"
-          alt="MGShop"
-          class="navbar--logo"
-        />
-      </Link>
-    </div>
-    <div>
-      <NavBarLink
-        iconName="shopping-bag"
-        isAtIconComponent={isAtProductsComponent}
-        to="./"
-        title="Productos"
+<nav>
+  <div>
+    <Link to="/" title="MGShop">
+      <img
+        src="/images/MG Shop logo color.svg"
+        alt="MGShop"
+        class="navbar--logo"
       />
-      <NavBarLink
-        iconName="cart-alt"
-        isAtIconComponent={isAtCartComponent}
-        to="cart"
-        title="Carrito de compras"
+    </Link>
+  </div>
+  <div>
+    <NavBarLink
+      iconName="shopping-bag"
+      isAtIconComponent={isAtProductsComponent}
+      to="./"
+      title="Productos"
+    />
+    <NavBarLink
+      iconName="cart-alt"
+      isAtIconComponent={isAtCartComponent}
+      to="cart"
+      title="Carrito de compras"
+    />
+  </div>
+  <div>
+    <button
+      title="Más opciones"
+      on:click={toggleShowDropdown}
+      class="show-dropdown-button button secondary"
+    >
+      <box-icon
+        name="chevron-down"
+        class="show-dropdown-button"
+        rotate={showDropdown ? '180' : '0'}
+        role="button"
+        size="40px"
+        color="var(--gray-color-always)"
       />
-    </div>
-    <div>
-      <button
-        title="Más opciones"
-        on:click={toggleShowDropdown}
-        class="show-dropdown-button button secondary"
-      >
-        <box-icon
-          name="chevron-down"
-          class="show-dropdown-button"
-          rotate={showDropdown ? '180' : '0'}
-          role="button"
-          size="40px"
-          color="var(--gray-color-always)"
-        />
-      </button>
-      {#if showDropdown}
-        <NavBarDropdown />
-      {/if}
-    </div>
-  </nav>
-</div>
+    </button>
+    {#if showDropdown}
+      <NavBarDropdown />
+    {/if}
+  </div>
+</nav>
 
 <style>
-  .navbar-container {
-    --navbar-height: 60px;
-    background: blue;
-    height: var(--navbar-height);
-    margin-bottom: 20px;
-  }
-
   nav {
+    --navbar-height: 60px;
     height: var(--navbar-height);
     display: flex;
     align-items: center;
@@ -89,10 +81,6 @@
     padding: 10px 25px;
     box-shadow: var(--shadow-1);
     border-bottom: 1px solid rgba(var(--black-and-white-color), 0.1);
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    right: 0;
     background: var(--surface-color);
   }
 
