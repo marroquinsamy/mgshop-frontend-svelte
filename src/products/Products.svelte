@@ -13,7 +13,6 @@
 </script>
 
 <Router>
-  <NavBar />
   <div class="products-page-container">
     <Route
       path="/"
