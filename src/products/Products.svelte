@@ -1,6 +1,5 @@
 <script>
   // Components
-  import NavBar from '../components/NavBar.svelte'
   import ProductsList from './components/ProductsList.svelte'
   import SingleProduct from './components/SingleProduct.svelte'
   import Cart from './components/Cart.svelte'
