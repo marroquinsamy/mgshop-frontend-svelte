@@ -19,6 +19,7 @@
   import ProductsList from './products/components/ProductsList.svelte'
   import ProductItem from './products/components/ProductItem.svelte'
   import SingleProduct from './products/components/SingleProduct.svelte'
+  import PrivateRoute from './admin-dashboard/PrivateRoute.svelte'
 
   mousetrap.bind('shift+d', () => darkMode.toggleDarkModeStatus())
 
@@ -53,9 +54,9 @@
         >
           <AdminLogin />
         </Route>
-        <Route path="dashboard">
+        <PrivateRoute path="dashboard">
           <Dashboard />
-        </Route>
+        </PrivateRoute>
         <PageNotFound />
       </main>
       <Footer />
