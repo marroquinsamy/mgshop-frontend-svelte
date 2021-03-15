@@ -10,7 +10,7 @@ interface IAdminCredentials {
  * Receives admin credentials and returns the token or 401 error if not authorized
  * @param {IAdminCredentials} adminCredentials Object containing username and password
  */
-const loginAdmin = async (adminCredentials: IAdminCredentials) => {
+const login = async (adminCredentials: IAdminCredentials) => {
   const loginAdminOptions: RequestInit = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -38,5 +38,5 @@ const loginAdmin = async (adminCredentials: IAdminCredentials) => {
 }
 
 export default {
-  loginAdmin,
+  login,
 }
