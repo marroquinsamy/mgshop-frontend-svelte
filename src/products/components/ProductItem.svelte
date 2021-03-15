@@ -15,7 +15,7 @@
   export let product: IProduct
 
   const loadImage = async (): Promise<string> => {
-    const response: string = await getImage(product.imagePath)
+    const response: string = await getImage(product)
     return response
   }
 
