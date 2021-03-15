@@ -45,7 +45,9 @@
             </ProductsManager>
           </Route>
           <Route path=":id" meta={{ viewName: 'producto individual' }}>
-            <SingleProduct />
+            <ProductsManager let:products>
+              <SingleProduct productInArray={products} />
+            </ProductsManager>
           </Route>
         </Route>
         <Route
