@@ -3,7 +3,7 @@
   import ProductsLoader from './components/ProductsLoader.svelte'
   import ErrorPage from '../components/ErrorPage.svelte'
   import type { IProduct } from './models/Product'
-  import {  getProducts } from './services/productsService'
+  import { getProducts } from './services/productsService'
 
   // External libraries
   import { useParams } from 'svelte-navigator'
@@ -17,7 +17,6 @@
       const productsResponse: IProduct[] = await getProducts()
       return sortProducts(productsResponse)
     }
-
   }
 
   const sortProducts = (products: IProduct[]): IProduct[] => {
