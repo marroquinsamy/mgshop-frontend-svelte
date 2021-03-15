@@ -11,25 +11,26 @@
 
   // External libraries
   import { onMount } from 'svelte'
-  import { useNavigate } from 'svelte-navigator'
+  import { useNavigate, useLocation } from 'svelte-navigator'
 
   const navigate = useNavigate()
+  const location = useLocation()
 
-  /* onMount(() => {
-    $token &&
+  onMount(() => {
+    if ($token) {
       navigate('/dashboard', {
-        state: { from: 'admin-login' },
+        state: { from: $location.pathname },
+        replace: true,
       })
-  }) */
+    }
+  })
 
   let username: string = ''
   let password: string = ''
 
   let adminAuthorization
   const handleSubmit = () => {
-    const res = adminDashboardService.loginAdmin({ username, password })
-    console.log('res')
-    console.log(res)
+    const res = adminDashboardService.login({ username, password })
     adminAuthorization = res
     res.then(() => navigate('/dashboard', { state: { from: 'admin-login' } }))
     username = ''
