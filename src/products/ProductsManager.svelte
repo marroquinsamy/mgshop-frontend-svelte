@@ -5,9 +5,18 @@
   import type { IProduct } from './models/Product'
   import { getProducts } from './services/productsService'
 
+  // External libraries
+  import { useParams } from 'svelte-navigator'
+  const params = useParams()
+
   const loadProducts = async (): Promise<IProduct[]> => {
-    const productsResponse: IProduct[] = await getProducts()
-    return sortProducts(productsResponse)
+    if ($params.id) {
+      const product: IProduct[] = await getProducts($params.id)
+      return product
+    } else {
+      const productsResponse: IProduct[] = await getProducts()
+      return sortProducts(productsResponse)
+    }
   }
 
   const sortProducts = (products: IProduct[]): IProduct[] => {
