@@ -1,7 +1,7 @@
 <script lang="ts">
   // Routes
   import Home from './landing/components/Home.svelte'
-  import Products from './products/Products.svelte'
+  import ProductsManager from './products/ProductsManager.svelte'
   import PageNotFound from './components/PageNotFound.svelte'
   import AdminLogin from './admin-dashboard/AdminLogin.svelte'
   import Dashboard from './admin-dashboard/DashboardRouter.svelte'
@@ -12,12 +12,15 @@
   import mousetrap from 'mousetrap'
   import 'boxicons'
 
-  mousetrap.bind('shift+d', () => darkMode.toggleDarkModeStatus())
-
   // Scripts
   import createAnnouncement from './helpers/createAnnouncement'
   import { darkMode } from './stores/darkMode'
   import NavBar from './components/NavBar.svelte'
+  import ProductsList from './products/components/ProductsList.svelte'
+  import ProductItem from './products/components/ProductItem.svelte'
+  import SingleProduct from './products/components/SingleProduct.svelte'
+
+  mousetrap.bind('shift+d', () => darkMode.toggleDarkModeStatus())
 
   $: $darkMode
     ? document.body.classList.add('dark')
@@ -29,18 +32,30 @@
     <NavBar />
     <div class="middle-section">
       <main>
-        <Route
-          path="/"
-          component={Home}
-          meta={{ viewName: 'página de inicio' }}
-        />
-        <Route path="products/*" component={Products} />
+        <Route path="/" meta={{ viewName: 'página de inicio' }}>
+          <Home />
+        </Route>
+        <Route path="products/*">
+          <Route path="/" meta={{ viewName: 'lista de productos' }}>
+            <ProductsManager let:products>
+              <ProductsList {products} let:product>
+                <ProductItem {product} />
+              </ProductsList>
+            </ProductsManager>
+          </Route>
+          <Route path=":id" meta={{ viewName: 'producto individual' }}>
+            <SingleProduct />
+          </Route>
+        </Route>
         <Route
           path="login"
-          component={AdminLogin}
           meta={{ viewName: 'inicio de sesión de administrador' }}
-        />
-        <Route path="dashboard" component={Dashboard} />
+        >
+          <AdminLogin />
+        </Route>
+        <Route path="dashboard">
+          <Dashboard />
+        </Route>
         <PageNotFound />
       </main>
       <Footer />
