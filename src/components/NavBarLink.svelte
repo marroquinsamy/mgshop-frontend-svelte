@@ -29,4 +29,8 @@
     margin: 0;
     padding: 5px;
   }
+
+  .button {
+    display: inline-block;
+  }
 </style>

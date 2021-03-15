@@ -33,10 +33,11 @@
 
     background: var(--surface-color);
 
-    box-shadow: var(--shadow-3), var(--shadow-inset-1);
+    box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px,
+      rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
 
     padding: 7px;
-    border-radius: var(--border-radius);
+    border-radius: 0.5em;
 
     width: 85%;
     max-width: 350px;

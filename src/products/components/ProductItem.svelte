@@ -23,7 +23,7 @@
 </script>
 
 <article>
-  <Link to={product._id} class="product-card">
+  <Link to={product._id} class="product-article-link header">
     <header>
       <h3 class="title">{product.title}</h3>
       <p class="description">{product.description}</p>
@@ -31,7 +31,8 @@
     </header>
   </Link>
 
-  <div class="image-container" on:click={() => navigate(product._id)}>
+  <Link to={product._id} class="product-article-link image-container">
+    <!-- <div class="image-container" on:click={() => navigate(product._id)}> -->
     {#await image}
       <Loader showText={false} size="70px" />
     {:then image}
@@ -43,28 +44,30 @@
         class="product-image error-image"
       />
     {/await}
-  </div>
+    <!-- </div> -->
+  </Link>
 
-  <footer>
+  <footer class="action">
     <AddToCartButton productID={product._id} />
   </footer>
 </article>
 
 <style>
-  article :global(.product-card) {
-    color: unset;
-    text-decoration: none;
-  }
-
   article {
-    height: 370px;
+    height: 400px;
     border-radius: var(--border-radius);
     padding: 15px;
     padding-top: 18px;
 
     /* Esto es para que la sección del cetro (imagen) utilice el espacio restante que dejan la sección superior (detalles) y la inferior (footer) */
     display: grid;
+    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      'information'
+      'picture'
+      'action';
+    gap: 10px;
     background: var(--surface-color);
 
     box-shadow: var(--shadow-2);
@@ -74,6 +77,15 @@
   article:hover {
     cursor: pointer;
     box-shadow: var(--shadow-2), var(--shadow-inset-1);
+  }
+  article :global(a.product-article-link) {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+  }
+
+  article :global(a.product-article-link.header) {
+    grid-area: information;
   }
 
   article:hover .title {
@@ -89,16 +101,20 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin: 5px 0px 15px;
+    margin: 0;
+    margin-bottom: 10px;
 
     line-height: 1.5;
+    color: var(--text-color);
+    text-decoration: none;
   }
 
   .tag.price {
     font-size: 1.2em;
+    display: inline-block;
   }
 
-  .image-container {
+  article :global(.product-article-link.image-container) {
     /* Esto es para que la imagen dentro no se sobrepase de la altura de su contenedor y para que no pierda su radio de aspecto */
     height: 100%;
     overflow: hidden;
@@ -106,19 +122,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    grid-area: picture;
   }
 
   .product-image {
     max-height: 100%;
+    display: inline-block;
   }
 
   .error-image {
     max-height: 70%;
   }
 
-  footer {
-    margin-top: 5px;
-    padding-top: 7px;
+  .action {
+    grid-area: action;
 
     display: flex;
     justify-content: space-between;

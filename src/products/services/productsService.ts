@@ -1,15 +1,13 @@
 // Scripts
 import type { IProduct } from '../models/Product'
-
-// export const API = 'http://192.168.0.107:4000'
-export const API = 'https://mgshop-backend.herokuapp.com'
+import config from '../../config/config'
 
 export const errorSeparator: string = '$$$' // Use this constant to separate the res status code, the error title and the error description
 
 export const getProducts = async () => {
   let res: Response
   try {
-    res = await fetch(`${API}/products`)
+    res = await fetch(`${config.API}/products`)
   } catch (error) {
     console.log(error)
     throw new Error(
@@ -33,7 +31,7 @@ export const getProducts = async () => {
 export const getProduct = async (id: string) => {
   let res: Response
   try {
-    res = await fetch(`${API}/products/${id}`)
+    res = await fetch(`${config.API}/products/${id}`)
   } catch (error) {
     console.log(error)
     throw new Error(
@@ -69,7 +67,7 @@ export const getImage = async (
   } else {
     let res: Response
     try {
-      res = await fetch(`${API}/${imagePathOrID}`)
+      res = await fetch(`${config.API}/${imagePathOrID}`)
     } catch (error) {
       console.log(error)
       throw new Error()
