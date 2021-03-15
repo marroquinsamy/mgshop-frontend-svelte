@@ -1,5 +1,6 @@
 <script lang="ts">
-  export let id: string
+  export let productInArray: IProduct[]
+  const [product]: IProduct[] = productInArray
 
   // Components
   import ErrorPage from '../../components/ErrorPage.svelte'
@@ -11,14 +12,12 @@
   import { useFocus } from 'svelte-navigator'
 
   // Scripts
-  import { getProduct, getImage } from '../services/productsService'
+  import { getImage } from '../services/productsService'
   import type { IProduct } from '../models/Product'
   import { title } from '../../stores/title'
   import ProductsLoader from './ProductsLoader.svelte'
 
   const registerFocus = useFocus()
-
-  let promise: Promise<IProduct> = getProduct(id)
 
   const copyID = () => {
     try {
@@ -39,7 +38,7 @@
   }
 
   const loadImage = async (): Promise<string> => {
-    const response: string = await getImage(id, true)
+    const response: string = await getImage(product)
     return response
   }
 
@@ -50,55 +49,49 @@
   <title>Productos | {$title}</title>
 </svelte:head>
 
-{#await promise}
-  <ProductsLoader text="Cargando tu producto" />
-{:then product}
-  <h2 class="products-page--page-title" use:registerFocus>{product.title}</h2>
-  <div class="container">
-    <section class="image-container">
-      {#await image}
-        <Loader showText={false} />
-      {:then image}
-        <img src={image} alt={product.title} class="product-image" />
-      {:catch}
-        <img
-          src="/images/015-laptop.svg"
-          alt={product.title}
-          class="product-image error-image"
-        />
-      {/await}
-    </section>
+<h2 class="products-page--page-title" use:registerFocus>{product.title}</h2>
+<div class="container">
+  <section class="image-container">
+    {#await image}
+      <Loader showText={false} />
+    {:then image}
+      <img src={image} alt={product.title} class="product-image" />
+    {:catch}
+      <img
+        src="/images/015-laptop.svg"
+        alt={product.title}
+        class="product-image error-image"
+      />
+    {/await}
+  </section>
 
-    <section class="details-container">
-      <div class="details">
-        <div class="details-group">
-          <p class="title">Descripción</p>
-          <p class="description">{product.description}</p>
-        </div>
-
-        <div class="details-group">
-          <p class="title">ID del producto</p>
-          <p
-            class="description product-id"
-            role="button"
-            on:click={copyID}
-            title="Haz click para copiar el ID"
-          >
-            {product._id}
-          </p>
-        </div>
-
-        <div class="details-group price-tag">
-          <span class="tag price"><small>Q</small>{product.price}</span>
-        </div>
-
-        <AddToCartButton text="Agregar al carrito" productID={product._id} />
+  <section class="details-container">
+    <div class="details">
+      <div class="details-group">
+        <p class="title">Descripción</p>
+        <p class="description">{product.description}</p>
       </div>
-    </section>
-  </div>
-{:catch error}
-  <ErrorPage message={error.message} />
-{/await}
+
+      <div class="details-group">
+        <p class="title">ID del producto</p>
+        <p
+          class="description product-id"
+          role="button"
+          on:click={copyID}
+          title="Haz click para copiar el ID"
+        >
+          {product._id}
+        </p>
+      </div>
+
+      <div class="details-group price-tag">
+        <span class="tag price"><small>Q</small>{product.price}</span>
+      </div>
+
+      <AddToCartButton text="Agregar al carrito" productID={product._id} />
+    </div>
+  </section>
+</div>
 
 <style>
   .container {
