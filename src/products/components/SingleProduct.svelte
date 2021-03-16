@@ -136,6 +136,9 @@
       'price'
       'action';
     gap: 20px;
+
+    position: sticky;
+    top: 0;
   }
 
   .group.description {
