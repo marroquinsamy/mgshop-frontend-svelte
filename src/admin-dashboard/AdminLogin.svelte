@@ -100,7 +100,7 @@
     margin-right: auto;
 
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow-1), var(--shadow-inset-1);
+    box-shadow: var(--shadow-outset-1), var(--shadow-inset-1);
     padding: 25px calc(5% + 15px);
 
     display: grid;

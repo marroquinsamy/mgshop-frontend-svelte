@@ -70,13 +70,13 @@
     gap: 10px;
     background: var(--surface-color);
 
-    box-shadow: var(--shadow-2);
+    box-shadow: var(--shadow-outset-2);
     transition: all ease 0.25s;
   }
 
   article:hover {
     cursor: pointer;
-    box-shadow: var(--shadow-2), var(--shadow-inset-1);
+    box-shadow: var(--shadow-outset-2), var(--shadow-inset-1);
   }
   article :global(a.product-article-link) {
     color: var(--text-color);

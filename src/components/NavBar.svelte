@@ -79,7 +79,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 25px;
-    box-shadow: var(--shadow-1);
+    box-shadow: var(--shadow-outset-1);
     border-bottom: 1px solid rgba(var(--black-and-white-color), 0.1);
     background: var(--surface-color);
   }

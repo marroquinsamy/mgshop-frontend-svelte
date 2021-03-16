@@ -107,7 +107,7 @@
     width: 90%;
     max-width: 1200px;
     background: var(--surface-color);
-    box-shadow: var(--shadow-1), var(--shadow-inset-1);
+    box-shadow: var(--shadow-outset-1), var(--shadow-inset-1);
   }
 
   @media only screen and (min-width: 665px) {
