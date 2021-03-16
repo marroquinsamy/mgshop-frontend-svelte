@@ -286,6 +286,7 @@ input[type='checkbox']:focus {
   color: #58a6ff;
   font-weight: 500;
   border: 1px solid #58a6ff;
+  display: inline-block;
 }
 
 .tag.price {
