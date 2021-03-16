@@ -20,27 +20,31 @@
   <title>Productos | {$title}</title>
 </svelte:head>
 
-<h2 class="products-page--page-title" use:registerFocus>Productos</h2>
-<div class="products-container">
-  {#each products as product}
-    <slot {product} />
-  {/each}
+<div class="products-list">
+  <h2 class="products-page--page-title" use:registerFocus>Productos</h2>
+  <div class="products-grid">
+    {#each products as product}
+      <slot {product} />
+    {/each}
+  </div>
 </div>
 
 <style>
-  .products-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-
+  .products-list {
     width: 90%;
-
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
   }
 
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
   /* @media only screen and (min-width: 700px) {
-    .products-container {
+    .products-grid {
       width: 100%;
     }
   } */
