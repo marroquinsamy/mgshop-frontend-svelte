@@ -47,6 +47,3 @@
 {:catch error}
   <ErrorPage message={error.message} />
 {/await}
-
-<style>
-</style>
