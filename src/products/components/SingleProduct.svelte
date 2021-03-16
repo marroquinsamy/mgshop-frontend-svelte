@@ -66,28 +66,25 @@
   </section>
 
   <section class="details-container">
-    <div class="details">
-      <div class="details-group">
-        <p class="title">Descripción</p>
-        <p class="description">{product.description}</p>
-      </div>
-
-      <div class="details-group">
-        <p class="title">ID del producto</p>
-        <p
-          class="description product-id"
-          role="button"
-          on:click={copyID}
-          title="Haz click para copiar el ID"
-        >
-          {product._id}
-        </p>
-      </div>
-
-      <div class="details-group price-tag">
-        <span class="tag price"><small>Q</small>{product.price}</span>
-      </div>
-
+    <div class="group description">
+      <h4 class="label">Descripción</h4>
+      <p>{product.description}</p>
+    </div>
+    <div class="group id">
+      <h4 class="label">ID del producto</h4>
+      <p
+        role="button"
+        on:click={copyID}
+        style="cursor: pointer;"
+        title="Haz click para copiar el ID"
+      >
+        {product._id}
+      </p>
+    </div>
+    <div class="group price">
+      <span class="tag price"><small>Q</small>{product.price}</span>
+    </div>
+    <div class="group action">
       <AddToCartButton text="Agregar al carrito" productID={product._id} />
     </div>
   </section>
@@ -96,11 +93,16 @@
 <style>
   .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      'picture'
+      'details';
+    gap: 20px;
 
     border-radius: var(--border-radius);
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
     width: 90%;
     max-width: 1200px;
@@ -108,59 +110,61 @@
     box-shadow: var(--shadow-1), var(--shadow-inset-1);
   }
 
+  @media only screen and (min-width: 665px) {
+    .container {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: 'picture details';
+      align-items: flex-start;
+    }
+  }
+
   .image-container {
     display: grid;
     place-items: center;
+    grid-area: picture;
   }
 
   .details-container {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-area: details;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+      'description'
+      'id'
+      'price'
+      'action';
+    gap: 20px;
   }
 
-  .details {
-    width: 90%;
+  .group.description {
+    grid-area: description;
   }
 
-  @media only screen and (max-width: 743px) {
-    .details {
-      width: 100%;
-    }
-
-    .container {
-      gap: 20px;
-    }
+  .group.id {
+    grid-area: id;
   }
 
-  .details-group {
-    margin-bottom: 15px;
+  .group.price {
+    grid-area: price;
+  }
+
+  .group.action {
+    grid-area: action;
+  }
+
+  .label {
+    margin: 0;
+    margin-bottom: 0.5em;
   }
 
   p {
-    margin: 5px 0;
-  }
-
-  .title {
-    font-weight: 600;
-  }
-
-  .description {
-    font-family: var(--paragraph-font);
-    font-weight: 400;
-    line-height: 1.5;
-  }
-
-  .product-id {
-    cursor: pointer;
-    letter-spacing: 0.02em;
-  }
-
-  .details-group.price-tag {
-    margin-bottom: 50px;
+    margin: 0;
   }
 
   .tag.price {
-    font-size: 1.4em;
+    font-size: 1.5em;
   }
 
   .product-image {
