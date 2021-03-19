@@ -33,6 +33,10 @@
     return response
   }
 
+  const openImageInNewTab = async () => {
+    window.open(await image, '_blank', 'noreferrer')
+  }
+
   const image: Promise<string> = loadImage()
 </script>
 
@@ -46,7 +50,12 @@
     {#await image}
       <Loader showText={false} />
     {:then image}
-      <img src={image} alt={product.title} class="product-image" />
+      <img
+        src={image}
+        alt={product.title}
+        class="product-image"
+        on:click={openImageInNewTab}
+      />
     {:catch}
       <img
         src="/images/015-laptop.svg"
