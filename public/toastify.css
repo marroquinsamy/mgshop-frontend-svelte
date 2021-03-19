@@ -15,11 +15,19 @@
 }
 
 .toastify-success {
-  border-bottom-color: var(--green-color-500);
+  border-bottom-color: var(--success-color);
 }
 
 .toastify-information {
-  border-bottom-color: var(--blue-color-500);
+  border-bottom-color: var(--information-color);
+}
+
+.toastify-error {
+  border-bottom-color: var(--error-color);
+}
+
+.toastify-warning {
+  border-bottom-color: var(--warning-color);
 }
 
 .toast-close {
