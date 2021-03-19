@@ -8,33 +8,24 @@
   import AddToCartButton from './AddToCartButton.svelte'
 
   // External libraries
-  import Toastify from 'toastify-js'
   import { useFocus } from 'svelte-navigator'
 
   // Scripts
   import { getImage } from '../services/productsService'
   import type { IProduct } from '../models/Product'
   import { title } from '../../stores/title'
-  import ProductsLoader from './ProductsLoader.svelte'
+  import toastify from '../../utils/toastify'
+  import clipboard from '../../utils/clipboard'
 
   const registerFocus = useFocus()
 
   const copyID = () => {
     try {
-      navigator.clipboard.writeText('+502 4269 5893')
-
-      Toastify({
-        text: 'ID copiado exitosamente',
-        duration: 5000,
-        close: true,
-        gravity: 'bottom',
-        position: 'right',
-        stopOnFocus: true,
-        className: 'toastify-success',
-      }).showToast()
+      clipboard.copy({ textToCopy: product._id })
     } catch (error) {
       console.log(error)
     }
+    toastify({ text: 'ID copiado exitosamente', status: 'information' })
   }
 
   const loadImage = async (): Promise<string> => {
