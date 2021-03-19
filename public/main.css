@@ -38,17 +38,17 @@
   --gray-color-rgb: 109, 109, 109;
   --gray-color-always: #65676b;
 
-  --yellow-color-500: #febf12;
-  --yellow-color-rgb: 254, 191, 18;
+  --warning-color: #f9ae3f;
+  --warning-color-rgb: 249, 174, 63;
 
-  --red-color-500: #ff6750;
-  --red-color-rgb: 255, 103, 80;
+  --error-color: #de5050;
+  --error-color-rgb: 222, 80, 80;
 
-  --green-color-500: #03a574;
-  --green-color-rgb: 3, 165, 116;
+  --success-color: #37bc64;
+  --success-color-rgb: 55, 188, 100;
 
-  --blue-color-500: #038bf9;
-  --blue-color-rgb: 3, 139, 249;
+  --information-color: #038bf9;
+  --information-color-rgb: 3, 139, 249;
 
   --body-color: #f0f2f5;
   --surface-color: #fff;
@@ -228,31 +228,31 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border-color: var(--blue-color-500);
+  border-color: var(--information-color);
   outline: none;
-  box-shadow: var(--shadow-for-focus) rgba(var(--blue-color-rgb), 0.3);
+  box-shadow: var(--shadow-for-focus) rgba(var(--information-color-rgb), 0.3);
 }
 
 input:invalid,
 input.invalid,
 textarea.invalid {
-  border-color: var(--red-color-500);
+  border-color: var(--error-color);
 }
 
 input:invalid:focus,
 input.invalid:focus,
 textarea.invalid:focus {
-  box-shadow: var(--shadow-for-focus) rgba(var(--red-color-rgb), 0.3);
+  box-shadow: var(--shadow-for-focus) rgba(var(--error-color-rgb), 0.3);
 }
 
 input.valid,
 textarea.valid {
-  border-color: var(--green-color-500);
+  border-color: var(--success-color);
 }
 
 input.valid:focus,
 textarea.valid:focus {
-  box-shadow: var(--shadow-for-focus) rgba(var(--green-color-rgb), 0.3);
+  box-shadow: var(--shadow-for-focus) rgba(var(--success-color-rgb), 0.3);
 }
 /* --> */
 
@@ -268,7 +268,7 @@ input[type='radio'] {
 }
 
 input[type='radio']:checked {
-  border: 6px solid var(--blue-color-500);
+  border: 6px solid var(--information-color);
 }
 
 input[type='radio']:focus,
