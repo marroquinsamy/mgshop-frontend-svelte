@@ -65,7 +65,7 @@
   --shadow-for-focus: 0 0 0 0.2em;
   --shadow-inset-1: inset 0 0 0 1px rgba(0, 0, 0, 0.01);
 
-  --border-radius: 10px;
+  --border-radius: 0.5em;
   --border-color: #eff3f5;
 }
 

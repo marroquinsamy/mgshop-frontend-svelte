@@ -38,7 +38,7 @@
     box-shadow: var(--shadow-outset-3), var(--shadow-inset-1);
 
     padding: 7px;
-    border-radius: 0.5em;
+    border-radius: var(--border-radius);
 
     width: 85%;
     max-width: 350px;
