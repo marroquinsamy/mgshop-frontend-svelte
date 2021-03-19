@@ -18,7 +18,7 @@ const copy = async ({ textToCopy }: ICopy): Promise<void> => {
 }
 
 interface IClipboard {
-  copy(arg0: ICopy): Promise<void>
+  copy(options: ICopy): Promise<void>
 }
 
 const clipboard: IClipboard = {
