@@ -36,7 +36,12 @@
     {#await image}
       <Loader showText={false} size="70px" />
     {:then image}
-      <img src={image} alt={product.title} class="product-image" />
+      <img
+        src={image}
+        alt={product.title}
+        class="product-image"
+        loading="lazy"
+      />
     {:catch}
       <img
         src="/images/015-laptop.svg"
