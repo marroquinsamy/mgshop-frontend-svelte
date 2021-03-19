@@ -42,6 +42,7 @@
 
     width: 85%;
     max-width: 350px;
+    z-index: 1;
   }
 
   h2 {
