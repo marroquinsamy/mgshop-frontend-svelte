@@ -1,4 +1,4 @@
-import clipboardy from 'clipboardy'
+import { write } from 'clipboardy'
 
 interface ICopy {
   textToCopy: string
@@ -9,12 +9,7 @@ interface ICopy {
  * @param { ICopy } param Object containing options
  */
 const copy = async ({ textToCopy }: ICopy): Promise<void> => {
-  try {
-    await clipboardy.write(textToCopy)
-  } catch (error) {
-    console.log(error)
-    throw new Error('Hubo un error al copiar al portapapeles.')
-  }
+  await write(textToCopy)
 }
 
 interface IClipboard {
