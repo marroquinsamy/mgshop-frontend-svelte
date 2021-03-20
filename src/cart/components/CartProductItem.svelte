@@ -5,8 +5,8 @@
   import Loader from '../../components/Loader.svelte'
 
   // Scripts
-  import type { IProduct } from '../models/Product'
-  import { getImage } from '../services/productsService'
+  import type { IProduct } from '../../products/models/Product'
+  import { getImage } from '../../products/services/productsService'
 
   // External libraries
   import Toastify from 'toastify-js'
@@ -33,7 +33,7 @@
   }
 
   const loadImage = async (): Promise<string> => {
-    const response: string = await getImage(product.imagePath)
+    const response: string = await getImage(product)
     return response
   }
 

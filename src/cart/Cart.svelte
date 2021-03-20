@@ -1,15 +1,18 @@
 <script lang="ts">
   // Components
-  import ErrorPage from '../../components/ErrorPage.svelte'
-  import CartProductItem from './CartProductItem.svelte'
-  import ProductsLoader from './ProductsLoader.svelte'
+  import ErrorPage from '../components/ErrorPage.svelte'
+  import CartProductItem from './components/CartProductItem.svelte'
+  import ProductsLoader from '../products/components/ProductsLoader.svelte'
 
   // Scripts
-  import { cart } from '../../stores/cart'
-  import { errorSeparator, getProducts } from '../services/productsService'
-  import type { IProduct } from '../models/Product'
+  import { cart } from '../stores/cart'
+  import {
+    errorSeparator,
+    getProducts,
+  } from '../products/services/productsService'
+  import type { IProduct } from '../products/models/Product'
   import { useFocus } from 'svelte-navigator'
-  import { title } from '../../stores/title'
+  import { title } from '../stores/title'
 
   // External libraries
   import swal from 'sweetalert'

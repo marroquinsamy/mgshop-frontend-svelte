@@ -2,6 +2,7 @@
   // Routes
   import Home from './landing/components/Home.svelte'
   import ProductsManager from './products/ProductsManager.svelte'
+  import Cart from './cart/Cart.svelte'
   import PageNotFound from './components/PageNotFound.svelte'
   import AdminLogin from './admin-dashboard/AdminLogin.svelte'
   import Dashboard from './admin-dashboard/DashboardRouter.svelte'
@@ -49,6 +50,9 @@
               <SingleProduct productInArray={products} />
             </ProductsManager>
           </Route>
+        </Route>
+        <Route path="cart" meta={{ viewName: 'carrito de compras' }}>
+          <Cart />
         </Route>
         <Route
           path="login"
