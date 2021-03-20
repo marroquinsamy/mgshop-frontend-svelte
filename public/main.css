@@ -150,67 +150,55 @@ button,
   justify-content: center;
 }
 
-button:hover,
-.button:hover {
+:is(button, .button):hover {
   cursor: pointer;
   background: rgba(var(--black-and-white-color), 0.3);
 }
 
-button:focus,
-.button:focus {
+:is(button, .button):focus {
   outline: none;
   box-shadow: 0 0 0 0.2em rgba(var(--black-and-white-color), 0.1);
 }
 
-button.secondary,
-.button.secondary {
+:is(button, .button).secondary {
   background: transparent;
 }
 
-button.secondary:hover,
-.button.secondary:hover {
+:is(button, .button).secondary:hover {
   background: rgba(var(--black-and-white-color), 0.1);
 }
 
-button.secondary:focus,
-.button.secondary:focus {
+:is(button, .button).secondary:focus {
   box-shadow: 0 0 0 0.2em rgba(var(--black-and-white-color), 0.05);
 }
 
-button.primary,
-.button.primary {
+:is(button, .button).primary {
   background: var(--main-color-500);
   color: #fff;
 }
 
-button.primary:hover,
-.button.primary:hover {
+:is(button, .button).primary:hover {
   background: var(--main-color-600);
 }
 
-button.primary:focus,
-.button.primary:focus {
+:is(button, .button).primary:focus {
   box-shadow: 0 0 0 0.2em rgba(var(--main-color-rgb), 0.4);
 }
 
-button:active,
-.button:active {
+:is(button, .button):active {
   transform: scale(0.95);
 }
 
-button:disabled,
-.button:disabled {
+:is(button, .button):disabled {
   background: rgba(var(--black-and-white-color), 0.1) !important;
   color: var(--gray-color-300);
 }
 
-button:disabled:hover,
-.button:disabled:hover {
+:is(button, .button):disabled:hover {
   cursor: not-allowed;
 }
 
-button:disabled:active,
-.button:disabled:active {
+:is(button, .button):disabled:active {
   transform: none;
 }
 /* --> */
