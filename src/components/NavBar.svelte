@@ -27,7 +27,7 @@
 </script>
 
 <nav>
-  <div>
+  <div class="logo-container end">
     <Link to="/" title="MGShop">
       <img
         src="/images/MG Shop logo color.svg"
@@ -36,7 +36,7 @@
       />
     </Link>
   </div>
-  <div>
+  <div class="menu-container">
     <NavBarLink
       iconName="shopping-bag"
       isAtIconComponent={isAtProductsComponent}
@@ -50,7 +50,7 @@
       title="Carrito de compras"
     />
   </div>
-  <div>
+  <div class="more-options-button-container end">
     <button
       title="Más opciones"
       on:click={toggleShowDropdown}
@@ -82,6 +82,15 @@
     box-shadow: var(--shadow-outset-1);
     border-bottom: 1px solid rgba(var(--black-and-white-color), 0.1);
     background: var(--surface-color);
+  }
+
+  .end {
+    flex: 0 0 90px;
+  }
+
+  .more-options-button-container {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .navbar--logo {
